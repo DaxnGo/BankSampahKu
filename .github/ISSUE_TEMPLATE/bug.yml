@@ -1,7 +1,6 @@
 name: Laporan bug
 description: Laporkan masalah pada halaman atau fitur
 title: "fix: "
-labels: ["fix"]
 body:
   - type: textarea
     id: masalah
@@ -32,3 +31,4 @@ body:
         - label: Perbaikan diperiksa pada ukuran layar yang relevan.
         - label: Tautan dan fitur inti tetap berfungsi tanpa JavaScript.
         - label: Hasil sudah ditinjau anggota lain.
+
