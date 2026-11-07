@@ -1,0 +1,14 @@
+# Sistem operasi
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor dan IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Berkas sementara
+*.tmp
+*.log
