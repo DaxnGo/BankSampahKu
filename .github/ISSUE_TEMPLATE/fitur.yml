@@ -1,0 +1,28 @@
+name: Usulan fitur
+description: Ajukan fitur atau peningkatan untuk BankSampahKu
+title: "feat: "
+labels: ["feat"]
+body:
+  - type: textarea
+    id: kebutuhan
+    attributes:
+      label: Kebutuhan
+      description: Ceritakan kebutuhan pengguna yang ingin dibantu.
+    validations:
+      required: true
+  - type: textarea
+    id: solusi
+    attributes:
+      label: Usulan solusi
+      description: Jelaskan perubahan yang diusulkan.
+    validations:
+      required: true
+  - type: checkboxes
+    id: selesai
+    attributes:
+      label: Kriteria selesai
+      options:
+        - label: Perubahan sesuai kebutuhan dan tidak merusak halaman lain.
+        - label: Tampilan tetap responsif dan bisa digunakan dengan keyboard.
+        - label: Fitur inti tetap tersedia tanpa JavaScript.
+        - label: Hasil sudah ditinjau anggota lain.
