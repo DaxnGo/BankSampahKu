@@ -1,6 +1,6 @@
 # Rencana Pengaturan GitHub
 
-Dokumen ini adalah rancangan untuk diterapkan setelah repo dan pemiliknya dipastikan. Nama repo usulan: `BankSampahKu`. Pemilik repo, visibilitas, tanggal tenggat, serta tanggal milestone belum ditentukan.
+Repo sudah dibuat sebagai [DaxnGo/BankSampahKu](https://github.com/DaxnGo/BankSampahKu) dengan visibilitas private. Nama dan pembagian anggota, tanggal tenggat, serta tanggal milestone belum ditentukan. Label, milestone, papan proyek, dan isu masih perlu dibuat atau dilengkapi di GitHub.
 
 ## Label
 
@@ -46,3 +46,4 @@ Ukuran S/M/L adalah perkiraan. Pemilik sengaja dikosongkan sampai tim membagi tu
 | M5 | Gabungkan laporan dan siapkan slide | `docs` | Belum ditentukan | M |
 
 Setiap isu GitHub sebaiknya memuat tujuan, kriteria selesai, label, milestone, dan ukuran. Papan proyek memakai kolom `Todo`, `Doing`, `Review`, dan `Done`.
+
