@@ -25,8 +25,8 @@ Ukuran S/M/L adalah perkiraan. Pemilik sengaja dikosongkan sampai tim membagi tu
 
 | Milestone | Judul isu | Label | Pemilik | Ukuran |
 |---|---|---|---|---|
-| M1 | Buat repo dan unggah file awal | `chore` | Belum ditentukan | M |
-| M1 | Tulis README dan CONTRIBUTING | `docs` | Belum ditentukan | M |
+| M1 | Siapkan struktur dan dokumentasi repo | `docs` | Belum ditentukan | M |
+| M1 | Unggah berkas awal website | `chore` | Belum ditentukan | M |
 | M1 | Siapkan proteksi `main` dan GitHub Pages | `chore` | Belum ditentukan | S |
 | M2 | Ganti harga sampah dengan data yang diverifikasi | `feat`, `harga` | Belum ditentukan | M |
 | M2 | Poles halaman Cara Memilah | `style`, `memilah` | Belum ditentukan | M |
@@ -41,7 +41,9 @@ Ukuran S/M/L adalah perkiraan. Pemilik sengaja dikosongkan sampai tim membagi tu
 | M4 | Periksa tautan antarhalaman | `test` | Belum ditentukan | S |
 | M4 | Uji di Chrome dan Firefox | `test` | Belum ditentukan | M |
 | M4 | Uji responsif pada 375/768/1280 px dan HP asli | `test` | Belum ditentukan | M |
-| M4 | Tulis bab laporan masing-masing | `docs` | Belum ditentukan | M |
+| M4 | Tulis bab laporan Anggota 1 | `docs` | Belum ditentukan | M |
+| M4 | Tulis bab laporan Anggota 2 | `docs` | Belum ditentukan | M |
+| M4 | Tulis bab laporan Anggota 3 | `docs` | Belum ditentukan | M |
 | M5 | Buat tag `v1.0` dan periksa tautan deploy | `chore` | Belum ditentukan | S |
 | M5 | Gabungkan laporan dan siapkan slide | `docs` | Belum ditentukan | M |
 
