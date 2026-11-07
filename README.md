@@ -8,11 +8,7 @@ Website ini menyajikan informasi dasar tentang pemilahan sampah, harga sampah, d
 
 ## Tangkapan layar
 
-Tambahkan tangkapan layar halaman Beranda setelah tampilan website siap.
-
-```text
-![Tampilan Beranda BankSampahKu](img/screenshot-beranda.png)
-```
+> **Tangkapan layar belum tersedia.** Setelah gambar ditambahkan ke `img/`, tampilkan dengan `![Tampilan Beranda BankSampahKu](img/screenshot-beranda.png)`.
 
 ## Demo
 
