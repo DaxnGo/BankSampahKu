@@ -1,7 +1,6 @@
 name: Tugas dokumentasi
 description: Catat perubahan atau penambahan dokumentasi
 title: "docs: "
-labels: ["docs"]
 body:
   - type: textarea
     id: tujuan
@@ -24,3 +23,4 @@ body:
         - label: Informasi benar, jelas, dan tidak mengarang data proyek.
         - label: Tautan dan nama berkas sudah diperiksa.
         - label: Dokumentasi sudah ditinjau anggota lain.
+
