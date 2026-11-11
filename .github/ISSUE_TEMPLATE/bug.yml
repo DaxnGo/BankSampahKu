@@ -1,0 +1,34 @@
+name: Laporan bug
+description: Laporkan masalah pada halaman atau fitur
+title: "fix: "
+body:
+  - type: textarea
+    id: masalah
+    attributes:
+      label: Masalah yang terjadi
+      description: Jelaskan apa yang tidak berjalan sesuai harapan.
+    validations:
+      required: true
+  - type: textarea
+    id: langkah
+    attributes:
+      label: Langkah untuk melihat masalah
+      placeholder: "1. Buka halaman ... 2. Pilih ..."
+    validations:
+      required: true
+  - type: textarea
+    id: harapan
+    attributes:
+      label: Hasil yang diharapkan
+    validations:
+      required: true
+  - type: checkboxes
+    id: selesai
+    attributes:
+      label: Kriteria selesai
+      options:
+        - label: Masalah dapat diulang dan penyebabnya sudah diperbaiki.
+        - label: Perbaikan diperiksa pada ukuran layar yang relevan.
+        - label: Tautan dan fitur inti tetap berfungsi tanpa JavaScript.
+        - label: Hasil sudah ditinjau anggota lain.
+
