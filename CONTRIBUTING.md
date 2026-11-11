@@ -4,42 +4,46 @@
 
 - `main` berisi hasil stabil yang sudah ditinjau.
 - Gunakan satu isu untuk satu branch dan satu pull request.
-- Format branch: `feat/<nama>`, `fix/<nama>`, `docs/<nama>`, atau `style/<nama>`.
+- Gunakan awalan branch `feat/`, `fix/`, `docs/`, atau `style/`, misalnya `feat/beranda`.
 - Mulai dari `main` terbaru. Jangan mengubah riwayat branch bersama atau melakukan force push.
 
 ## Commit
 
 Gunakan format `tipe(area): deskripsi singkat`, misalnya `feat(harga): tambah tabel harga sampah`. Tipe yang disarankan: `feat`, `fix`, `style`, `docs`, `chore`, dan `test`.
 
-## Alur pull request
+## Alur kerja harian dan pull request
 
-1. Pilih isu yang belum dikerjakan.
-2. Tarik perubahan terbaru dari `main`.
-3. Buat branch untuk isu tersebut.
-4. Kerjakan perubahan dan buat commit kecil yang jelas.
-5. Push branch dan buka pull request yang menautkan isu.
-6. Minta satu anggota lain untuk meninjau.
-7. Perbaiki catatan review, lalu squash merge setelah disetujui.
+1. Tarik perubahan terbaru dari `main`.
+2. Pilih isu yang belum dikerjakan dan buat branch sesuai jenis perubahan.
+3. Kerjakan perubahan dan buat commit kecil yang jelas.
+4. Push branch ke GitHub.
+5. Buka pull request yang menautkan isu.
+6. Minta review silang sesuai urutan di bawah, lalu perbaiki catatan review.
+7. Setelah disetujui, squash merge pull request.
 8. Hapus branch setelah merge.
 
-Review silang berputar: Anggota 1 meninjau Anggota 2, Anggota 2 meninjau Anggota 3, dan Anggota 3 meninjau Anggota 1. Pemetaan nama dilakukan setelah anggota tim menyepakatinya.
+Urutan review silang:
+
+- PR Anggota 1 direview Anggota 2.
+- PR Anggota 2 direview Anggota 3.
+- PR Anggota 3 direview Anggota 1.
 
 ## Kepemilikan file
 
-- Anggota 1: `index.html`, `README.md`, `.github/`, dan bagian dasar `css/style.css`.
-- Anggota 2: `memilah.html`, `harga.html`, dan `js/script.js`.
-- Anggota 3: `kontak.html`, `img/`, dan `docs/`.
-- Anggota 2 dan 3 menambahkan CSS hanya di bagian halaman masing-masing dalam `css/style.css`, memakai komentar penanda.
-- Perubahan pada bagian dasar CSS atau file milik anggota lain perlu isu dan pull request, lalu ditinjau pemilik file.
+- Anggota 1: `index.html`, `README.md`, `CONTRIBUTING.md`, `.github/`, dan bagian dasar `css/style.css`.
+- Anggota 2: `memilah.html`, `harga.html`, `js/script.js`, dan bagian CSS halaman memilah, harga, serta mode gelap.
+- Anggota 3: `kontak.html`, `js/kontak.js`, `img/`, `docs/`, dan bagian CSS kontak serta galeri.
+- Perubahan pada bagian CSS atau file milik anggota lain perlu dibahas dengan pemilik file dan ditinjau melalui pull request.
 
 ## Menyelesaikan konflik merge
 
-1. Perbarui branch kerja dari `main` terbaru.
-2. Buka file yang konflik dan tentukan versi yang benar bersama pemilik file.
-3. Hapus penanda konflik Git setelah isi final dipilih.
-4. Periksa ulang bagian sekitar perubahan dan jalankan pemeriksaan yang relevan.
-5. Commit penyelesaian konflik dan push branch.
-6. Minta peninjau memeriksa ulang pull request.
+1. Tarik perubahan terbaru dari `main`.
+2. Merge `main` ke branch kerja; jangan rebase branch bersama.
+3. Buka file yang konflik dan tentukan versi yang benar bersama pemilik file.
+4. Hapus penanda konflik Git setelah isi final dipilih.
+5. Periksa ulang bagian sekitar perubahan dan jalankan pemeriksaan yang relevan.
+6. Commit penyelesaian konflik dan push branch.
+7. Minta peninjau memeriksa ulang pull request.
 
 ## Definisi Selesai
 
