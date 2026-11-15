@@ -36,7 +36,6 @@ body {
   padding: 0 24px;
 }
 
-/* Header & Navigasi */
 .site-header {
   padding: 18px 0;
   background-color: var(--bg-cream);
@@ -87,12 +86,10 @@ body {
   color: var(--white);
 }
 
-/* HALAMAN KONTAK */
 .contact-hero {
   padding: 20px 0 10px;
 }
 
-/* Hero Banner Gambar */
 .contact-hero {
   width: 100%;
   background-color: #FAF8F0;
@@ -108,7 +105,6 @@ body {
   margin: 0 auto;
 }
 
-/* Kartu Info Kontak (3 Kolom) */
 .contact-info-section {
   padding: 16px 0 24px;
 }
@@ -176,7 +172,6 @@ body {
   font-size: 0.85rem;
 }
 
-/* Tabel Jam Buka (Hari 2) */
 .hours-table {
   width: 100%;
   border-collapse: collapse;
@@ -200,7 +195,6 @@ body {
   border-bottom: none;
 }
 
-/* Form & Peta Lokasi */
 .contact-main-section {
   padding: 8px 0 40px;
 }
@@ -301,7 +295,6 @@ body {
   box-shadow: 0 0 0 3px rgba(75, 168, 59, 0.18);
 }
 
-/* Status Error Validasi (Hari 5) */
 .contact-form input.input-error,
 .contact-form textarea.input-error {
   border-color: var(--error-red);
@@ -360,7 +353,6 @@ body {
   font-weight: 600;
 }
 
-/* Kartu Peta */
 .contact-main-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
