@@ -1,6 +1,137 @@
-<!--
-  File   : memilah.html
-  Pemilik: Anggota 2
-  Tujuan : Halaman Cara Memilah (3 kartu kategori sampah dan tips)
-  Status : KOSONG. Diisi oleh pemilik lewat branch feat/memilah-halaman
--->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panduan sederhana memilah sampah di rumah: organik, anorganik, dan B3.">
+  <title>Cara Memilah | BankSampahKu</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="lewati" href="#konten">Lewati ke konten utama</a>
+
+  <!-- TODO Anggota 2: ganti blok header ini dengan salinan dari index.html (Anggota 1) setelah digabung ke main -->
+  <header class="header-situs">
+    <div class="wadah header-isi">
+      <a class="logo" href="index.html"><span aria-hidden="true">🍃</span> BankSampahKu</a>
+      <nav aria-label="Navigasi utama">
+        <ul class="menu">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="memilah.html" aria-current="page">Cara Memilah</a></li>
+          <li><a href="harga.html">Harga Sampah</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="hero-memilah" aria-labelledby="judul-halaman">
+      <div class="wadah hero-memilah-isi">
+        <div>
+          <h1 id="judul-halaman">Cara Memilah</h1>
+          <p>Panduan sederhana untuk memilah sampah di rumah agar lebih mudah dikelola dan bermanfaat.</p>
+        </div>
+        <p class="hero-ikon" aria-hidden="true">♻️ 🗑️ 🌿</p>
+      </div>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-langkah">
+      <h2 id="judul-langkah">3 Langkah Mudah Memilah Sampah</h2>
+      <ol class="langkah-daftar">
+        <li class="langkah">
+          <span class="langkah-nomor" aria-hidden="true">1</span>
+          <div>
+            <h3>Pisahkan</h3>
+            <p>Kelompokkan sampah sesuai jenisnya: organik, anorganik, atau B3.</p>
+          </div>
+        </li>
+        <li class="langkah">
+          <span class="langkah-nomor" aria-hidden="true">2</span>
+          <div>
+            <h3>Bersihkan</h3>
+            <p>Bersihkan dari sisa makanan atau kotoran agar tetap layak didaur ulang.</p>
+          </div>
+        </li>
+        <li class="langkah">
+          <span class="langkah-nomor" aria-hidden="true">3</span>
+          <div>
+            <h3>Kumpulkan</h3>
+            <p>Simpan dalam wadah terpisah sesuai jenisnya, siap untuk disetorkan ke bank sampah.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-jenis">
+      <h2 id="judul-jenis">Jenis Sampah &amp; Cara Memilahnya</h2>
+      <p class="bagian-pengantar">Kenali jenis sampah di sekitarmu dan cara memisahkannya dengan benar.</p>
+
+      <div class="kartu-grid">
+        <article class="kartu-kategori kategori-organik">
+          <p class="kartu-ikon" aria-hidden="true">🍌</p>
+          <h3>Organik</h3>
+          <p class="kartu-ringkas">Sampah yang berasal dari makhluk hidup dan mudah terurai.</p>
+          <h4>Contoh</h4>
+          <ul>
+            <li>Sisa makanan</li>
+            <li>Kulit buah dan sayur</li>
+            <li>Daun dan ranting</li>
+          </ul>
+          <h4>Penanganan</h4>
+          <p>Kumpulkan terpisah dalam wadah tertutup, lalu olah menjadi kompos.</p>
+        </article>
+
+        <article class="kartu-kategori kategori-anorganik">
+          <p class="kartu-ikon" aria-hidden="true">🧴</p>
+          <h3>Anorganik</h3>
+          <p class="kartu-ringkas">Sampah yang sulit terurai tetapi banyak yang bisa didaur ulang.</p>
+          <h4>Contoh</h4>
+          <ul>
+            <li><strong>Plastik:</strong> botol minuman, kemasan, kantong plastik</li>
+            <li><strong>Kertas:</strong> kertas bekas, koran, kardus</li>
+            <li><strong>Logam:</strong> kaleng makanan dan minuman</li>
+            <li><strong>Kaca:</strong> botol dan pecahan kaca</li>
+          </ul>
+          <h4>Penanganan</h4>
+          <p>Kosongkan, bilas, dan keringkan. Pisahkan per jenis lalu setorkan ke bank sampah.</p>
+        </article>
+
+        <article class="kartu-kategori kategori-b3">
+          <p class="kartu-ikon" aria-hidden="true">🔋</p>
+          <h3>B3 (Bahan Berbahaya dan Beracun)</h3>
+          <p class="kartu-ringkas">Sampah yang mengandung zat berbahaya bagi manusia dan lingkungan.</p>
+          <h4>Contoh</h4>
+          <ul>
+            <li>Baterai bekas</li>
+            <li>Lampu neon</li>
+            <li>Kemasan pestisida dan cat</li>
+          </ul>
+          <h4>Penanganan</h4>
+          <p>Jangan dicampur dengan sampah lain. Simpan dalam wadah tertutup dan tanyakan tempat penyetoran khusus ke bank sampah terdekat.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-tips">
+      <div class="tips">
+        <h2 id="judul-tips" class="tips-judul">Ingat Selalu!</h2>
+        <ul class="tips-daftar">
+          <li>Pilah sampah sejak di rumah.</li>
+          <li>Pastikan sampah bersih dan kering.</li>
+          <li>Gunakan wadah terpisah yang rapi dan tertutup.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- TODO Anggota 2: ganti blok footer ini dengan salinan dari index.html (Anggota 1) setelah digabung ke main -->
+  <footer class="footer-situs">
+    <div class="wadah footer-isi">
+      <p class="footer-logo"><span aria-hidden="true">🍃</span> BankSampahKu</p>
+      <p>Edukasi, pilah, dan kelola sampah untuk lingkungan yang lebih baik.</p>
+      <p class="footer-catatan">Harga, alamat, dan kontak di situs ini masih berupa data contoh.</p>
+    </div>
+  </footer>
+</body>
+</html>
