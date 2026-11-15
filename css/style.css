@@ -2,5 +2,596 @@
 /* ===== 2. HALAMAN MEMILAH (Anggota 2) ===== */
 /* ===== 3. HALAMAN HARGA (Anggota 2) ===== */
 /* ===== 4. HALAMAN KONTAK (Anggota 3) ===== */
+:root {
+  --bg-cream:   ;
+  --card-cream: #F2EFE0;
+  --green-dark: #2B6B2B;
+  --green-mid: #4BA83B;
+  --green-light: #82CE4A;
+  --text-dark: #1F3B1F;
+  --text-muted: #4A5D4A;
+  --border-soft: #DCD8C4;
+  --error-red: #C62828;
+  --white: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header & Navigasi */
+.site-header {
+  padding: 18px 0;
+  background-color: var(--bg-cream);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 999px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.main-nav a:hover {
+  background-color: var(--card-cream);
+}
+
+.main-nav a.active {
+  background-color: var(--green-dark);
+  color: var(--white);
+}
+
+/* HALAMAN KONTAK */
+.contact-hero {
+  padding: 20px 0 10px;
+}
+
+/* Hero Banner Gambar */
+.contact-hero {
+  width: 100%;
+  background-color: #FAF8F0;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.hero-banner-img {
+  width: 100%;
+  max-width: 1280px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Kartu Info Kontak (3 Kolom) */
+.contact-info-section {
+  padding: 16px 0 24px;
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.info-card {
+  background-color: var(--card-cream);
+  border-radius: 18px;
+  padding: 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.info-icon {
+  flex-shrink: 0;
+}
+
+.info-icon img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  display: block;
+}
+
+.info-content {
+  width: 100%;
+  min-width: 0;
+}
+
+.info-content h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-dark);
+}
+
+.info-content p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.contact-link {
+  color: var(--green-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+.wa-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 3px 10px;
+  background-color: #DCF5D6;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* Tabel Jam Buka (Hari 2) */
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+  font-size: 0.86rem;
+}
+
+.hours-table th,
+.hours-table td {
+  text-align: left;
+  padding: 5px 6px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.hours-table th {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.hours-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Form & Peta Lokasi */
+.contact-main-section {
+  padding: 8px 0 40px;
+}
+
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.form-card {
+  background-color: var(--card-cream);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.form-card h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.form-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+}
+
+.form-layout {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.bin-illustration {
+  flex-shrink: 0;
+}
+
+.bin-illustration img {
+  width: 110px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.contact-form {
+  flex: 1;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-row-top {
+  align-items: start;
+}
+
+.form-row-top label {
+  padding-top: 10px;
+}
+
+.contact-form label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+}
+
+.required-mark {
+  color: var(--error-red);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border-soft);
+  border-radius: 10px;
+  background-color: var(--white);
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--green-mid);
+  box-shadow: 0 0 0 3px rgba(75, 168, 59, 0.18);
+}
+
+/* Status Error Validasi (Hari 5) */
+.contact-form input.input-error,
+.contact-form textarea.input-error {
+  border-color: var(--error-red);
+  background-color: #FFF8F8;
+}
+
+.error-message {
+  display: block;
+  margin-left: 88px;
+  margin-top: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--error-red);
+  min-height: 16px;
+}
+
+.form-submit-wrap {
+  margin-left: 88px;
+  margin-top: 6px;
+}
+
+.btn-submit {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--green-dark);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-submit:hover {
+  background-color: #215421;
+}
+
+.btn-submit:active {
+  transform: scale(0.99);
+}
+
+.form-success {
+  margin-left: 88px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background-color: #DCF5D6;
+  color: var(--green-dark);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* Kartu Peta */
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.map-card {
+  background-color: var(--card-cream);
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+}
+
+.map-illustration {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.map-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 8px 22px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
 /* ===== 5. MODE GELAP, bonus (Anggota 2) ===== */
 /* ===== 6. GALERI, bonus (Anggota 3) ===== */
+.gallery-section {
+  padding: 24px 0 56px;
+}
+
+.section-header {
+  margin-bottom: 22px;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gallery-item {
+  background-color: var(--card-cream);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item figcaption {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.site-footer {
+  background-color: var(--bg-cream);
+  border-top: 1px solid var(--border-soft);
+  padding-top: 32px;
+  position: relative;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 1fr 0.9fr;
+  gap: 24px;
+  align-items: start;
+  padding-bottom: 28px;
+}
+
+.footer-brand p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 260px;
+}
+
+.footer-links h3,
+.footer-social h3 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 4px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-links a.active-link {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: var(--green-dark);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.footer-wave {
+  height: 26px;
+  background-color: var(--green-light);
+  border-top-left-radius: 50% 24px;
+  border-top-right-radius: 50% 24px;
+}
+
+@media (max-width: 992px) {
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .bin-illustration {
+    display: none;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .form-row-top label {
+    padding-top: 0;
+  }
+
+  .error-message,
+  .form-submit-wrap,
+  .form-success {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.7rem;
+  }
+
+  .form-card {
+    padding: 20px 16px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

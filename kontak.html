@@ -1,6 +1,270 @@
-<!--
-  File   : kontak.html
-  Pemilik: Anggota 3
-  Tujuan : Halaman Kontak
-  Status : KOSONG. Diisi oleh pemilik lewat branch feat/kontak-halaman
--->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BankSampahKu - Kontak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER & NAV (Sesuaikan dengan index.html) ================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Beranda BankSampahKu">
+        <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/>
+          <path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/>
+        </svg>
+        <span>BankSampahKu</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navigasi Utama">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="cara-memilah.html">Cara Memilah</a></li>
+          <li><a href="harga-sampah.html">Harga Sampah</a></li>
+          <li><a href="kontak.html" class="active" aria-current="page">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO KONTAK ================= -->
+    <section class="contact-hero">
+      <img 
+        src="img/Header-Kontak.jpg" 
+        alt="Hubungi BankSampahKu - Punya pertanyaan, saran, atau ingin berkolaborasi? Kami siap mendengar dan membantu Anda." 
+        class="hero-banner-img">
+    </section>
+
+    <!-- ================= INFO KONTAK & TABEL JAM BUKA (Hari 2) ================= -->
+    <section class="contact-info-section" aria-label="Informasi Kontak dan Jam Operasional">
+      <div class="container contact-info-grid">
+
+        <!-- Kartu 1: Alamat -->
+        <article class="info-card">
+          <div class="info-icon">
+            <img src="img/Icon-Alamat.png" alt="Ikon pin lokasi alamat BankSampahKu" width="46" height="46">
+          </div>
+          <div class="info-content">
+            <h2>Alamat</h2>
+            <p>Jl. Sam Ratulangi No. 45, Kec. Wenang, Kota Manado, Sulawesi Utara</p>
+            <a class="contact-link">Lihat di Peta &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Kartu 2: Telepon & WhatsApp (Tautan tel: dan wa.me) -->
+        <article class="info-card">
+          <div class="info-icon" aria-hidden="true">
+            <img src="img/Icon-Telepon.png" alt="Ikon telepon dan WhatsApp BankSampahKu" width="46" height="46">
+          </div>
+          <div class="info-content">
+            <h2>Telepon &amp; WhatsApp</h2>
+            <p>
+              Telepon: <a class="contact-link">0812-3456-7890</a>
+            </p>
+            <p>
+              WhatsApp: <a target="_blank" rel="noopener noreferrer" class="contact-link wa-badge">Chat via wa.me</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- Kartu 3: Tabel Jam Operasional -->
+        <article class="info-card info-card-hours">
+          <div class="info-icon" aria-hidden="true">
+            <img src="img/Icon-Kalender-Jam.png" alt="Ikon jam operasional BankSampahKu" width="46" height="46">
+          </div>
+          <div class="info-content">
+            <h2>Jam Operasional</h2>
+            <table class="hours-table">
+              <thead>
+                <tr>
+                  <th>Hari</th>
+                  <th>Jam Buka</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Senin – Jumat</td>
+                  <td>08.00 – 16.00 WITA</td>
+                </tr>
+                <tr>
+                  <td>Sabtu</td>
+                  <td>08.00 – 13.00 WITA</td>
+                </tr>
+                <tr>
+                  <td>Minggu &amp; Libur</td>
+                  <td>Tutup</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ================= FORMULIR PESAN & PETA LOKASI ================= -->
+    <section class="contact-main-section">
+      <div class="container contact-main-grid">
+
+        <!-- Kolom Kiri: Form dengan <label> dan required -->
+        <div class="form-card">
+          <h2>Kirim Pesan kepada Kami</h2>
+          <p class="form-subtitle">Sampaikan pertanyaan, masukan, atau kerja sama melalui formulir berikut.</p>
+
+          <div class="form-layout">
+            <!-- Ilustrasi Tempat Sampah Daur Ulang -->
+            <div class="bin-illustration" aria-hidden="true">
+              <img src="img/Icon-Tempat-Sampah.png" alt="Ilustrasi tempat sampah daur ulang dengan logo BankSampahKu" width="110" height="auto">
+            </div>
+
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-group">
+                <div class="form-row">
+                  <label for="nama">Nama <span class="required-mark">*</span></label>
+                  <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <span class="error-message" id="error-nama" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <div class="form-row">
+                  <label for="email">Email <span class="required-mark">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+                </div>
+                <span class="error-message" id="error-email" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <div class="form-row form-row-top">
+                  <label for="pesan">Pesan <span class="required-mark">*</span></label>
+                  <textarea id="pesan" name="pesan" rows="4" placeholder="Tulis pertanyaan atau pesan Anda di sini..." required></textarea>
+                </div>
+                <span class="error-message" id="error-pesan" role="alert"></span>
+              </div>
+
+              <div class="form-submit-wrap">
+                <button type="submit" class="btn-submit">
+                  <span>Kirim Pesan</span>
+                  <img src="img/Icon-Kirim.png" alt="Ikon tombol kirim pesan" width="24" height="24">
+                </button>
+              </div>
+
+              <div id="formSuccess" class="form-success" role="status" hidden>
+                Terima kasih! Pesan Anda berhasil dikirim dan akan segera kami balas.
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Peta Lokasi -->
+          <div class="map-card" id="peta-lokasi">
+            <div class="map-illustration">
+              <img
+                src="img/Peta-Kontak.jpg"
+                alt="Peta lokasi menuju pos utama BankSampahKu">
+              <span class="map-badge">Peta Lokasi BankSampahKu</span>
+            </div>
+          </div>
+    </section>
+
+    <!-- ================= BONUS HARI 4: GALERI FOTO KEGIATAN ================= -->
+    <section class="gallery-section" aria-labelledby="judul-galeri">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="judul-galeri">Galeri Kegiatan BankSampahKu</h2>
+          <p>Dokumentasi aktivitas penimbangan, pemilahan sampah anorganik, dan edukasi warga.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Ganti src dengan file foto asli di folder img/ setelah dikecilkan ukurannya -->
+          <figure class="gallery-item">
+            <img
+              src="img/Pemilahan-Sampah.jpg"
+              alt="Petugas dan warga sedang memilah botol plastik berdasarkan jenisnya di pos BankSampahKu"
+              width="600"
+              height="400"
+              loading="lazy">
+            <figcaption>Pemilahan sampah plastik bersih bersama nasabah</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img
+              src= "img/Penimbangan-Rutin.jpg"
+              alt="Proses penimbangan sampah kertas dan kardus menggunakan timbangan digital"
+              width="600"
+              height="400"
+              loading="lazy">
+            <figcaption>Penimbangan rutin setiap hari Sabtu pagi</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img
+              src= "img/Edukasi-Sampah.jpg"
+              alt="Sesi sosialisasi pengelolaan sampah rumah tangga kepada masyarakat sekitar"
+              width="600"
+              height="400"
+              loading="lazy">
+            <figcaption>Edukasi pengelolaan sampah dari rumah</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER (Sesuaikan dengan index.html) ================= -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/>
+            <path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/>
+          </svg>
+          <span>BankSampahKu</span>
+        </a>
+        <p>Edukasi, pilah, dan kelola sampah bersama BankSampahKu.</p>
+      </div>
+
+      <div class="footer-links">
+        <h3>Navigasi Cepat</h3>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="cara-memilah.html">Cara Memilah</a></li>
+          <li><a href="harga-sampah.html">Harga Sampah</a></li>
+          <li><a href="kontak.html" class="active-link">Kontak</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h3>Terhubung dengan Kami</h3>
+        <div class="social-icons">
+          <a href="tel:+6281234567890" class="social-btn" aria-label="Telepon BankSampahKu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+          </a>
+          <a href="mailto:halo@banksampahku.id" class="social-btn" aria-label="Email BankSampahKu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+          <a href="#peta-lokasi" class="social-btn" aria-label="Lokasi BankSampahKu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Dekorasi 3 Tempat Sampah Pilah -->
+      <div class="footer-bins" aria-hidden="true">
+        <img src="img/Icon-Dekorasi-Tempat-Sampah.png" alt="Ilustrasi 3 tempat sampah daur ulang dengan logo BankSampahKu" width="110" height="auto">
+      </div>
+    </div>
+    <div class="footer-wave" aria-hidden="true"></div>
+  </footer>
+
+  <script src="js/kontak.js"></script>
+</body>
+</html>
