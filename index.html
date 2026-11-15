@@ -1,6 +1,75 @@
-<!--
-  File   : index.html
-  Pemilik: Anggota 1
-  Tujuan : Halaman Beranda (contoh struktur semantik)
-  Status : KOSONG. Diisi oleh pemilik lewat branch feat/beranda
--->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kenali cara memilah sampah dan memulai kebiasaan bank sampah dari rumah.">
+  <title>Beranda | BankSampahKu</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="lewati" href="#konten">Lewati ke konten utama</a>
+
+  <!-- Header boleh disalin -->
+  <header class="header-situs">
+    <div class="wadah header-isi">
+      <a class="logo" href="index.html"><span aria-hidden="true">🍃</span> BankSampahKu</a>
+      <!-- Nav boleh disalin -->
+      <nav aria-label="Navigasi utama">
+        <ul class="menu">
+          <li><a href="index.html" aria-current="page">Beranda</a></li>
+          <li><a href="memilah.html">Cara Memilah</a></li>
+          <li><a href="harga.html">Harga Sampah</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="beranda-hero" aria-labelledby="judul-beranda">
+      <div class="wadah beranda-hero-isi">
+        <h1 id="judul-beranda">Sampah terpilah, lingkungan lebih baik</h1>
+        <p>BankSampahKu membantu warga mengenal cara memilah sampah dan memulai kebiasaan bank sampah dari rumah.</p>
+        <a class="tombol" href="memilah.html">Pelajari cara memilah</a>
+      </div>
+    </section>
+
+    <section class="wadah beranda-langkah" aria-labelledby="judul-langkah">
+      <h2 id="judul-langkah">Cara kerja bank sampah</h2>
+      <ol class="beranda-langkah-grid">
+        <li class="beranda-langkah-kartu">
+          <span class="beranda-langkah-nomor">1</span>
+          <h3>Pilah</h3>
+          <p>Pisahkan sampah yang bisa disetorkan menurut jenisnya, lalu pastikan bersih dan kering.</p>
+        </li>
+        <li class="beranda-langkah-kartu">
+          <span class="beranda-langkah-nomor">2</span>
+          <h3>Timbang</h3>
+          <p>Bawa sampah terpilah ke bank sampah untuk ditimbang dan dicatat oleh pengurus.</p>
+        </li>
+        <li class="beranda-langkah-kartu">
+          <span class="beranda-langkah-nomor">3</span>
+          <h3>Saldo masuk</h3>
+          <p>Nilai setoran dihitung dari berat dan harga yang berlaku di bank sampah setempat.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="wadah beranda-ajakan" aria-labelledby="judul-ajakan">
+      <h2 id="judul-ajakan">Mulai dari rumah</h2>
+      <p>Pilah sampah sedikit demi sedikit. Kebiasaan sederhana bisa membantu sampah dikelola dengan lebih baik.</p>
+      <a class="tombol" href="memilah.html">Lihat panduan memilah</a>
+    </section>
+  </main>
+
+  <!-- Footer boleh disalin -->
+  <footer class="footer-situs">
+    <div class="wadah footer-isi">
+      <p class="footer-logo"><span aria-hidden="true">🍃</span> BankSampahKu</p>
+      <p>Edukasi, pilah, dan kelola sampah untuk lingkungan yang lebih baik.</p>
+      <p class="footer-catatan">Harga, alamat, dan kontak di situs ini masih berupa data contoh.</p>
+    </div>
+  </footer>
+</body>
+</html>

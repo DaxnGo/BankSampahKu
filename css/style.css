@@ -5,10 +5,7 @@
 
 /* =====================================================================
    1. BASE (Anggota 1)
-   SEMENTARA: isi bagian ini hanya agar halaman Anggota 2 bisa dilihat
-   sebelum fondasi Anggota 1 masuk ke main. Saat git pull / merge,
-   PAKAI VERSI ANGGOTA 1 untuk seluruh bagian 1 dan buang isi di bawah.
-   Nama variabel di bawah dipakai oleh bagian 2, 3, dan 5.
+   Variabel, reset, navigasi, dan gaya bersama.
    ===================================================================== */
 :root {
   --warna-hijau-tua: #14532d;
@@ -63,6 +60,69 @@ a { color: var(--warna-hijau); }
 .footer-isi p { margin: 0 0 .35rem; }
 .footer-logo { font-weight: 800; font-size: 1.2rem; }
 .footer-catatan { font-size: .9rem; opacity: .9; }
+.tombol {
+  display: inline-block;
+  padding: .7rem 1.2rem;
+  border: 2px solid var(--warna-hijau);
+  border-radius: 999px;
+  background: var(--warna-hijau);
+  color: var(--warna-putih);
+  font-weight: 700;
+  text-decoration: none;
+}
+.tombol:hover { border-color: var(--warna-hijau-tua); background: var(--warna-hijau-tua); }
+
+/* =====================================================================
+   1b. BERANDA (Anggota 1)
+   ===================================================================== */
+.beranda-hero {
+  background: linear-gradient(180deg, var(--warna-latar), var(--warna-hijau-muda));
+  padding-block: 3rem;
+}
+.beranda-hero-isi { display: grid; gap: 1rem; justify-items: start; }
+.beranda-hero h1 { max-width: 16ch; font-size: clamp(2.25rem, 7vw, 4rem); }
+.beranda-hero p { max-width: 42rem; color: var(--warna-teks-lembut); font-size: 1.1rem; }
+
+.beranda-langkah { padding-block: 3rem; }
+.beranda-langkah h2 { margin-bottom: 1rem; }
+.beranda-langkah-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.beranda-langkah-kartu {
+  border-radius: var(--radius);
+  background: var(--warna-kartu);
+  padding: 1.25rem;
+}
+.beranda-langkah-kartu h3 { margin-top: .75rem; }
+.beranda-langkah-kartu p { margin-bottom: 0; color: var(--warna-teks-lembut); }
+.beranda-langkah-nomor {
+  display: inline-grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--warna-hijau-muda);
+  color: var(--warna-hijau-tua);
+  font-weight: 800;
+}
+
+.beranda-ajakan {
+  margin-block: 0 3rem;
+  border-radius: var(--radius);
+  background: var(--warna-hijau-muda);
+  padding: 2rem;
+}
+.beranda-ajakan p { max-width: 42rem; color: var(--warna-teks); }
+.beranda-ajakan .tombol { margin-top: .25rem; }
+
+@media (min-width: 768px) {
+  .beranda-langkah-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 
 /* =====================================================================
    2. HALAMAN MEMILAH (Anggota 2)
