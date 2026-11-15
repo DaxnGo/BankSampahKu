@@ -1,6 +1,154 @@
-/* ===== 1. BASE (Anggota 1): variabel, reset, header, footer, tombol ===== */
-/* ===== 2. HALAMAN MEMILAH (Anggota 2) ===== */
-/* ===== 3. HALAMAN HARGA (Anggota 2) ===== */
-/* ===== 4. HALAMAN KONTAK (Anggota 3) ===== */
-/* ===== 5. MODE GELAP, bonus (Anggota 2) ===== */
-/* ===== 6. GALERI, bonus (Anggota 3) ===== */
+/* =====================================================================
+   BankSampahKu - style.css
+   Setiap anggota hanya menulis di bagiannya sendiri.
+   ===================================================================== */
+
+/* =====================================================================
+   1. BASE (Anggota 1)
+   SEMENTARA: isi bagian ini hanya agar halaman Anggota 2 bisa dilihat
+   sebelum fondasi Anggota 1 masuk ke main. Saat git pull / merge,
+   PAKAI VERSI ANGGOTA 1 untuk seluruh bagian 1 dan buang isi di bawah.
+   Nama variabel di bawah dipakai oleh bagian 2, 3, dan 5.
+   ===================================================================== */
+:root {
+  --warna-hijau-tua: #14532d;
+  --warna-hijau: #2e7d32;
+  --warna-hijau-muda: #dcf3c6;
+  --warna-latar: #fbf6ec;
+  --warna-kartu: #f6efdc;
+  --warna-kuning: #fcd34d;
+  --warna-teks: #1f2937;
+  --warna-teks-lembut: #4b5563;
+  --warna-putih: #ffffff;
+  --warna-garis: #d9d2bd;
+  --warna-fokus: #1d4ed8;
+  --radius: 16px;
+  --font-dasar: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font-dasar);
+  color: var(--warna-teks);
+  background: var(--warna-latar);
+  line-height: 1.6;
+}
+h1, h2, h3, h4 { color: var(--warna-hijau-tua); line-height: 1.25; margin: 0 0 .5rem; }
+p { margin: 0 0 .75rem; }
+ul, ol { margin: 0; padding-left: 1.25rem; }
+a { color: var(--warna-hijau); }
+:focus-visible { outline: 3px solid var(--warna-fokus); outline-offset: 2px; }
+
+.wadah { width: min(1100px, 100% - 2rem); margin-inline: auto; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.lewati {
+  position: absolute; left: -999px; top: 0; background: var(--warna-hijau-tua);
+  color: var(--warna-putih); padding: .5rem 1rem; z-index: 100;
+}
+.lewati:focus { left: 0; }
+
+.header-situs { background: var(--warna-latar); border-bottom: 1px solid var(--warna-garis); }
+.header-isi { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; padding-block: .75rem; }
+.logo { font-weight: 800; font-size: 1.4rem; color: var(--warna-hijau-tua); text-decoration: none; }
+.menu { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 0; }
+.menu a { display: block; padding: .4rem 1rem; border-radius: 999px; color: var(--warna-teks); text-decoration: none; font-weight: 600; }
+.menu a:hover { background: var(--warna-hijau-muda); }
+.menu a[aria-current="page"] { background: var(--warna-hijau); color: var(--warna-putih); }
+
+.footer-situs { background: var(--warna-hijau-tua); color: var(--warna-putih); margin-top: 3rem; padding-block: 1.5rem; }
+.footer-isi p { margin: 0 0 .35rem; }
+.footer-logo { font-weight: 800; font-size: 1.2rem; }
+.footer-catatan { font-size: .9rem; opacity: .9; }
+
+/* =====================================================================
+   2. HALAMAN MEMILAH (Anggota 2)
+   ===================================================================== */
+.bagian { padding-block: 1.5rem; }
+.bagian-pengantar { color: var(--warna-teks-lembut); }
+
+.hero-memilah {
+  background: linear-gradient(180deg, var(--warna-latar), var(--warna-hijau-muda));
+  padding-block: 2rem;
+}
+.hero-memilah-isi { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.hero-memilah h1 { font-size: clamp(2rem, 6vw, 3.25rem); }
+.hero-memilah p { max-width: 36rem; font-size: 1.1rem; color: var(--warna-teks-lembut); }
+.hero-ikon { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0; letter-spacing: .25rem; }
+
+.langkah-daftar { list-style: none; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
+.langkah {
+  display: flex; gap: .85rem; align-items: flex-start;
+  background: var(--warna-kartu); border-radius: var(--radius); padding: 1rem 1.25rem;
+}
+.langkah h3 { margin-bottom: .25rem; }
+.langkah p { margin: 0; }
+.langkah-nomor {
+  flex: none; display: grid; place-items: center; width: 2.25rem; height: 2.25rem;
+  border-radius: 50%; background: var(--warna-kuning); color: var(--warna-hijau-tua); font-weight: 800;
+}
+
+.kartu-grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+.kartu-kategori {
+  --warna-kategori: var(--warna-hijau);
+  --warna-kategori-muda: var(--warna-hijau-muda);
+  background: var(--warna-kartu);
+  border-radius: var(--radius);
+  border-top: 6px solid var(--warna-kategori);
+  padding: 1.25rem;
+}
+.kartu-kategori h3 { color: var(--warna-kategori); }
+.kartu-kategori h4 {
+  display: inline-block; font-size: .85rem; text-transform: uppercase; letter-spacing: .04em;
+  background: var(--warna-kategori-muda); color: var(--warna-teks);
+  padding: .1rem .6rem; border-radius: 999px; margin: .75rem 0 .35rem;
+}
+.kartu-kategori li { margin-bottom: .25rem; }
+.kartu-ikon { font-size: 2.25rem; margin: 0 0 .25rem; }
+.kartu-ringkas { color: var(--warna-teks-lembut); }
+
+.kategori-organik   { --warna-kategori: #2e7d32; --warna-kategori-muda: #dcf3c6; }
+.kategori-anorganik { --warna-kategori: #1565c0; --warna-kategori-muda: #d6e8fb; }
+.kategori-b3        { --warna-kategori: #b3261e; --warna-kategori-muda: #fbdcd9; }
+
+.tips {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem;
+  background: var(--warna-hijau-muda); border-radius: var(--radius); padding: 1.25rem;
+}
+.tips-judul {
+  margin: 0; background: var(--warna-hijau); color: var(--warna-putih);
+  padding: .6rem 1.5rem; border-radius: 999px; transform: rotate(-3deg);
+}
+.tips-daftar { list-style: none; padding: 0; display: grid; gap: .35rem; }
+.tips-daftar li::before { content: "✔"; color: var(--warna-hijau); font-weight: 800; margin-right: .5rem; }
+
+@media (min-width: 768px) {
+  .langkah-daftar { grid-template-columns: repeat(3, 1fr); }
+  .kartu-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1280px) {
+  .kartu-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* =====================================================================
+   3. HALAMAN HARGA (Anggota 2)
+   ===================================================================== */
+/* TODO Hari 4: tabel responsif (bisa digeser di HP), gaya form kalkulator */
+
+/* =====================================================================
+   4. HALAMAN KONTAK (Anggota 3)
+   ===================================================================== */
+/* (diisi Anggota 3) */
+
+/* =====================================================================
+   5. MODE GELAP - bonus (Anggota 2)
+   ===================================================================== */
+/* TODO Hari 6 (bonus) */
+
+/* =====================================================================
+   6. GALERI - bonus (Anggota 3)
+   ===================================================================== */
+/* (diisi Anggota 3) */
