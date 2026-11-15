@@ -1,6 +1,135 @@
-<!--
-  File   : harga.html
-  Pemilik: Anggota 2
-  Tujuan : Halaman Harga Sampah
-  Status : KOSONG. Diisi oleh pemilik lewat branch feat/harga-halaman
--->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daftar harga referensi berbagai jenis sampah yang dapat disetorkan ke bank sampah, lengkap dengan kalkulator saldo.">
+  <title>Harga Sampah | BankSampahKu</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="lewati" href="#konten">Lewati ke konten utama</a>
+
+  <!-- TODO Anggota 2: ganti blok header ini dengan salinan dari index.html (Anggota 1) setelah digabung ke main -->
+  <header class="header-situs">
+    <div class="wadah header-isi">
+      <a class="logo" href="index.html"><span aria-hidden="true">🍃</span> BankSampahKu</a>
+      <nav aria-label="Navigasi utama">
+        <ul class="menu">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="memilah.html">Cara Memilah</a></li>
+          <li><a href="harga.html" aria-current="page">Harga Sampah</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="hero-harga" aria-labelledby="judul-halaman">
+      <div class="wadah hero-harga-isi">
+        <div>
+          <h1 id="judul-halaman">Harga Sampah</h1>
+          <p>Daftar harga referensi berbagai jenis sampah yang dapat disetorkan ke bank sampah.</p>
+          <p class="catatan-harga" role="note">
+            <span class="catatan-ikon" aria-hidden="true">i</span>
+            Harga dapat berbeda di setiap lokasi dan perlu diverifikasi ke bank sampah terdekat.
+          </p>
+        </div>
+        <p class="hero-ikon" aria-hidden="true">♻️ 🗑️ 🌿</p>
+      </div>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-tabel">
+      <h2 id="judul-tabel" class="sr-only">Tabel harga per jenis sampah</h2>
+      <div class="tabel-bungkus" role="region" aria-labelledby="judul-tabel" tabindex="0">
+        <table class="tabel-harga">
+          <caption class="sr-only">Harga sampah per kilogram. Seluruh angka adalah data contoh.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Jenis Sampah</th>
+              <th scope="col">Satuan</th>
+              <th scope="col">Harga</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><span aria-hidden="true">🧴</span> Plastik PET</th>
+              <td>per kg</td>
+              <td><span class="harga-nilai">Rp 2.500</span> <span class="badge-contoh">Data contoh</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span aria-hidden="true">📄</span> Kertas</th>
+              <td>per kg</td>
+              <td><span class="harga-nilai">Rp 1.500</span> <span class="badge-contoh">Data contoh</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span aria-hidden="true">📦</span> Kardus</th>
+              <td>per kg</td>
+              <td><span class="harga-nilai">Rp 2.000</span> <span class="badge-contoh">Data contoh</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span aria-hidden="true">🥫</span> Logam</th>
+              <td>per kg</td>
+              <td><span class="harga-nilai">Rp 5.000</span> <span class="badge-contoh">Data contoh</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span aria-hidden="true">🍾</span> Kaca</th>
+              <td>per kg</td>
+              <td><span class="harga-nilai">Rp 500</span> <span class="badge-contoh">Data contoh</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-kalkulator">
+      <div class="kalkulator">
+        <h2 id="judul-kalkulator">Kalkulator Saldo</h2>
+        <p>Perkirakan saldo dari sampah yang akan kamu setorkan. Hasil memakai harga contoh di atas.</p>
+
+        <!-- TODO: hubungkan form ini ke js/script.js (bonus, Hari 5) -->
+        <form id="form-kalkulator" class="kalkulator-form" novalidate>
+          <div class="kalkulator-baris">
+            <label for="jenis">Jenis sampah</label>
+            <select id="jenis" name="jenis" required>
+              <option value="">-- Pilih jenis --</option>
+              <option value="2500">Plastik PET</option>
+              <option value="1500">Kertas</option>
+              <option value="2000">Kardus</option>
+              <option value="5000">Logam</option>
+              <option value="500">Kaca</option>
+            </select>
+          </div>
+
+          <div class="kalkulator-baris">
+            <label for="berat">Berat (kg)</label>
+            <input type="number" id="berat" name="berat" min="0" step="0.1" inputmode="decimal" required>
+          </div>
+
+          <div class="kalkulator-aksi">
+            <button type="submit" class="tombol-hitung">Hitung Saldo</button>
+            <button type="reset" class="tombol-ulang">Ulangi</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-info">
+      <div class="info-penting">
+        <h2 id="judul-info">Informasi Penting</h2>
+        <p>Daftar harga di atas hanya merupakan data contoh untuk ilustrasi. Harga sebenarnya dapat berbeda di setiap bank sampah, tergantung lokasi, kondisi, dan kebijakan masing-masing. Silakan verifikasi langsung ke bank sampah terdekat untuk mendapatkan informasi harga yang berlaku.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- TODO Anggota 2: ganti blok footer ini dengan salinan dari index.html (Anggota 1) setelah digabung ke main -->
+  <footer class="footer-situs">
+    <div class="wadah footer-isi">
+      <p class="footer-logo"><span aria-hidden="true">🍃</span> BankSampahKu</p>
+      <p>Edukasi, pilah, dan kelola sampah untuk lingkungan yang lebih baik.</p>
+      <p class="footer-catatan">Harga, alamat, dan kontak di situs ini masih berupa data contoh.</p>
+    </div>
+  </footer>
+</body>
+</html>
