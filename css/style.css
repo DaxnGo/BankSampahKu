@@ -511,6 +511,8 @@ body {
   text-decoration: none;
 }
 
+.social-btn .ti { font-size: 1.125rem; line-height: 1; }
+
 .footer-wave {
   height: 26px;
   background-color: var(--green-light);
@@ -632,17 +634,6 @@ p { margin: 0 0 .75rem; }
 ul, ol { margin: 0; padding-left: 1.25rem; }
 a { color: var(--warna-hijau); }
 :focus-visible { outline: 3px solid var(--warna-fokus); outline-offset: 2px; }
-.icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vertical-align: -.125em;
-}
 
 .wadah { width: min(1100px, 100% - 2rem); margin-inline: auto; }
 .sr-only {
@@ -710,7 +701,7 @@ a { color: var(--warna-hijau); }
   padding: .1rem .6rem; border-radius: 999px; margin: .75rem 0 .35rem;
 }
 .kartu-kategori li { margin-bottom: .25rem; }
-.kartu-ikon { font-size: var(--ukuran-ikon-kartu); margin: 0 0 .25rem; }
+.kartu-ikon { font-size: var(--ukuran-ikon-kartu); line-height: 1; margin: 0 0 .5rem; }
 .kartu-ringkas { color: var(--warna-teks-lembut); }
 
 .kategori-organik   { --warna-kategori: var(--warna-hijau-tua); --warna-kategori-muda: var(--warna-hijau-muda); }
@@ -726,7 +717,7 @@ a { color: var(--warna-hijau); }
   padding: .6rem 1.5rem; border-radius: 999px; transform: rotate(-3deg);
 }
 .tips-daftar { list-style: none; padding: 0; display: grid; gap: .35rem; }
-.tips-daftar .icon { margin-right: .5rem; color: var(--warna-hijau); }
+.tips-daftar .ti { margin-right: .5rem; color: var(--warna-hijau); vertical-align: -.125em; }
 
 @media (min-width: 768px) {
   .langkah-daftar { grid-template-columns: repeat(3, 1fr); }
@@ -785,9 +776,10 @@ a { color: var(--warna-hijau); }
   white-space: nowrap;
 }
 
-.tabel-harga tbody th .icon {
+.tabel-harga tbody th .ti {
   margin-right: .35rem;
   color: var(--warna-hijau);
+  vertical-align: -.125em;
 }
 
 .tabel-harga tbody td:nth-child(2) {
@@ -1253,7 +1245,7 @@ a { color: var(--warna-hijau); }
 .home-manfaat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 .home-manfaat-kartu { display: grid; grid-template-columns: 5.25rem 1fr; gap: .85rem; align-items: center; padding: 1rem 1.1rem; border-radius: 20px; background: linear-gradient(115deg, #fff8df, #fcf4df); }
 .home-manfaat-ikon { display: grid; place-items: center; width: 5.1rem; height: 5.1rem; color: #49a827; border-right: 1px solid #dfd7ba; }
-.home-manfaat-ikon svg { width: 3.6rem; height: 3.6rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.home-manfaat-ikon .ti { font-size: 3.6rem; line-height: 1; }
 .home-manfaat-kartu h3 { margin: 0 0 .35rem; font-size: clamp(1.15rem, 1.7vw, 1.55rem); font-weight: 900; line-height: 1.03; }
 .home-manfaat-kartu p { margin: 0; color: #30332f; font-size: .9rem; line-height: 1.35; }
 
@@ -1264,7 +1256,7 @@ a { color: var(--warna-hijau); }
 .home-jelajah-kartu strong { max-width: 62%; font-size: 1.25rem; font-weight: 900; line-height: 1.05; }
 .home-jelajah-kartu small { max-width: 62%; color: #343833; font-size: .82rem; line-height: 1.18; }
 .home-jelajah-panah { display: grid; place-items: center; width: 2rem; height: 1.5rem; margin-top: auto; padding-top: .1rem; border-radius: 999px; background: #ffd32e; color: #243c21; font-size: 1.15rem; line-height: 1; }
-.home-jelajah-ikon { position: absolute; right: .7rem; bottom: -.35rem; width: 5.2rem; height: 5.2rem; color: #4dbb25; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transform: rotate(-7deg); opacity: .95; }
+.home-jelajah-ikon { position: absolute; right: .7rem; bottom: -.35rem; color: #4dbb25; font-size: 5.2rem; line-height: 1; transform: rotate(-7deg); opacity: .95; }
 .home-jelajah-kartu:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgb(20 83 45 / .12); }
 
 @media (max-width: 800px) {
