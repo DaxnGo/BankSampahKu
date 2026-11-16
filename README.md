@@ -36,6 +36,7 @@ Demo GitHub Pages: belum tersedia. Tautan akan ditambahkan setelah file website 
 - HTML untuk struktur halaman.
 - CSS untuk tampilan dan tata letak responsif.
 - JavaScript untuk fitur bonus.
+- SVG inline dari Tabler Icons untuk ikon. Tabler Icons memakai lisensi MIT; ikon yang digunakan meliputi `leaf`, `recycle`, `trash`, `apple`, `bottle`, `battery`, `info-circle`, `file-text`, `package`, `can`, dan `check`. Ikon `brand-whatsapp` tersedia dari pustaka yang sama untuk halaman kontak saat kontennya ditambahkan.
 
 ## Struktur folder
 
