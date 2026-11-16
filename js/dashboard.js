@@ -59,11 +59,25 @@
       }
     }
 
+    function barisKosong(badan, jumlahKolom, pesan) {
+      var baris = document.createElement("tr");
+      var sel = document.createElement("td");
+      sel.colSpan = jumlahKolom;
+      sel.className = "tabel-kosong";
+      sel.textContent = pesan;
+      baris.appendChild(sel);
+      badan.appendChild(baris);
+    }
+
     function isiTabelRt(ringkasan) {
       var badan = document.querySelector('[aria-labelledby="judul-rt"] tbody');
       if (!badan) return;
       badan.replaceChildren();
       var maksimum = 500;
+
+      if (!ringkasan.daftarRt.length) {
+        barisKosong(badan, 3, "Belum ada setoran pada periode ini.");
+      }
 
       ringkasan.daftarRt.forEach(function (entri) {
         var baris = document.createElement("tr");
@@ -92,6 +106,10 @@
       var badan = document.querySelector('[aria-labelledby="judul-setoran"] tbody');
       if (!badan) return;
       badan.replaceChildren();
+
+      if (!ringkasan.setoranTerbaru.length) {
+        barisKosong(badan, 4, "Belum ada setoran pada periode ini.");
+      }
 
       ringkasan.setoranTerbaru.forEach(function (item, indeks) {
         var baris = document.createElement("tr");

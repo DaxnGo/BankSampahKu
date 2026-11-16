@@ -25,7 +25,7 @@
       teks("nama-warga", pengguna.nama);
       teks("kode-warga", pengguna.kode || "-");
       teks("rt-warga", pengguna.rt || "-");
-      teks("inisial-warga", pengguna.nama.charAt(0));
+      teks("inisial-warga", Data.inisialNama(pengguna.nama));
       teks("saldo-warga", Data.formatRupiah(ringkasan.totalSaldo));
       teks("berat-warga", Data.formatAngka(ringkasan.totalKg));
       teks("jumlah-warga", String(ringkasan.jumlahSetoran));

@@ -77,8 +77,10 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
-.main-nav a:hover {
-  background-color: var(--card-cream);
+@media (hover: hover) and (pointer: fine) {
+  .main-nav a:hover {
+    background-color: var(--card-cream);
+  }
 }
 
 .main-nav a.active {
@@ -160,8 +162,10 @@ body {
   text-decoration: none;
 }
 
-.contact-link:hover {
-  text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+  .contact-link:hover {
+    text-decoration: underline;
+  }
 }
 
 .wa-badge {
@@ -284,7 +288,7 @@ body {
   border-radius: 10px;
   background-color: var(--white);
   font-family: inherit;
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--text-dark);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -335,8 +339,10 @@ body {
   transition: background-color 0.2s, transform 0.1s;
 }
 
-.btn-submit:hover {
-  background-color: #215421;
+@media (hover: hover) and (pointer: fine) {
+  .btn-submit:hover {
+    background-color: #215421;
+  }
 }
 
 .btn-submit:active {
@@ -878,14 +884,18 @@ a { color: var(--warna-hijau); }
   color: var(--warna-putih);
 }
 
-.tombol-hitung:hover { background: var(--warna-hijau-tua); border-color: var(--warna-hijau-tua); }
+@media (hover: hover) and (pointer: fine) {
+  .tombol-hitung:hover { background: var(--warna-hijau-tua); border-color: var(--warna-hijau-tua); }
+}
 
 .tombol-ulang {
   background: var(--warna-putih);
   color: var(--warna-hijau-tua);
 }
 
-.tombol-ulang:hover { background: var(--warna-hijau-muda); }
+@media (hover: hover) and (pointer: fine) {
+  .tombol-ulang:hover { background: var(--warna-hijau-muda); }
+}
 
 .hasil-kalkulator {
   border: 1.5px solid var(--warna-garis);
@@ -1258,7 +1268,9 @@ a { color: var(--warna-hijau); }
 .home-jelajah-kartu small { max-width: 62%; color: #343833; font-size: .82rem; line-height: 1.18; }
 .home-jelajah-panah { display: grid; place-items: center; width: 2rem; height: 1.5rem; margin-top: auto; border-radius: 999px; background: #ffd32e; color: #243c21; font-size: 1.15rem; line-height: 1; }
 .home-jelajah-ikon { position: absolute; right: .7rem; bottom: -.35rem; color: #4dbb25; font-size: 5.2rem; line-height: 1; transform: rotate(-7deg); opacity: .95; }
-.home-jelajah-kartu:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgb(20 83 45 / .12); }
+@media (hover: hover) and (pointer: fine) {
+  .home-jelajah-kartu:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgb(20 83 45 / .12); }
+}
 
 @media (max-width: 800px) {
   .home-manfaat-grid, .home-jelajah-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1313,7 +1325,9 @@ a { color: var(--warna-hijau); }
   cursor: pointer;
 }
 
-.nav-keluar:hover { background: var(--warna-hijau-muda); }
+@media (hover: hover) and (pointer: fine) {
+  .nav-keluar:hover { background: var(--warna-hijau-muda); }
+}
 
 .auth-wadah { padding-block: 2rem 3rem; }
 
@@ -1390,7 +1404,9 @@ a { color: var(--warna-hijau); }
   cursor: pointer;
 }
 
-.demo-akun:hover { border-color: var(--warna-hijau); background: var(--warna-hijau-muda); }
+@media (hover: hover) and (pointer: fine) {
+  .demo-akun:hover { border-color: var(--warna-hijau); background: var(--warna-hijau-muda); }
+}
 .demo-akun strong { display: block; font-size: .95rem; }
 .demo-akun span { display: block; font-size: .78rem; color: var(--warna-teks-lembut); }
 .auth-demo-lain { margin-top: .75rem; }
@@ -1408,7 +1424,9 @@ a { color: var(--warna-hijau); }
   cursor: pointer;
 }
 
-.auth-reset:hover { background: var(--warna-merah-muda); }
+@media (hover: hover) and (pointer: fine) {
+  .auth-reset:hover { background: var(--warna-merah-muda); }
+}
 
 .setor-petugas { display: grid; gap: 1.25rem; align-items: start; }
 .setor-form { display: grid; gap: 1rem; padding: 1.25rem; background: var(--warna-putih); border: 1px solid var(--warna-garis); border-radius: var(--radius); }
@@ -1435,7 +1453,9 @@ a { color: var(--warna-hijau); }
   background: transparent; color: var(--warna-merah); cursor: pointer;
 }
 
-.tombol-hapus:hover { background: var(--warna-merah-muda); }
+@media (hover: hover) and (pointer: fine) {
+  .tombol-hapus:hover { background: var(--warna-merah-muda); }
+}
 .tabel-setor { font-size: var(--ukuran-teks-kecil); }
 
 .sapaan-warga {
@@ -1454,4 +1474,120 @@ a { color: var(--warna-hijau); }
 @media (min-width: 860px) {
   .auth-kartu { grid-template-columns: 1fr 1fr; }
   .setor-petugas { grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); }
+}
+
+/* =====================================================================
+   10. PERBAIKAN AUDIT: sentuh, fokus, angka, dan mode gelap
+   ===================================================================== */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, textarea, select { font-size: 1rem; }
+
+button, a, [role="button"], .demo-akun, .tombol-tema { touch-action: manipulation; }
+
+button, [role="button"], .tombol-tema {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.tombol-hitung, .tombol-ulang, .btn-submit, .demo-akun, .auth-reset,
+.tombol-hapus, .nav-keluar, .tombol-tema, .social-btn {
+  transition: transform 160ms var(--ease-ui, cubic-bezier(0.23, 1, 0.32, 1)),
+              background-color 160ms ease, border-color 160ms ease;
+}
+
+.tombol-hitung:active, .tombol-ulang:active, .btn-submit:active,
+.demo-akun:active, .auth-reset:active, .tombol-hapus:active,
+.nav-keluar:active, .tombol-tema:active, .social-btn:active {
+  transform: scale(0.97);
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--warna-fokus);
+  outline-offset: 3px;
+}
+
+.dash-angka, .dash-batang-nilai, .setor-estimasi strong,
+.harga-nilai, .dash-tabel td:first-child { font-variant-numeric: tabular-nums; }
+
+.tabel-kosong {
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--warna-teks-lembut);
+}
+
+.tombol-tema {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--warna-garis);
+  background: transparent;
+  color: var(--warna-hijau-tua);
+  cursor: pointer;
+}
+
+.tombol-tema .ti { font-size: 1.05rem; line-height: 1; }
+
+.site-header { padding-top: env(safe-area-inset-top, 0px); }
+.site-footer { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+html[data-tema="gelap"] {
+  --bg-cream: #111a12;
+  --card-cream: #1b2a1d;
+  --green-dark: #2f7d2f;
+  --green-mid: #4ba83b;
+  --green-light: #82ce4a;
+  --text-dark: #e8f2e4;
+  --text-muted: #b4c8b2;
+  --border-soft: #3a4d3b;
+  --white: #1b2a1d;
+  --warna-latar: #111a12;
+  --warna-kartu: #1b2a1d;
+  --warna-teks: #e8f2e4;
+  --warna-teks-lembut: #b4c8b2;
+  --warna-garis: #3a4d3b;
+  --warna-hijau-muda: #25422a;
+  --warna-hijau-tua: #8bd07a;
+  --warna-hijau: #4a9e4a;
+  --warna-merah-muda: #4a2323;
+  --warna-kuning: #5c4a13;
+  --warna-biru-muda: #1c3552;
+}
+
+html[data-tema="gelap"] .hero {
+  background: linear-gradient(180deg, #111a12 0%, #16281a 55%, #25422a 100%);
+}
+
+html[data-tema="gelap"] .contact-hero { background-color: #16241a; }
+
+html[data-tema="gelap"] .home-manfaat-kartu,
+html[data-tema="gelap"] .home-jelajah-kartu {
+  background: #1b2a1d;
+  color: var(--warna-teks);
+}
+
+html[data-tema="gelap"] .home-jelajah-panah { background: #8bd07a; color: #102010; }
+html[data-tema="gelap"] .home-manfaat-kartu p,
+html[data-tema="gelap"] .home-jelajah-kartu small { color: var(--warna-teks); }
+html[data-tema="gelap"] .auth-peringatan { color: #f4e7b0; }
+html[data-tema="gelap"] .demo-akun { background: #1b2a1d; }
+html[data-tema="gelap"] .sapaan-warga { background: #25422a; }
+
+html[data-tema="gelap"] .setor-form,
+html[data-tema="gelap"] .auth-form-bagian,
+html[data-tema="gelap"] .kalkulator,
+html[data-tema="gelap"] .hasil-kalkulator,
+html[data-tema="gelap"] .contact-form input,
+html[data-tema="gelap"] .contact-form textarea,
+html[data-tema="gelap"] .auth-form input,
+html[data-tema="gelap"] .setor-baris input,
+html[data-tema="gelap"] .setor-baris select {
+  background: #223326;
 }

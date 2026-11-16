@@ -179,6 +179,28 @@
     localStorage.removeItem(KUNCI_SESI);
   }
 
+  function graphem(teks) {
+    if (typeof Intl !== "undefined" && Intl.Segmenter) {
+      var pemecah = new Intl.Segmenter("id", { granularity: "grapheme" });
+      return Array.from(pemecah.segment(teks)).map(function (bagian) {
+        return bagian.segment;
+      });
+    }
+    return Array.from(String(teks));
+  }
+
+  function inisialNama(nama) {
+    var teks = String(nama || "").trim();
+    if (!teks) return "?";
+    return graphem(teks)[0].toUpperCase();
+  }
+
+  function inisialSingkat(nama) {
+    var teks = String(nama || "").trim();
+    if (!teks) return "P.";
+    return teks.split(/\s+/).map(inisialNama).join(".") + ".";
+  }
+
   function formatRupiah(nilai) {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -253,7 +275,7 @@
         id: item.id,
         tanggal: item.tanggal,
         nama: user ? user.nama : "Penabung",
-        inisial: user ? user.nama.split(" ").map(function (bag) { return bag[0]; }).join(".") + "." : "P.",
+        inisial: user ? inisialSingkat(user.nama) : "P.",
         jenis: item.jenis,
         berat: item.berat,
         nilai: nilaiSetoran(item)
@@ -339,6 +361,8 @@
     ambilSesi: ambilSesi,
     simpanSesi: simpanSesi,
     hapusSesi: hapusSesi,
+    inisialNama: inisialNama,
+    inisialSingkat: inisialSingkat,
     formatRupiah: formatRupiah,
     formatAngka: formatAngka,
     formatTanggal: formatTanggal,

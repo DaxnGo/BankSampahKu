@@ -16,7 +16,8 @@
   var ScrollTrigger = window.ScrollTrigger;
 
   gsap.registerPlugin(ScrollTrigger);
-  gsap.defaults({ ease: "power3.out", duration: 0.8 });
+  // UI cepat; hero dan galeri memakai durasi lebih panjang secara eksplisit.
+  gsap.defaults({ ease: "power3.out", duration: 0.2 });
   ScrollTrigger.config({ ignoreMobileResize: true });
 
   var MULAI = "top 90%";
@@ -26,13 +27,15 @@
     gsap.from(el, {
       opacity: 0,
       y: o.y === undefined ? 26 : o.y,
-      duration: o.durasi || 0.8,
+      duration: o.durasi || 0.2,
       delay: o.jeda || 0,
       clearProps: "transform",
       scrollTrigger: {
         trigger: el,
         start: o.mulai || MULAI,
-        once: true
+        // Muncul tiap kali masuk layar, memudar lagi saat keluar,
+        // sehingga animasi terulang baik saat digulir naik maupun turun.
+        toggleActions: "restart reverse restart reverse"
       }
     });
   }
@@ -44,13 +47,13 @@
     gsap.from(anak, {
       opacity: 0,
       y: o.y === undefined ? 28 : o.y,
-      duration: o.durasi || 0.7,
+      duration: o.durasi || 0.2,
       stagger: o.jeda || 0.09,
       clearProps: "transform",
       scrollTrigger: {
         trigger: wadah,
         start: o.mulai || MULAI,
-        once: true
+        toggleActions: "restart reverse restart reverse"
       }
     });
   }
@@ -59,7 +62,7 @@
     // ---- 1. Saat halaman dibuka ------------------------------------
     var header = document.querySelector(".site-header");
     if (header) {
-      gsap.from(header, { opacity: 0, y: -14, duration: 0.6, clearProps: "transform" });
+      gsap.from(header, { opacity: 0, y: -14, duration: 0.2, clearProps: "transform" });
     }
 
     // Hero teks (Beranda, Cara Memilah, Harga Sampah).
@@ -69,8 +72,8 @@
         opacity: 0,
         y: 30,
         duration: 0.9,
-        stagger: 0.12,
-        delay: 0.1,
+        stagger: 0.08,
+        delay: 0.08,
         clearProps: "transform"
       });
     }
@@ -93,9 +96,9 @@
       gsap.from(dashKepala.children, {
         opacity: 0,
         y: 26,
-        duration: 0.8,
-        stagger: 0.1,
-        delay: 0.15,
+        duration: 0.2,
+        stagger: 0.04,
+        delay: 0.08,
         clearProps: "transform"
       });
     }
@@ -131,14 +134,14 @@
 
     // ---- 4. Saat digulir: kartu dan daftar muncul berurutan --------
     [
-      { s: ".home-manfaat-grid", y: 30, jeda: 0.1 },
-      { s: ".home-jelajah-grid", y: 26, jeda: 0.08 },
-      { s: ".kartu-grid", y: 34, jeda: 0.1 },
-      { s: ".langkah-daftar", y: 26, jeda: 0.09 },
-      { s: ".contact-info-grid", y: 28, jeda: 0.1 },
-      { s: ".gallery-grid", y: 26, jeda: 0.1 },
-      { s: ".dash-batang-daftar", y: 22, jeda: 0.08 },
-      { s: ".footer-grid", y: 22, jeda: 0.08 }
+      { s: ".home-manfaat-grid", y: 30, jeda: 0.06 },
+      { s: ".home-jelajah-grid", y: 26, jeda: 0.05 },
+      { s: ".kartu-grid", y: 34, jeda: 0.06 },
+      { s: ".langkah-daftar", y: 26, jeda: 0.05 },
+      { s: ".contact-info-grid", y: 28, jeda: 0.06 },
+      { s: ".gallery-grid", y: 26, jeda: 0.06 },
+      { s: ".dash-batang-daftar", y: 22, jeda: 0.05 },
+      { s: ".footer-grid", y: 22, jeda: 0.05 }
     ].forEach(function (aturan) {
       gsap.utils.toArray(aturan.s).forEach(function (wadah) {
         tampilAnak(wadah, aturan);
@@ -152,7 +155,11 @@
         duration: 1.2,
         ease: "power2.out",
         clearProps: "transform",
-        scrollTrigger: { trigger: gambar, start: MULAI, once: true }
+        scrollTrigger: {
+          trigger: gambar,
+          start: MULAI,
+          toggleActions: "restart reverse restart reverse"
+        }
       });
     });
 
