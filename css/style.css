@@ -1258,7 +1258,7 @@ a { color: var(--warna-hijau); }
 .home-manfaat-kartu p { margin: 0; color: #30332f; font-size: .9rem; line-height: 1.35; }
 
 .home-jelajah { padding-bottom: 3rem; }
-.home-jelajah-heading { margin-bottom: 1rem; }
+.home-jelajah-heading { margin-bottom: 1rem; text-align: center; }
 .home-jelajah-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 .home-jelajah-kartu { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: .3rem; min-height: 148px; overflow: hidden; padding: 1rem 1.1rem; border-radius: 18px; background: linear-gradient(135deg, #fff8e3, #f6ebce); color: var(--warna-hijau-tua); text-decoration: none; }
 .home-jelajah-kartu strong { max-width: 62%; font-size: 1.25rem; font-weight: 900; line-height: 1.05; }
