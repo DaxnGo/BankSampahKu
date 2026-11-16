@@ -626,7 +626,6 @@ body {
   --ukuran-judul-2: 1.5rem;
   --ukuran-judul-3: 1.17rem;
   --ukuran-judul-kecil: .85rem;
-  --ukuran-ikon-hero: clamp(2rem, 6vw, 3.5rem);
   --ukuran-ikon-kartu: 2.25rem;
 }
 
@@ -694,16 +693,40 @@ a { color: var(--warna-hijau); }
 }
 .tombol:hover { border-color: var(--warna-hijau-tua); background: var(--warna-hijau-tua); }
 
+/* --- Hero halaman bersama: beranda, memilah, harga (kontak memakai foto) --- */
+.hero {
+  background: linear-gradient(180deg, var(--warna-latar) 0%, #f1f8e4 55%, var(--warna-hijau-muda) 100%);
+  padding-block: clamp(2.75rem, 7vw, 5rem);
+}
+.hero-isi { display: grid; gap: .9rem; justify-items: start; }
+.hero-isi h1 {
+  margin: 0;
+  font-size: clamp(2.1rem, 6.5vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+.hero-isi > p {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--warna-teks-lembut);
+  font-size: var(--ukuran-teks-pengantar);
+}
+.hero-isi .home-cta { margin-top: .45rem; }
+.catatan-harga {
+  max-width: 34rem;
+  margin: .15rem 0 0;
+  padding: .5rem .85rem;
+  border-left: 4px solid var(--warna-hijau);
+  border-radius: 8px;
+  background: rgb(255 255 255 / .65);
+  color: var(--warna-teks-lembut);
+  font-size: var(--ukuran-teks-kecil);
+}
+
 /* =====================================================================
    1b. BERANDA (Anggota 1)
    ===================================================================== */
-.beranda-hero {
-  background: linear-gradient(180deg, var(--warna-latar), var(--warna-hijau-muda));
-  padding-block: 3rem;
-}
-.beranda-hero-isi { display: grid; gap: 1rem; justify-items: start; }
-.beranda-hero h1 { max-width: 16ch; }
-.beranda-hero p { max-width: 42rem; color: var(--warna-teks-lembut); font-size: var(--ukuran-teks-pengantar); }
 
 .beranda-langkah { padding-block: 3rem; }
 .beranda-langkah h2 { margin-bottom: 1rem; }
@@ -751,14 +774,6 @@ a { color: var(--warna-hijau); }
    ===================================================================== */
 .bagian { padding-block: 1.5rem; }
 .bagian-pengantar { color: var(--warna-teks-lembut); }
-
-.hero-memilah {
-  background: linear-gradient(180deg, var(--warna-latar), var(--warna-hijau-muda));
-  padding-block: 2rem;
-}
-.hero-memilah-isi { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
-.hero-memilah p { max-width: 36rem; font-size: var(--ukuran-teks-pengantar); color: var(--warna-teks-lembut); }
-.hero-ikon { font-size: var(--ukuran-ikon-hero); margin: 0; letter-spacing: .25rem; }
 
 .langkah-daftar { list-style: none; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
 .langkah {
@@ -816,7 +831,6 @@ a { color: var(--warna-hijau); }
 
 /* =====================================================================
    3. HALAMAN HARGA (Anggota 2)
-   Catatan: bagian .hero-harga belum digayakan (sengaja ditunda).
    ===================================================================== */
 .tabel-bungkus {
   background: var(--warna-kartu);
@@ -1322,57 +1336,8 @@ a { color: var(--warna-hijau); }
 /* =====================================================================
    BERANDA — acuan visual BankSampahKu
    ===================================================================== */
-.home-hero {
-  overflow: hidden;
-  background: linear-gradient(115deg, #fffdf8 0%, #f5f9ed 55%, #edf8dc 100%);
-}
-
-.home-hero-isi {
-  min-height: 345px;
-  display: grid;
-  grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr);
-  align-items: center;
-}
-
-.home-hero-copy { position: relative; z-index: 2; padding: 3.25rem 0; }
-.home-hero h1 { max-width: 13ch; margin: 0 0 1rem; font-size: clamp(2.45rem, 4.4vw, 4.8rem); letter-spacing: -.055em; }
-.home-hero-copy p { max-width: 31rem; margin-bottom: 1.45rem; color: var(--warna-teks-lembut); font-size: clamp(1.15rem, 1.7vw, 1.55rem); font-weight: 600; line-height: 1.35; }
 .home-cta { display: inline-flex; align-items: center; gap: 1rem; padding: .78rem 1.35rem  .78rem 1.55rem; border-radius: 999px; background: linear-gradient(90deg, #277b22, #0d5a21); color: var(--warna-putih); font-size: 1.08rem; font-weight: 800; text-decoration: none; box-shadow: 0 9px 18px rgb(20 83 45 / .16); }
 .home-cta span { font-size: 1.65rem; line-height: .65; }
-
-.home-hero-art { position: relative; align-self: stretch; min-height: 345px; }
-.home-hero-art::after { content: ""; position: absolute; inset: auto -20vw -1px -22vw; height: 86px; border-radius: 50% 50% 0 0 / 100% 100% 0 0; background: #9adf4d; box-shadow: 0 -25px 0 #c6ee8d; }
-.home-daun { position: absolute; z-index: 1; width: 118px; height: 175px; border-radius: 75% 15% 75% 15%; background: linear-gradient(135deg, #b2e85b, #55bd35); transform: rotate(28deg); opacity: .92; }
-.home-daun::after { content: ""; position: absolute; width: 8px; height: 142px; left: 52%; top: 17px; background: #55a632; border-radius: 99px; transform: rotate(-25deg); }
-.home-daun-satu { left: 23%; top: 29px; transform: rotate(-20deg) scale(.95); }
-.home-daun-dua { right: 9%; top: 77px; transform: rotate(43deg) scale(1.05); }
-.home-daun-tiga { right: 29%; top: 8px; transform: rotate(-22deg) scale(.72); }
-.home-sun { position: absolute; z-index: 1; width: 40px; height: 12px; border-radius: 99px; background: var(--warna-kuning); transform: rotate(55deg); }
-.home-sun::before, .home-sun::after { content: ""; position: absolute; width: 40px; height: 12px; border-radius: inherit; background: inherit; }
-.home-sun::before { transform: translate(17px, -28px) rotate(-40deg); }
-.home-sun::after { transform: translate(-19px, 28px) rotate(40deg); }
-.home-sun-satu { top: 64px; left: 18%; }
-.home-sun-dua { top: 58px; right: 15%; }
-
-.home-orang { position: absolute; z-index: 3; width: 124px; height: 218px; bottom: 47px; }
-.home-orang .home-wajah { position: absolute; z-index: 2; left: 29px; top: 23px; width: 66px; height: 69px; border-radius: 50% 48% 48% 46%; background: #ffd0aa; }
-.home-orang .home-rambut { position: absolute; z-index: 3; left: 19px; top: 7px; width: 89px; height: 79px; border-radius: 58% 42% 47% 50%; background: #40271d; }
-.home-orang .home-rambut::after { content: ""; position: absolute; right: -5px; bottom: -23px; width: 34px; height: 70px; border-radius: 0 0 48% 48%; background: inherit; }
-.home-orang .home-badan { position: absolute; z-index: 1; left: 16px; bottom: 0; width: 99px; height: 143px; border-radius: 48% 48% 12px 12px; background: #168335; border: 6px solid #f5f0e2; display: grid; place-items: center; color: white; }
-.home-orang-satu { left: 31%; transform: scale(.98); }
-.home-orang-dua { right: 23%; transform: scale(.98); }
-.home-orang-dua .home-badan { background: #138244; }
-.home-orang-dua .home-rambut { background: #422619; left: 16px; width: 94px; border-radius: 45% 55% 46% 54%; }
-.home-recycle { width: 47px; height: 47px; fill: currentColor; stroke: none; }
-.home-botol { position: absolute; z-index: 4; right: 39%; top: 102px; width: 19px; height: 58px; border: 5px solid #087cc1; border-radius: 6px 6px 11px 11px; background: #8fdcff; transform: rotate(-20deg); }
-.home-botol::before { content: ""; position: absolute; left: 2px; top: -14px; width: 8px; height: 12px; border-radius: 2px; background: #087cc1; }
-
-.home-tempat { position: absolute; z-index: 5; bottom: 19px; width: 78px; height: 108px; border-radius: 8px 8px 12px 12px; box-shadow: inset -9px -4px rgb(0 0 0 / .1); display: grid; place-items: center; color: white; }
-.home-tempat::before { content: ""; position: absolute; top: -9px; width: 91px; height: 13px; border-radius: 7px; background: inherit; }
-.home-tempat-hijau { left: 34%; background: #0e9d27; }
-.home-tempat-kuning { left: calc(34% + 84px); background: #f5bd0a; }
-.home-tempat-biru { left: calc(34% + 168px); background: #098ac6; }
-.home-tempat .home-recycle { width: 41px; }
 
 .home-manfaat { padding-block: 1.2rem 2.4rem; }
 .home-judul-bagian { margin-bottom: 1.15rem; text-align: center; }
@@ -1402,15 +1367,10 @@ a { color: var(--warna-hijau); }
 .home-jelajah-kartu:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgb(20 83 45 / .12); }
 
 @media (max-width: 800px) {
-  .home-hero-isi { min-height: auto; grid-template-columns: 1fr; }
-  .home-hero-copy { padding: 2.75rem 0 1.25rem; }
-  .home-hero-art { min-height: 280px; margin-inline: -1rem; }
   .home-manfaat-grid, .home-jelajah-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 520px) {
-  .home-hero h1 { font-size: 2.55rem; }
-  .home-hero-art { transform: scale(.83); transform-origin: center bottom; margin-top: -1.9rem; margin-bottom: -1.9rem; }
   .home-manfaat-grid, .home-jelajah-grid { grid-template-columns: 1fr; }
   .home-manfaat-kartu { grid-template-columns: 4.5rem 1fr; }
   .home-manfaat-ikon { width: 4.5rem; height: 4.5rem; }
