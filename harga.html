@@ -94,7 +94,7 @@
         <h2 id="judul-kalkulator">Kalkulator Saldo</h2>
         <p>Perkirakan saldo dari sampah yang akan kamu setorkan. Hasil memakai harga contoh di atas.</p>
 
-        <!-- TODO: hubungkan form ini ke js/script.js (bonus, Hari 5) -->
+        <!-- Kalkulator dijalankan oleh js/script.js (fitur bonus, bukan syarat baca) -->
         <form id="form-kalkulator" class="kalkulator-form" novalidate>
           <div class="kalkulator-baris">
             <label for="jenis">Jenis sampah</label>
@@ -117,6 +117,8 @@
             <button type="submit" class="tombol-hitung">Hitung Saldo</button>
             <button type="reset" class="tombol-ulang">Ulangi</button>
           </div>
+
+          <div class="hasil-kalkulator" id="hasil-kalkulator" role="status" aria-live="polite"></div>
         </form>
       </div>
     </section>
@@ -173,5 +175,7 @@
     </div>
     <div class="footer-wave" aria-hidden="true"></div>
   </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>

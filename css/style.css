@@ -816,8 +816,223 @@ a { color: var(--warna-hijau); }
 
 /* =====================================================================
    3. HALAMAN HARGA (Anggota 2)
+   Catatan: bagian .hero-harga belum digayakan (sengaja ditunda).
    ===================================================================== */
-/* TODO Hari 4: tabel responsif (bisa digeser di HP), gaya form kalkulator */
+.tabel-bungkus {
+  background: var(--warna-kartu);
+  border-radius: var(--radius);
+  padding: .5rem;
+  overflow-x: auto;
+}
+
+.tabel-harga {
+  width: 100%;
+  min-width: 19rem;
+  border-collapse: collapse;
+}
+
+.tabel-harga caption {
+  padding: .5rem;
+  text-align: left;
+}
+
+.tabel-harga thead th {
+  background: var(--warna-hijau-tua);
+  color: var(--warna-putih);
+  font-size: var(--ukuran-teks-kecil);
+  text-align: left;
+  padding: .55rem .75rem;
+}
+
+.tabel-harga thead th:first-child { border-top-left-radius: 10px; }
+.tabel-harga thead th:last-child { border-top-right-radius: 10px; }
+
+.tabel-harga tbody th,
+.tabel-harga tbody td {
+  padding: .65rem .75rem;
+  border-bottom: 1px solid var(--warna-garis);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.tabel-harga tbody tr:last-child th,
+.tabel-harga tbody tr:last-child td { border-bottom: 0; }
+
+.tabel-harga tbody th {
+  font-weight: 700;
+  color: var(--warna-hijau-tua);
+  white-space: nowrap;
+}
+
+.tabel-harga tbody th .icon {
+  margin-right: .35rem;
+  color: var(--warna-hijau);
+}
+
+.tabel-harga tbody td:nth-child(2) {
+  color: var(--warna-teks-lembut);
+  font-size: var(--ukuran-teks-kecil);
+  white-space: nowrap;
+}
+
+.harga-nilai {
+  font-weight: 800;
+  color: var(--warna-hijau-tua);
+  white-space: nowrap;
+}
+
+.badge-contoh {
+  display: inline-block;
+  margin-left: .25rem;
+  padding: .05rem .55rem;
+  border-radius: 999px;
+  background: var(--warna-kuning);
+  color: var(--warna-hijau-tua);
+  font-size: var(--ukuran-judul-kecil);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* --- Kalkulator saldo --- */
+.kalkulator {
+  background: var(--warna-kartu);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.kalkulator > p {
+  color: var(--warna-teks-lembut);
+  margin-bottom: 1rem;
+}
+
+.kalkulator-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.kalkulator-baris {
+  display: grid;
+  gap: .3rem;
+}
+
+.kalkulator label {
+  font-weight: 700;
+  color: var(--warna-hijau-tua);
+}
+
+.kalkulator select,
+.kalkulator input {
+  width: 100%;
+  padding: .55rem .8rem;
+  border: 1.5px solid var(--warna-garis);
+  border-radius: 10px;
+  background: var(--warna-putih);
+  color: var(--warna-teks);
+  font-family: inherit;
+  font-size: var(--ukuran-teks);
+}
+
+.kalkulator select:focus-visible,
+.kalkulator input:focus-visible {
+  border-color: var(--warna-hijau);
+}
+
+.kalkulator [aria-invalid="true"] {
+  border-color: var(--warna-merah);
+  background: var(--warna-merah-muda);
+}
+
+.kalkulator-aksi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.tombol-hitung,
+.tombol-ulang {
+  padding: .7rem 1.2rem;
+  border: 2px solid var(--warna-hijau);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: var(--ukuran-teks);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tombol-hitung {
+  background: var(--warna-hijau);
+  color: var(--warna-putih);
+}
+
+.tombol-hitung:hover { background: var(--warna-hijau-tua); border-color: var(--warna-hijau-tua); }
+
+.tombol-ulang {
+  background: var(--warna-putih);
+  color: var(--warna-hijau-tua);
+}
+
+.tombol-ulang:hover { background: var(--warna-hijau-muda); }
+
+.hasil-kalkulator {
+  border: 1.5px solid var(--warna-garis);
+  border-radius: var(--radius);
+  padding: .9rem 1rem;
+  background: var(--warna-putih);
+}
+
+.hasil-kalkulator:empty { display: none; }
+
+.hasil-kalkulator[data-keadaan="ok"] {
+  background: var(--warna-hijau-muda);
+  border-color: var(--warna-hijau);
+}
+
+.hasil-kalkulator[data-keadaan="salah"] {
+  background: var(--warna-merah-muda);
+  border-color: var(--warna-merah);
+}
+
+.hasil-kalkulator p { margin: 0; }
+
+.hasil-keterangan {
+  font-size: var(--ukuran-teks-kecil);
+  color: var(--warna-teks-lembut);
+}
+
+.hasil-angka {
+  font-size: var(--ukuran-angka);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--warna-hijau-tua);
+}
+
+.hasil-rincian {
+  font-size: var(--ukuran-teks-kecil);
+  color: var(--warna-teks-lembut);
+}
+
+/* --- Informasi penting --- */
+.info-penting {
+  background: var(--warna-biru-muda);
+  border-left: 5px solid var(--warna-biru);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.info-penting h2 { color: var(--warna-teks); }
+
+.info-penting p {
+  margin: 0;
+  color: var(--warna-teks);
+  font-size: var(--ukuran-teks-kecil);
+}
+
+@media (min-width: 768px) {
+  .kalkulator { padding: 1.5rem; }
+  .kalkulator-form { grid-template-columns: 1fr 1fr; align-items: start; }
+  .kalkulator-aksi,
+  .hasil-kalkulator { grid-column: 1 / -1; }
+}
 
 /* =====================================================================
    4. HALAMAN KONTAK (Anggota 3)
