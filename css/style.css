@@ -675,16 +675,6 @@ a { color: var(--warna-hijau); }
   font-size: var(--ukuran-teks-pengantar);
 }
 .hero-isi .home-cta { margin-top: .45rem; }
-.catatan-harga {
-  max-width: 34rem;
-  margin: .15rem 0 0;
-  padding: .5rem .85rem;
-  border-left: 4px solid var(--warna-hijau);
-  border-radius: 8px;
-  background: rgb(255 255 255 / .65);
-  color: var(--warna-teks-lembut);
-  font-size: var(--ukuran-teks-kecil);
-}
 
 /* =====================================================================
    2. HALAMAN MEMILAH (Anggota 2)
