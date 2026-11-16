@@ -37,7 +37,7 @@ Demo GitHub Pages: belum tersedia. Tautan akan ditambahkan setelah file website 
 - HTML untuk struktur halaman.
 - CSS untuk tampilan dan tata letak responsif.
 - JavaScript untuk fitur bonus.
-- Ikon dari **Tabler Icons 3.19.0** (webfont) yang disimpan lokal di `vendor/tabler-icons/`, dipakai dengan `<i class="ti ti-nama-ikon">`. Tidak memakai CDN sehingga tetap tampil saat offline. Lisensi MIT ada di `vendor/tabler-icons/LICENSE`. Ikon yang dipakai: `leaf`, `recycle`, `users`, `home`, `tag`, `phone`, `apple`, `bottle`, `battery`, `check`, `file-text`, `package`, `bolt`, `mail`, dan `map-pin`.
+- Ikon dari **Tabler Icons 3.19.0** (webfont) yang disimpan lokal di `vendor/tabler-icons/`, dipakai dengan `<i class="ti ti-nama-ikon">`. Tidak memakai CDN sehingga tetap tampil saat offline. Lisensi MIT ada di `vendor/tabler-icons/LICENSE`. Ikon yang dipakai: `leaf`, `recycle`, `users`, `home`, `tag`, `phone`, `apple`, `bottle`, `battery`, `check`, `file-text`, `package`, `bolt`, `mail`, `map-pin`, dan `arrow-right`.
 
 ## Struktur folder
 
