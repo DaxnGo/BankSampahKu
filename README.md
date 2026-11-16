@@ -30,6 +30,7 @@ Demo GitHub Pages: belum tersedia. Tautan akan ditambahkan setelah file website 
 - Kalkulator perkiraan saldo dari sampah yang disetorkan.
 - Mode gelap.
 - Validasi formulir kontak.
+- Animasi masuk dan animasi gulir dengan GSAP + ScrollTrigger.
 - Fitur bonus tidak menjadi syarat agar informasi utama website dapat dibaca.
 
 ## Teknologi
@@ -37,6 +38,7 @@ Demo GitHub Pages: belum tersedia. Tautan akan ditambahkan setelah file website 
 - HTML untuk struktur halaman.
 - CSS untuk tampilan dan tata letak responsif.
 - JavaScript untuk fitur bonus.
+- Animasi memakai **GSAP 3.15.1** dan plugin **ScrollTrigger**, disimpan lokal di `vendor/gsap/` dan dijalankan oleh `js/animasi.js`. Animasi dilewati bila JavaScript mati atau pengguna mengaktifkan "kurangi gerak" (`prefers-reduced-motion`), sehingga konten tetap terbaca.
 - Ikon dari **Tabler Icons 3.19.0** (webfont) yang disimpan lokal di `vendor/tabler-icons/`, dipakai dengan `<i class="ti ti-nama-ikon">`. Tidak memakai CDN sehingga tetap tampil saat offline. Lisensi MIT ada di `vendor/tabler-icons/LICENSE`. Ikon yang dipakai: `leaf`, `recycle`, `users`, `home`, `tag`, `phone`, `apple`, `bottle`, `battery`, `check`, `file-text`, `package`, `bolt`, `mail`, `map-pin`, dan `arrow-right`.
 
 ## Struktur folder
@@ -52,14 +54,19 @@ Demo GitHub Pages: belum tersedia. Tautan akan ditambahkan setelah file website 
 │   └── style.css
 ├── js/
 │   ├── script.js
-│   └── kontak.js
+│   ├── kontak.js
+│   └── animasi.js
 ├── img/
 │   └── .gitkeep
 ├── vendor/
-│   └── tabler-icons/
-│       ├── tabler-icons.min.css
-│       ├── LICENSE
-│       └── fonts/
+│   ├── tabler-icons/
+│   │   ├── tabler-icons.min.css
+│   │   ├── LICENSE
+│   │   └── fonts/
+│   └── gsap/
+│       ├── gsap.min.js
+│       ├── ScrollTrigger.min.js
+│       └── LISENSI.md
 ├── docs/
 │   ├── catatan-hasil-uji.md
 │   ├── rancangan-laporan.md
