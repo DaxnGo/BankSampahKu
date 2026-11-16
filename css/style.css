@@ -594,10 +594,7 @@ body {
 
 /* =====================================================================
    1. BASE (Anggota 1)
-   SEMENTARA: isi bagian ini hanya agar halaman Anggota 2 bisa dilihat
-   sebelum fondasi Anggota 1 masuk ke main. Saat git pull / merge,
-   PAKAI VERSI ANGGOTA 1 untuk seluruh bagian 1 dan buang isi di bawah.
-   Nama variabel di bawah dipakai oleh bagian 2, 3, dan 5.
+   Variabel, reset, navigasi, dan gaya bersama.
    ===================================================================== */
 :root {
   --warna-hijau-tua: #14532d;
@@ -611,27 +608,56 @@ body {
   --warna-putih: #ffffff;
   --warna-garis: #d9d2bd;
   --warna-fokus: #1d4ed8;
+  --warna-biru: #1565c0;
+  --warna-biru-muda: #d6e8fb;
+  --warna-merah: #b3261e;
+  --warna-merah-muda: #fbdcd9;
   --radius: 16px;
   --font-dasar: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
   /* Tambahan minimal untuk Dashboard (bagian 7). Proyek belum punya
      variabel ukuran teks, jadi dua ukuran dipakai bersama di sana. */
   --ukuran-angka: clamp(1.65rem, 5vw, 2.15rem);
   --ukuran-kecil: 0.85rem;
+  --ukuran-teks: 1rem;
+  --ukuran-teks-kecil: .9rem;
+  --ukuran-teks-pengantar: 1.1rem;
+  --ukuran-logo: 1.4rem;
+  --ukuran-judul-1: clamp(2.25rem, 7vw, 4rem);
+  --ukuran-judul-2: 1.5rem;
+  --ukuran-judul-3: 1.17rem;
+  --ukuran-judul-kecil: .85rem;
+  --ukuran-ikon-hero: clamp(2rem, 6vw, 3.5rem);
+  --ukuran-ikon-kartu: 2.25rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: var(--font-dasar);
+  font-size: var(--ukuran-teks);
   color: var(--warna-teks);
   background: var(--warna-latar);
   line-height: 1.6;
 }
 h1, h2, h3, h4 { color: var(--warna-hijau-tua); line-height: 1.25; margin: 0 0 .5rem; }
+h1 { font-size: var(--ukuran-judul-1); }
+h2 { font-size: var(--ukuran-judul-2); }
+h3 { font-size: var(--ukuran-judul-3); }
 p { margin: 0 0 .75rem; }
 ul, ol { margin: 0; padding-left: 1.25rem; }
 a { color: var(--warna-hijau); }
 :focus-visible { outline: 3px solid var(--warna-fokus); outline-offset: 2px; }
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -.125em;
+}
 
 .wadah { width: min(1100px, 100% - 2rem); margin-inline: auto; }
 .sr-only {
@@ -646,7 +672,7 @@ a { color: var(--warna-hijau); }
 
 .header-situs { background: var(--warna-latar); border-bottom: 1px solid var(--warna-garis); }
 .header-isi { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; padding-block: .75rem; }
-.logo { font-weight: 800; font-size: 1.4rem; color: var(--warna-hijau-tua); text-decoration: none; }
+.logo { font-weight: 800; font-size: var(--ukuran-logo); color: var(--warna-hijau-tua); text-decoration: none; }
 .menu { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 0; }
 .menu a { display: block; padding: .4rem 1rem; border-radius: 999px; color: var(--warna-teks); text-decoration: none; font-weight: 600; }
 .menu a:hover { background: var(--warna-hijau-muda); }
@@ -654,8 +680,71 @@ a { color: var(--warna-hijau); }
 
 .footer-situs { background: var(--warna-hijau-tua); color: var(--warna-putih); margin-top: 3rem; padding-block: 1.5rem; }
 .footer-isi p { margin: 0 0 .35rem; }
-.footer-logo { font-weight: 800; font-size: 1.2rem; }
-.footer-catatan { font-size: .9rem; opacity: .9; }
+.footer-logo { font-weight: 800; font-size: var(--ukuran-logo); }
+.footer-catatan { font-size: var(--ukuran-teks-kecil); opacity: .9; }
+.tombol {
+  display: inline-block;
+  padding: .7rem 1.2rem;
+  border: 2px solid var(--warna-hijau);
+  border-radius: 999px;
+  background: var(--warna-hijau);
+  color: var(--warna-putih);
+  font-weight: 700;
+  text-decoration: none;
+}
+.tombol:hover { border-color: var(--warna-hijau-tua); background: var(--warna-hijau-tua); }
+
+/* =====================================================================
+   1b. BERANDA (Anggota 1)
+   ===================================================================== */
+.beranda-hero {
+  background: linear-gradient(180deg, var(--warna-latar), var(--warna-hijau-muda));
+  padding-block: 3rem;
+}
+.beranda-hero-isi { display: grid; gap: 1rem; justify-items: start; }
+.beranda-hero h1 { max-width: 16ch; }
+.beranda-hero p { max-width: 42rem; color: var(--warna-teks-lembut); font-size: var(--ukuran-teks-pengantar); }
+
+.beranda-langkah { padding-block: 3rem; }
+.beranda-langkah h2 { margin-bottom: 1rem; }
+.beranda-langkah-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.beranda-langkah-kartu {
+  border-radius: var(--radius);
+  background: var(--warna-kartu);
+  padding: 1.25rem;
+}
+.beranda-langkah-kartu h3 { margin-top: .75rem; }
+.beranda-langkah-kartu p { margin-bottom: 0; color: var(--warna-teks-lembut); }
+.beranda-langkah-nomor {
+  display: inline-grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--warna-hijau-muda);
+  color: var(--warna-hijau-tua);
+  font-weight: 800;
+}
+
+.beranda-ajakan {
+  margin-block: 0 3rem;
+  border-radius: var(--radius);
+  background: var(--warna-hijau-muda);
+  padding: 2rem;
+}
+.beranda-ajakan p { max-width: 42rem; color: var(--warna-teks); }
+.beranda-ajakan .tombol { margin-top: .25rem; }
+
+@media (min-width: 768px) {
+  .beranda-langkah-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 
 /* =====================================================================
    2. HALAMAN MEMILAH (Anggota 2)
@@ -668,9 +757,8 @@ a { color: var(--warna-hijau); }
   padding-block: 2rem;
 }
 .hero-memilah-isi { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
-.hero-memilah h1 { font-size: clamp(2rem, 6vw, 3.25rem); }
-.hero-memilah p { max-width: 36rem; font-size: 1.1rem; color: var(--warna-teks-lembut); }
-.hero-ikon { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0; letter-spacing: .25rem; }
+.hero-memilah p { max-width: 36rem; font-size: var(--ukuran-teks-pengantar); color: var(--warna-teks-lembut); }
+.hero-ikon { font-size: var(--ukuran-ikon-hero); margin: 0; letter-spacing: .25rem; }
 
 .langkah-daftar { list-style: none; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
 .langkah {
@@ -695,17 +783,17 @@ a { color: var(--warna-hijau); }
 }
 .kartu-kategori h3 { color: var(--warna-kategori); }
 .kartu-kategori h4 {
-  display: inline-block; font-size: .85rem; text-transform: uppercase; letter-spacing: .04em;
+  display: inline-block; font-size: var(--ukuran-judul-kecil); text-transform: uppercase; letter-spacing: .04em;
   background: var(--warna-kategori-muda); color: var(--warna-teks);
   padding: .1rem .6rem; border-radius: 999px; margin: .75rem 0 .35rem;
 }
 .kartu-kategori li { margin-bottom: .25rem; }
-.kartu-ikon { font-size: 2.25rem; margin: 0 0 .25rem; }
+.kartu-ikon { font-size: var(--ukuran-ikon-kartu); margin: 0 0 .25rem; }
 .kartu-ringkas { color: var(--warna-teks-lembut); }
 
-.kategori-organik   { --warna-kategori: #2e7d32; --warna-kategori-muda: #dcf3c6; }
-.kategori-anorganik { --warna-kategori: #1565c0; --warna-kategori-muda: #d6e8fb; }
-.kategori-b3        { --warna-kategori: #b3261e; --warna-kategori-muda: #fbdcd9; }
+.kategori-organik   { --warna-kategori: var(--warna-hijau-tua); --warna-kategori-muda: var(--warna-hijau-muda); }
+.kategori-anorganik { --warna-kategori: var(--warna-biru); --warna-kategori-muda: var(--warna-biru-muda); }
+.kategori-b3        { --warna-kategori: var(--warna-merah); --warna-kategori-muda: var(--warna-merah-muda); }
 
 .tips {
   display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem;
@@ -716,7 +804,7 @@ a { color: var(--warna-hijau); }
   padding: .6rem 1.5rem; border-radius: 999px; transform: rotate(-3deg);
 }
 .tips-daftar { list-style: none; padding: 0; display: grid; gap: .35rem; }
-.tips-daftar li::before { content: "✔"; color: var(--warna-hijau); font-weight: 800; margin-right: .5rem; }
+.tips-daftar .icon { margin-right: .5rem; color: var(--warna-hijau); }
 
 @media (min-width: 768px) {
   .langkah-daftar { grid-template-columns: repeat(3, 1fr); }
