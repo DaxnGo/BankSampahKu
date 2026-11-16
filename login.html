@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Masuk ke BankSampahKu untuk mengelola setoran atau melihat dashboard pribadi.">
+  <title>Masuk | BankSampahKu</title>
+  <link rel="stylesheet" href="vendor/tabler-icons/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="lewati" href="#konten">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Beranda BankSampahKu">
+        <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/>
+          <path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/>
+        </svg>
+        <span>BankSampahKu</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navigasi Utama">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="memilah.html">Cara Memilah</a></li>
+          <li><a href="harga.html">Harga Sampah</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+          <li><a href="login.html" class="active" aria-current="page" data-nav-auth>Masuk</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="wadah bagian auth-wadah" aria-labelledby="judul-halaman">
+      <div class="auth-kartu">
+        <div class="auth-samping">
+          <p class="dash-eyebrow">Area anggota</p>
+          <h1 id="judul-halaman">Masuk ke BankSampahKu</h1>
+          <p>Dua peran tersedia di demo ini. Petugas mencatat setoran dan melihat rekap keseluruhan. Warga melihat saldo serta riwayat setorannya sendiri.</p>
+          <ul class="auth-daftar">
+            <li><i class="ti ti-users" aria-hidden="true"></i> Rekap sampah dan peringkat per RT</li>
+            <li><i class="ti ti-package" aria-hidden="true"></i> Pencatatan setoran oleh petugas</li>
+            <li><i class="ti ti-file-text" aria-hidden="true"></i> Riwayat dan saldo per penabung</li>
+          </ul>
+          <p class="auth-peringatan"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Login ini adalah simulasi untuk tugas. Akun dan data disimpan di browser, bukan di server.</p>
+        </div>
+
+        <div class="auth-form-bagian">
+          <h2 class="auth-judul-form">Formulir masuk</h2>
+          <form id="form-login" class="auth-form" novalidate>
+            <div class="kalkulator-baris">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" autocomplete="username" required placeholder="petugas atau warga">
+            </div>
+
+            <div class="kalkulator-baris">
+              <label for="password">Kata sandi</label>
+              <input type="password" id="password" name="password" autocomplete="current-password" required placeholder="Masukkan kata sandi">
+            </div>
+
+            <div id="pesan-login" class="auth-pesan" role="alert" aria-live="assertive"></div>
+
+            <div class="auth-aksi">
+              <button type="submit" class="tombol-hitung">Masuk</button>
+              <a href="index.html" class="tombol-ulang">Kembali</a>
+            </div>
+          </form>
+
+          <div class="auth-demo">
+            <h3>Akun contoh</h3>
+            <p>Klik untuk mengisi otomatis, lalu tekan Masuk.</p>
+            <div class="auth-demo-grid">
+              <button type="button" class="demo-akun" data-username="petugas" data-password="petugas123">
+                <strong>Petugas</strong>
+                <span>petugas / petugas123</span>
+              </button>
+              <button type="button" class="demo-akun" data-username="warga" data-password="warga123">
+                <strong>Warga</strong>
+                <span>warga / warga123</span>
+              </button>
+            </div>
+            <p class="auth-demo-lain">Akun warga lain: <code>budi</code>, <code>rina</code>, <code>andi</code> dengan kata sandi <code>warga123</code>.</p>
+            <button type="button" id="reset-data" class="auth-reset">Kembalikan data contoh awal</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/>
+            <path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/>
+          </svg>
+          <span>BankSampahKu</span>
+        </a>
+        <p>Edukasi, pilah, dan kelola sampah bersama BankSampahKu.</p>
+      </div>
+
+      <div class="footer-links">
+        <h3>Navigasi Cepat</h3>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="memilah.html">Cara Memilah</a></li>
+          <li><a href="harga.html">Harga Sampah</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h3>Terhubung dengan Kami</h3>
+        <div class="social-icons">
+          <a href="tel:+6281234567890" class="social-btn" aria-label="Telepon BankSampahKu">
+            <i class="ti ti-phone" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:halo@banksampahku.id" class="social-btn" aria-label="Email BankSampahKu">
+            <i class="ti ti-mail" aria-hidden="true"></i>
+          </a>
+          <a href="kontak.html#peta-lokasi" class="social-btn" aria-label="Lokasi BankSampahKu">
+            <i class="ti ti-map-pin" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-wave" aria-hidden="true"></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

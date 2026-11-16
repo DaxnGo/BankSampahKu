@@ -1291,3 +1291,167 @@ a { color: var(--warna-hijau); }
   transform: scaleX(0);
   transform-origin: 0 50%;
 }
+
+/* =====================================================================
+   9. LOGIN, INPUT SETORAN, DASHBOARD WARGA - fitur demo
+   ===================================================================== */
+.main-nav .nav-pengguna {
+  font-weight: 800;
+  color: var(--warna-hijau-tua);
+  background: var(--warna-hijau-muda);
+}
+
+.nav-keluar {
+  font-family: inherit;
+  font-size: var(--ukuran-teks-kecil);
+  font-weight: 700;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--warna-hijau-tua);
+  background: transparent;
+  color: var(--warna-hijau-tua);
+  cursor: pointer;
+}
+
+.nav-keluar:hover { background: var(--warna-hijau-muda); }
+
+.auth-wadah { padding-block: 2rem 3rem; }
+
+.auth-kartu {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  background: var(--warna-kartu);
+  border: 1px solid var(--warna-garis);
+  border-radius: 24px;
+}
+
+.auth-samping h1 { margin-bottom: .75rem; font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.15; }
+.auth-samping > p { color: var(--warna-teks-lembut); }
+.auth-daftar { display: grid; gap: .55rem; list-style: none; padding: 0; margin-top: 1.25rem; }
+.auth-daftar li { display: flex; gap: .6rem; align-items: flex-start; }
+.auth-daftar .ti { color: var(--warna-hijau); margin-top: .2rem; }
+.auth-peringatan {
+  display: flex; gap: .6rem; align-items: flex-start;
+  margin-top: 1.25rem; padding: .8rem 1rem;
+  border-radius: var(--radius); background: var(--warna-kuning);
+  color: #4a3a09; font-size: var(--ukuran-teks-kecil);
+}
+
+.auth-form-bagian {
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background: var(--warna-putih);
+  border: 1px solid var(--warna-garis);
+  border-radius: var(--radius);
+}
+
+.auth-judul-form { margin-bottom: 1rem; font-size: 1.15rem; }
+.auth-form { display: grid; gap: 1rem; }
+
+.auth-form input,
+.setor-baris input,
+.setor-baris select {
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--ukuran-teks);
+  color: var(--warna-teks);
+  background: var(--warna-putih);
+  border: 1.5px solid var(--warna-garis);
+  border-radius: 12px;
+  padding: .65rem .8rem;
+}
+
+.auth-form input:focus,
+.setor-baris input:focus,
+.setor-baris select:focus { outline: 2px solid var(--warna-fokus); outline-offset: 2px; }
+
+.setor-baris input[readonly] { background: var(--warna-kartu); color: var(--warna-teks-lembut); }
+
+.auth-pesan { min-height: 1.4rem; font-size: var(--ukuran-teks-kecil); }
+.auth-pesan[data-keadaan="salah"] { color: var(--warna-merah); font-weight: 700; }
+.auth-pesan[data-keadaan="ok"] { color: var(--warna-hijau-tua); font-weight: 700; }
+
+.auth-aksi { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+.auth-aksi .tombol-ulang { display: inline-flex; align-items: center; text-decoration: none; }
+
+.auth-demo { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--warna-garis); }
+.auth-demo h3 { font-size: 1rem; margin-bottom: .25rem; }
+.auth-demo > p { color: var(--warna-teks-lembut); font-size: var(--ukuran-teks-kecil); }
+.auth-demo-grid { display: grid; gap: .6rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: .75rem; }
+
+.demo-akun {
+  font-family: inherit;
+  text-align: left;
+  padding: .7rem .85rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--warna-garis);
+  background: var(--warna-latar);
+  color: var(--warna-teks);
+  cursor: pointer;
+}
+
+.demo-akun:hover { border-color: var(--warna-hijau); background: var(--warna-hijau-muda); }
+.demo-akun strong { display: block; font-size: .95rem; }
+.demo-akun span { display: block; font-size: .78rem; color: var(--warna-teks-lembut); }
+.auth-demo-lain { margin-top: .75rem; }
+.auth-demo-lain code { background: var(--warna-kartu); padding: .05rem .3rem; border-radius: 5px; }
+
+.auth-reset {
+  margin-top: .75rem;
+  font-family: inherit;
+  font-size: var(--ukuran-teks-kecil);
+  color: var(--warna-merah);
+  background: transparent;
+  border: 1.5px solid var(--warna-merah);
+  border-radius: 999px;
+  padding: .45rem 1rem;
+  cursor: pointer;
+}
+
+.auth-reset:hover { background: var(--warna-merah-muda); }
+
+.setor-petugas { display: grid; gap: 1.25rem; align-items: start; }
+.setor-form { display: grid; gap: 1rem; padding: 1.25rem; background: var(--warna-putih); border: 1px solid var(--warna-garis); border-radius: var(--radius); }
+.setor-baris { display: grid; gap: .35rem; }
+.setor-baris label { font-weight: 700; }
+.setor-baris small { color: var(--warna-teks-lembut); font-size: var(--ukuran-teks-kecil); }
+
+.setor-estimasi {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem;
+  padding: .9rem 1rem; border-radius: 12px;
+  background: var(--warna-hijau-muda); color: var(--warna-hijau-tua);
+}
+
+.setor-estimasi strong { font-size: 1.25rem; }
+.setor-panduan { display: block; }
+.setor-panduan h2 { margin-bottom: .75rem; font-size: 1.1rem; }
+.setor-panduan ol { padding-left: 1.25rem; display: grid; gap: .5rem; }
+.setor-catatan { margin-top: 1rem; font-size: var(--ukuran-teks-kecil); color: var(--warna-teks-lembut); }
+
+.tombol-hapus {
+  font-family: inherit; font-size: .8rem; font-weight: 700;
+  padding: .35rem .7rem; border-radius: 999px;
+  border: 1.5px solid var(--warna-merah);
+  background: transparent; color: var(--warna-merah); cursor: pointer;
+}
+
+.tombol-hapus:hover { background: var(--warna-merah-muda); }
+.tabel-setor { font-size: var(--ukuran-teks-kecil); }
+
+.sapaan-warga {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.25rem; padding: 1rem 1.25rem;
+  background: var(--warna-hijau-muda); border-radius: var(--radius);
+}
+
+.sapaan-avatar {
+  display: grid; place-items: center; flex: 0 0 3rem;
+  width: 3rem; height: 3rem; border-radius: 50%;
+  background: var(--warna-hijau-tua); color: var(--warna-putih);
+  font-size: 1.25rem; font-weight: 800;
+}
+
+@media (min-width: 860px) {
+  .auth-kartu { grid-template-columns: 1fr 1fr; }
+  .setor-petugas { grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); }
+}

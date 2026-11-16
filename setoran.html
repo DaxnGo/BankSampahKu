@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Halaman petugas untuk mencatat setoran sampah warga.">
+  <title>Input Setoran | BankSampahKu</title>
+  <link rel="stylesheet" href="vendor/tabler-icons/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-halaman="petugas:setoran.html">
+  <a class="lewati" href="#konten">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Beranda BankSampahKu">
+        <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/>
+          <path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/>
+        </svg>
+        <span>BankSampahKu</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navigasi Utama">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="memilah.html">Cara Memilah</a></li>
+          <li><a href="harga.html">Harga Sampah</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+          <li><a href="login.html" data-nav-auth>Masuk</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="wadah bagian dash-kepala" aria-labelledby="judul-halaman">
+      <p class="dash-eyebrow">Area petugas</p>
+      <h1 id="judul-halaman">Input Setoran Sampah</h1>
+      <p class="dash-periode">Setiap transaksi yang disimpan langsung menghitung ulang <a href="dashboard.html">dashboard bank sampah</a>.</p>
+      <p class="dash-contoh" role="note"><span aria-hidden="true">!</span> Data demo di browser</p>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-form">
+      <h2 id="judul-form" class="sr-only">Formulir setoran baru</h2>
+      <div class="setor-petugas">
+        <form id="form-setoran" class="setor-form" novalidate>
+          <div class="setor-baris">
+            <label for="tanggal-setoran">Tanggal setoran</label>
+            <input type="date" id="tanggal-setoran" name="tanggal" value="2026-10-24" required>
+            <small>Dashboard contoh memakai periode Oktober 2026.</small>
+          </div>
+
+          <div class="setor-baris">
+            <label for="penabung">Penabung</label>
+            <select id="penabung" name="penabung" required>
+              <option value="">-- Pilih penabung --</option>
+            </select>
+          </div>
+
+          <div class="setor-baris">
+            <label for="rt-setoran">RT</label>
+            <input type="text" id="rt-setoran" name="rt" readonly placeholder="Otomatis dari penabung">
+          </div>
+
+          <div class="setor-baris">
+            <label for="jenis-setoran">Jenis sampah</label>
+            <select id="jenis-setoran" name="jenis" required>
+              <option value="">-- Pilih jenis --</option>
+            </select>
+          </div>
+
+          <div class="setor-baris">
+            <label for="berat-setoran">Berat (kg)</label>
+            <input type="number" id="berat-setoran" name="berat" min="0.1" step="0.1" inputmode="decimal" required placeholder="Contoh: 12.5">
+          </div>
+
+          <div class="setor-estimasi" role="status" aria-live="polite">
+            <span>Perkiraan saldo</span>
+            <strong id="estimasi-setoran">Rp 0</strong>
+          </div>
+
+          <div id="pesan-setoran" class="auth-pesan" role="alert" aria-live="assertive"></div>
+
+          <div class="auth-aksi">
+            <button type="submit" class="tombol-hitung">Simpan Setoran</button>
+            <button type="reset" class="tombol-ulang" id="ulang-setoran">Ulangi</button>
+          </div>
+        </form>
+
+        <aside class="setor-panduan tips">
+          <h2>Cara kerja halaman ini</h2>
+          <ol>
+            <li>Pilih penabung. RT terisi otomatis dari data akun.</li>
+            <li>Pilih jenis sampah dan masukkan berat.</li>
+            <li>Perkiraan saldo dihitung dari harga di halaman Harga Sampah.</li>
+            <li>Setelah disimpan, buka dashboard untuk melihat angka terbaru.</li>
+          </ol>
+          <p class="setor-catatan">Data tersimpan di browser perangkat ini. Bersihkan data berarti seluruh setoran ikut hilang.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-terbaru">
+      <h2 id="judul-terbaru">Setoran tercatat</h2>
+      <p class="bagian-pengantar">Sepuluh transaksi terakhir dari seluruh penabung.</p>
+      <div class="dash-tabel-bungkus" role="region" aria-labelledby="judul-terbaru" tabindex="0">
+        <table class="dash-tabel tabel-setor">
+          <caption class="sr-only">Daftar setoran terakhir beserta tombol penghapusan.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tanggal</th>
+              <th scope="col">Penabung</th>
+              <th scope="col">RT</th>
+              <th scope="col">Jenis</th>
+              <th scope="col">Berat</th>
+              <th scope="col">Saldo</th>
+              <th scope="col">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="badan-setor"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo" aria-label="Beranda BankSampahKu">
+          <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/>
+            <path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/>
+          </svg>
+          <span>BankSampahKu</span>
+        </a>
+        <p>Edukasi, pilah, dan kelola sampah bersama BankSampahKu.</p>
+      </div>
+
+      <div class="footer-links">
+        <h3>Navigasi Cepat</h3>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="memilah.html">Cara Memilah</a></li>
+          <li><a href="harga.html">Harga Sampah</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h3>Terhubung dengan Kami</h3>
+        <div class="social-icons">
+          <a href="tel:+6281234567890" class="social-btn" aria-label="Telepon BankSampahKu">
+            <i class="ti ti-phone" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:halo@banksampahku.id" class="social-btn" aria-label="Email BankSampahKu">
+            <i class="ti ti-mail" aria-hidden="true"></i>
+          </a>
+          <a href="kontak.html#peta-lokasi" class="social-btn" aria-label="Lokasi BankSampahKu">
+            <i class="ti ti-map-pin" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-wave" aria-hidden="true"></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/setoran.js"></script>
+</body>
+</html>
