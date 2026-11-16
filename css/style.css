@@ -658,15 +658,29 @@ a { color: var(--warna-hijau); }
   background: linear-gradient(180deg, var(--warna-latar) 0%, #f1f8e4 55%, var(--warna-hijau-muda) 100%);
   padding-block: clamp(2.75rem, 7vw, 5rem);
 }
-.hero-isi { display: grid; gap: .9rem; justify-items: start; }
+.hero-isi { display: grid; gap: 1.5rem; justify-items: start; align-items: center; }
+.hero-teks { display: grid; gap: .9rem; justify-items: start; }
+.hero-gambar { width: 100%; }
+.hero-gambar img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid var(--warna-garis);
+  box-shadow: 0 18px 40px rgb(20 83 45 / .14);
+}
+@media (min-width: 900px) {
+  .hero-isi { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 2.5rem; }
+}
 .hero-isi h1 {
   margin: 0;
-  font-size: clamp(2.1rem, 6.5vw, 4.25rem);
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -.035em;
 }
-.hero-isi > p {
+.hero-isi p {
   max-width: 34rem;
   margin: 0;
   color: var(--warna-teks-lembut);
@@ -1384,6 +1398,7 @@ a { color: var(--warna-hijau); }
 .auth-pesan { min-height: 1.4rem; font-size: var(--ukuran-teks-kecil); }
 .auth-pesan[data-keadaan="salah"] { color: var(--warna-merah); font-weight: 700; }
 .auth-pesan[data-keadaan="ok"] { color: var(--warna-hijau-tua); font-weight: 700; }
+.auth-pesan[data-keadaan="info"] { color: var(--warna-biru); font-weight: 700; }
 
 .auth-aksi { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
 .auth-aksi .tombol-ulang { display: inline-flex; align-items: center; text-decoration: none; }

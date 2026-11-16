@@ -18,6 +18,11 @@
       kotakPesan.dataset.keadaan = keadaan || "salah";
     }
 
+    var parameterAwal = new URLSearchParams(window.location.search);
+    if (parameterAwal.get("lanjut")) {
+      tampilkanPesan("Masuk terlebih dahulu untuk membuka halaman tersebut.", "info");
+    }
+
     Array.prototype.forEach.call(document.querySelectorAll(".demo-akun"), function (tombol) {
       tombol.addEventListener("click", function () {
         kolomUsername.value = tombol.dataset.username;
