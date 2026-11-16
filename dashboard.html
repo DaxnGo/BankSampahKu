@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ringkasan kinerja bank sampah: total sampah, jumlah penabung, saldo dibayarkan, target bulan ini, dan peringkat per RT. Seluruh angka masih data contoh.">
+  <title>Dashboard Bank Sampah | BankSampahKu</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="lewati" href="#konten">Lewati ke konten utama</a>
+
+  <header class="header-situs">
+    <div class="wadah header-isi">
+      <a class="logo" href="index.html"><span aria-hidden="true">🍃</span> BankSampahKu</a>
+      <nav aria-label="Navigasi utama">
+        <ul class="menu">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="memilah.html">Cara Memilah</a></li>
+          <li><a href="harga.html">Harga Sampah</a></li>
+          <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!--
+    CATATAN INTEGRASI DATA
+    Halaman ini statis (HTML + CSS saja, tanpa JavaScript). Seluruh angka di
+    bawah adalah DATA CONTOH untuk Oktober 2026 dan belum terhubung ke data
+    setoran nyata. Nanti, saat data nyata tersedia, isi tiap penanda
+    data-metric berikut dari sumber data (misalnya hasil ekspor pencatatan
+    setoran), tanpa mengubah struktur halaman.
+
+    Daftar seluruh nilai data-metric yang dipakai:
+    Ringkasan  : total-kg, jumlah-penabung, total-saldo, setoran-bulan-ini
+    Per jenis  : baris-plastik, kg-plastik, baris-kardus, kg-kardus,
+                 baris-kaleng, kg-kaleng, baris-kaca, kg-kaca
+    Target     : target-capaian, target-kg, persen-target
+    Per RT     : rt-03, rt-03-kg, rt-01, rt-01-kg, rt-05, rt-05-kg,
+                 rt-02, rt-02-kg, total-rt-kg
+    Setoran    : setoran-1, setoran-1-berat, setoran-2, setoran-2-berat,
+                 setoran-3, setoran-3-berat, setoran-4, setoran-4-berat,
+                 setoran-5, setoran-5-berat
+  -->
+  <main id="konten">
+    <section class="wadah bagian dash-kepala" aria-labelledby="judul-halaman">
+      <p class="dash-eyebrow">Ringkasan kinerja bank sampah</p>
+      <h1 id="judul-halaman">Dashboard Bank Sampah</h1>
+      <p class="dash-periode">Periode <time datetime="2026-10">Oktober 2026</time></p>
+      <p class="dash-contoh" role="note">
+        <span aria-hidden="true">!</span> Data contoh
+      </p>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-ringkasan">
+      <h2 id="judul-ringkasan">Ringkasan</h2>
+      <p class="bagian-pengantar">Angka gabungan seluruh pos, bukan perorangan.</p>
+
+      <ul class="langkah-daftar dash-kartu-grid">
+        <li class="langkah dash-kartu">
+          <p class="dash-label">Total sampah</p>
+          <p class="dash-angka"><span data-metric="total-kg">1.250</span> <span class="dash-satuan">kg</span></p>
+          <p class="dash-ket">Gabungan semua jenis sampah pada Oktober 2026.</p>
+        </li>
+        <li class="langkah dash-kartu">
+          <p class="dash-label">Jumlah penabung</p>
+          <p class="dash-angka"><span data-metric="jumlah-penabung">86</span> <span class="dash-satuan">penabung</span></p>
+          <p class="dash-ket">Penabung aktif yang tercatat bulan ini.</p>
+        </li>
+        <li class="langkah dash-kartu">
+          <p class="dash-label">Total saldo dibayarkan</p>
+          <p class="dash-angka"><span data-metric="total-saldo">Rp 2.710.000</span></p>
+          <p class="dash-ket">Hasil kali berat tiap jenis dengan harga contoh di halaman Harga Sampah.</p>
+        </li>
+        <li class="langkah dash-kartu">
+          <p class="dash-label">Setoran bulan ini</p>
+          <p class="dash-angka"><span data-metric="setoran-bulan-ini">310</span> <span class="dash-satuan">kg</span></p>
+          <p class="dash-ket">Sampah yang masuk sejak awal Oktober 2026.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-jenis">
+      <h2 id="judul-jenis">Sampah per Jenis</h2>
+      <p class="bagian-pengantar">Panjang batang menunjukkan berat, angkanya juga ditulis agar mudah dibaca tanpa melihat warna.</p>
+
+      <ul class="dash-batang-daftar">
+        <li class="dash-batang" data-metric="baris-plastik">
+          <p class="dash-batang-label">Plastik</p>
+          <p class="dash-batang-nilai"><span data-metric="kg-plastik">420</span> kg</p>
+          <meter class="dash-meter" value="420" max="500">420 kg dari 500 kg</meter>
+        </li>
+        <li class="dash-batang" data-metric="baris-kardus">
+          <p class="dash-batang-label">Kardus</p>
+          <p class="dash-batang-nilai"><span data-metric="kg-kardus">380</span> kg</p>
+          <meter class="dash-meter" value="380" max="500">380 kg dari 500 kg</meter>
+        </li>
+        <li class="dash-batang" data-metric="baris-kaleng">
+          <p class="dash-batang-label">Kaleng</p>
+          <p class="dash-batang-nilai"><span data-metric="kg-kaleng">150</span> kg</p>
+          <meter class="dash-meter" value="150" max="500">150 kg dari 500 kg</meter>
+        </li>
+        <li class="dash-batang" data-metric="baris-kaca">
+          <p class="dash-batang-label">Kaca</p>
+          <p class="dash-batang-nilai"><span data-metric="kg-kaca">300</span> kg</p>
+          <meter class="dash-meter" value="300" max="500">300 kg dari 500 kg</meter>
+        </li>
+      </ul>
+      <p class="dash-skala">Skala batang: 0 sampai 500 kg. Total keempat jenis: 1.250 kg.</p>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-target">
+      <h2 id="judul-target">Target Bulan Ini</h2>
+      <div class="dash-target">
+        <h3>Oktober 2026</h3>
+        <p class="dash-target-angka">
+          <span data-metric="target-capaian">310</span> kg dari
+          <span data-metric="target-kg">400</span> kg
+        </p>
+        <progress class="dash-progress" value="310" max="400">77,5% dari target</progress>
+        <p class="dash-persen"><span data-metric="persen-target">77,5%</span> dari target</p>
+      </div>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-rt">
+      <h2 id="judul-rt">Peringkat per RT</h2>
+      <div class="dash-tabel-bungkus" role="region" aria-labelledby="judul-rt" tabindex="0">
+        <table class="dash-tabel">
+          <caption>Total setoran tiap RT, Oktober 2026, diurutkan dari terbanyak.</caption>
+          <thead>
+            <tr>
+              <th scope="col">RT</th>
+              <th scope="col">Total (kg)</th>
+              <th scope="col">Batang</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-metric="rt-03">
+              <th scope="row">RT 03</th>
+              <td data-metric="rt-03-kg">410</td>
+              <td><meter class="dash-meter" value="410" max="500">410 kg dari 500 kg</meter></td>
+            </tr>
+            <tr data-metric="rt-01">
+              <th scope="row">RT 01</th>
+              <td data-metric="rt-01-kg">350</td>
+              <td><meter class="dash-meter" value="350" max="500">350 kg dari 500 kg</meter></td>
+            </tr>
+            <tr data-metric="rt-05">
+              <th scope="row">RT 05</th>
+              <td data-metric="rt-05-kg">290</td>
+              <td><meter class="dash-meter" value="290" max="500">290 kg dari 500 kg</meter></td>
+            </tr>
+            <tr data-metric="rt-02">
+              <th scope="row">RT 02</th>
+              <td data-metric="rt-02-kg">200</td>
+              <td><meter class="dash-meter" value="200" max="500">200 kg dari 500 kg</meter></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="dash-skala">Total seluruh RT: <span data-metric="total-rt-kg">1.250</span> kg. Skala batang sama, 0 sampai 500 kg.</p>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-setoran">
+      <h2 id="judul-setoran">Setoran Terbaru</h2>
+      <div class="dash-tabel-bungkus" role="region" aria-labelledby="judul-setoran" tabindex="0">
+        <table class="dash-tabel">
+          <caption>Lima setoran terakhir. Penabung hanya ditulis dengan inisial.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tanggal</th>
+              <th scope="col">Penabung</th>
+              <th scope="col">Jenis</th>
+              <th scope="col">Berat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-metric="setoran-1">
+              <td><time datetime="2026-10-12">12 Oktober 2026</time></td>
+              <td>S.A.</td>
+              <td>Plastik</td>
+              <td data-metric="setoran-1-berat">12,5 kg</td>
+            </tr>
+            <tr data-metric="setoran-2">
+              <td><time datetime="2026-10-11">11 Oktober 2026</time></td>
+              <td>R.M.</td>
+              <td>Kardus</td>
+              <td data-metric="setoran-2-berat">8 kg</td>
+            </tr>
+            <tr data-metric="setoran-3">
+              <td><time datetime="2026-10-10">10 Oktober 2026</time></td>
+              <td>N.P.</td>
+              <td>Kaleng</td>
+              <td data-metric="setoran-3-berat">4,5 kg</td>
+            </tr>
+            <tr data-metric="setoran-4">
+              <td><time datetime="2026-10-09">9 Oktober 2026</time></td>
+              <td>D.K.</td>
+              <td>Kaca</td>
+              <td data-metric="setoran-4-berat">6 kg</td>
+            </tr>
+            <tr data-metric="setoran-5">
+              <td><time datetime="2026-10-08">8 Oktober 2026</time></td>
+              <td>L.T.</td>
+              <td>Plastik</td>
+              <td data-metric="setoran-5-berat">9 kg</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="wadah bagian" aria-labelledby="judul-catatan">
+      <div class="tips dash-catatan" role="note">
+        <h2 id="judul-catatan" class="tips-judul">Catatan data</h2>
+        <p><strong>Data contoh, belum terhubung ke data setoran nyata.</strong> Semua angka di halaman ini dipakai untuk memperlihatkan susunan dashboard dan akan diganti dengan data pencatatan asli bank sampah pada tahap integrasi.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-situs">
+    <div class="wadah footer-isi">
+      <p class="footer-logo"><span aria-hidden="true">🍃</span> BankSampahKu</p>
+      <p>Edukasi, pilah, dan kelola sampah untuk lingkungan yang lebih baik.</p>
+      <p class="footer-catatan">Harga, alamat, dan kontak di situs ini masih berupa data contoh.</p>
+    </div>
+  </footer>
+</body>
+</html>

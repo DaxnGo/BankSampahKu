@@ -21,6 +21,7 @@ Demo GitHub Pages: belum tersedia. Tautan akan ditambahkan setelah file website 
 - **Beranda** (`index.html`): pengenalan singkat BankSampahKu.
 - **Cara Memilah** (`memilah.html`): panduan pemilahan sampah.
 - **Harga Sampah** (`harga.html`): informasi harga sampah.
+- **Dashboard** (`dashboard.html`): ringkasan kinerja bank sampah (total sampah, jumlah penabung, saldo dibayarkan, target bulan ini, peringkat per RT, dan setoran terbaru). Versi awal ini masih statis dan **memakai data contoh**; belum terhubung ke data setoran nyata.
 - **Kontak** (`kontak.html`): informasi kontak bank sampah.
 - Navigasi antarhalaman dan konten utama tetap tersedia tanpa JavaScript.
 
@@ -44,6 +45,7 @@ Demo GitHub Pages: belum tersedia. Tautan akan ditambahkan setelah file website 
 ├── index.html
 ├── memilah.html
 ├── harga.html
+├── dashboard.html
 ├── kontak.html
 ├── css/
 │   └── style.css
@@ -93,7 +95,7 @@ Nama anggota belum diberikan, jadi placeholder nama dipertahankan.
 | `kontak.html`, `js/kontak.js`, `img/`, `docs/` | Anggota 3 |
 | Bagian 4 (Kontak) dan 6 (Galeri) di `css/style.css` | Anggota 3 |
 
-Harga sampah, alamat, nomor telepon, dan jam buka pada website adalah data contoh sampai diverifikasi oleh tim. Cantumkan sumber dan izin penggunaan setiap gambar atau aset di folder `docs/`.
+Harga sampah, alamat, nomor telepon, dan jam buka pada website adalah data contoh sampai diverifikasi oleh tim. Halaman dashboard juga masih memakai data contoh sepenuhnya dan belum terhubung ke data setoran nyata; angkanya ditandai dengan atribut `data-metric` agar nanti mudah diisi dari sumber data asli. Cantumkan sumber dan izin penggunaan setiap gambar atau aset di folder `docs/`.
 
 ## Kontribusi
 

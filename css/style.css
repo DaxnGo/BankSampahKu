@@ -613,6 +613,10 @@ body {
   --warna-fokus: #1d4ed8;
   --radius: 16px;
   --font-dasar: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  /* Tambahan minimal untuk Dashboard (bagian 7). Proyek belum punya
+     variabel ukuran teks, jadi dua ukuran dipakai bersama di sana. */
+  --ukuran-angka: clamp(1.65rem, 5vw, 2.15rem);
+  --ukuran-kecil: 0.85rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -741,3 +745,273 @@ a { color: var(--warna-hijau); }
    6. GALERI - bonus (Anggota 3)
    ===================================================================== */
 /* (diisi Anggota 3) */
+
+/* =====================================================================
+   7. DASHBOARD
+   Halaman statis ringkasan kinerja. Semua angka adalah data contoh.
+   Warna dan ukuran teks memakai variabel :root; tidak ada nilai baru.
+   ===================================================================== */
+.dash-kepala {
+  padding-bottom: 0;
+}
+
+.dash-eyebrow {
+  margin: 0 0 .25rem;
+  font-size: var(--ukuran-kecil);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--warna-hijau);
+}
+
+.dash-periode {
+  margin: 0 0 .75rem;
+  color: var(--warna-teks-lembut);
+}
+
+.dash-contoh {
+  display: inline-block;
+  margin: 0;
+  padding: .25rem .9rem;
+  border: 2px dashed var(--warna-hijau-tua);
+  border-radius: 999px;
+  background: var(--warna-kuning);
+  color: var(--warna-hijau-tua);
+  font-size: var(--ukuran-kecil);
+  font-weight: 800;
+}
+
+/* --- Kartu ringkasan --- */
+.dash-kartu-grid {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.dash-kartu {
+  display: block;
+  border-left: 6px solid var(--warna-hijau);
+}
+
+.dash-label {
+  margin: 0;
+  font-weight: 700;
+  color: var(--warna-teks-lembut);
+}
+
+.dash-angka {
+  margin: .25rem 0 .35rem;
+  font-size: var(--ukuran-angka);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--warna-hijau-tua);
+}
+
+.dash-satuan {
+  font-size: var(--ukuran-kecil);
+  font-weight: 700;
+  color: var(--warna-teks-lembut);
+}
+
+.dash-ket {
+  margin: 0;
+  font-size: var(--ukuran-kecil);
+  color: var(--warna-teks-lembut);
+}
+
+/* --- Batang per jenis sampah --- */
+.dash-batang-daftar {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: .75rem;
+  margin-top: 1rem;
+}
+
+.dash-batang {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "label nilai"
+    "meter meter";
+  align-items: center;
+  gap: .35rem .75rem;
+  background: var(--warna-kartu);
+  border-radius: var(--radius);
+  padding: .75rem 1rem;
+}
+
+.dash-batang-label {
+  grid-area: label;
+  margin: 0;
+  font-weight: 700;
+}
+
+.dash-batang-nilai {
+  grid-area: nilai;
+  margin: 0;
+  font-weight: 800;
+  color: var(--warna-hijau-tua);
+  white-space: nowrap;
+}
+
+.dash-batang meter {
+  grid-area: meter;
+}
+
+.dash-skala {
+  margin: .5rem 0 0;
+  font-size: var(--ukuran-kecil);
+  color: var(--warna-teks-lembut);
+}
+
+/* --- Target bulan ini --- */
+.dash-target {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  background: var(--warna-hijau-muda);
+  border-radius: var(--radius);
+}
+
+.dash-target h3 {
+  margin-bottom: .25rem;
+}
+
+.dash-target-angka {
+  margin: 0 0 .6rem;
+  font-weight: 700;
+}
+
+.dash-persen {
+  margin: .5rem 0 0;
+  font-weight: 800;
+  color: var(--warna-hijau-tua);
+}
+
+/* --- Tabel peringkat RT dan setoran terbaru --- */
+.dash-tabel-bungkus {
+  margin-top: 1rem;
+  padding: .5rem;
+  background: var(--warna-kartu);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+
+.dash-tabel {
+  width: 100%;
+  min-width: 20rem;
+  border-collapse: collapse;
+}
+
+.dash-tabel caption {
+  padding: .5rem;
+  text-align: left;
+  font-weight: 700;
+  color: var(--warna-hijau-tua);
+}
+
+.dash-tabel th,
+.dash-tabel td {
+  padding: .5rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--warna-garis);
+}
+
+.dash-tabel thead th {
+  color: var(--warna-hijau-tua);
+}
+
+.dash-tabel tbody tr:last-child th,
+.dash-tabel tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.dash-tabel .dash-meter {
+  min-width: 7rem;
+}
+
+/* --- Catatan data --- */
+.dash-catatan {
+  align-items: flex-start;
+}
+
+.dash-catatan p {
+  margin: 0;
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+
+/* --- Meter dan progress (Chrome/Safari dan Firefox) --- */
+.dash-meter,
+.dash-progress {
+  display: block;
+  width: 100%;
+  height: 1.1rem;
+  border: 1px solid var(--warna-garis);
+  border-radius: 999px;
+  background: var(--warna-putih);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.dash-progress {
+  height: 1.35rem;
+}
+
+.dash-meter::-webkit-meter-bar {
+  background: var(--warna-putih);
+  border: 0;
+  border-radius: 999px;
+}
+
+.dash-meter::-webkit-meter-optimum-value,
+.dash-meter::-webkit-meter-suboptimum-value,
+.dash-meter::-webkit-meter-even-less-good-value {
+  background: var(--warna-hijau);
+  border-radius: 999px;
+}
+
+.dash-meter::-moz-meter-bar {
+  background: var(--warna-hijau);
+  border-radius: 999px;
+}
+
+.dash-progress::-webkit-progress-bar {
+  background: var(--warna-putih);
+  border-radius: 999px;
+}
+
+.dash-progress::-webkit-progress-value {
+  background: var(--warna-hijau);
+  border-radius: 999px;
+}
+
+.dash-progress::-moz-progress-bar {
+  background: var(--warna-hijau);
+  border-radius: 999px;
+}
+
+/* --- Responsif: 1 kolom di HP, 2 di tablet, 4 di layar lebar --- */
+@media (min-width: 768px) {
+  .dash-kartu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dash-batang {
+    grid-template-columns: 10rem 1fr 6rem;
+    grid-template-areas: "label meter nilai";
+  }
+
+  .dash-batang-nilai {
+    text-align: right;
+  }
+}
+
+@media (min-width: 1280px) {
+  .dash-kartu-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
