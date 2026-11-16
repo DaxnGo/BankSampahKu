@@ -1251,17 +1251,20 @@ a { color: var(--warna-hijau); }
 .home-judul-bagian h2, .home-jelajah-heading h2 { margin-bottom: .25rem; font-size: clamp(1.6rem, 2.4vw, 2.35rem); font-weight: 900; letter-spacing: -.04em; }
 .home-judul-bagian p, .home-jelajah-heading p { margin: 0; color: var(--warna-teks-lembut); font-size: 1.02rem; }
 .home-manfaat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.home-manfaat-kartu { display: grid; gap: .35rem; align-content: start; padding: 1.25rem 1.35rem; border-radius: 20px; background: linear-gradient(115deg, #fff8df, #fcf4df); }
-.home-manfaat-kartu h3 { margin: 0; font-size: clamp(1.15rem, 1.7vw, 1.55rem); font-weight: 900; line-height: 1.03; }
+.home-manfaat-kartu { display: grid; grid-template-columns: 5.25rem 1fr; gap: .85rem; align-items: center; padding: 1rem 1.1rem; border-radius: 20px; background: linear-gradient(115deg, #fff8df, #fcf4df); }
+.home-manfaat-ikon { display: grid; place-items: center; width: 5.1rem; height: 5.1rem; color: #49a827; border-right: 1px solid #dfd7ba; }
+.home-manfaat-ikon svg { width: 3.6rem; height: 3.6rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.home-manfaat-kartu h3 { margin: 0 0 .35rem; font-size: clamp(1.15rem, 1.7vw, 1.55rem); font-weight: 900; line-height: 1.03; }
 .home-manfaat-kartu p { margin: 0; color: #30332f; font-size: .9rem; line-height: 1.35; }
 
 .home-jelajah { padding-bottom: 3rem; }
 .home-jelajah-heading { margin-bottom: 1rem; }
 .home-jelajah-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 .home-jelajah-kartu { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: .3rem; min-height: 148px; overflow: hidden; padding: 1rem 1.1rem; border-radius: 18px; background: linear-gradient(135deg, #fff8e3, #f6ebce); color: var(--warna-hijau-tua); text-decoration: none; }
-.home-jelajah-kartu strong { font-size: 1.25rem; font-weight: 900; line-height: 1.05; }
-.home-jelajah-kartu small { color: #343833; font-size: .82rem; line-height: 1.18; }
+.home-jelajah-kartu strong { max-width: 62%; font-size: 1.25rem; font-weight: 900; line-height: 1.05; }
+.home-jelajah-kartu small { max-width: 62%; color: #343833; font-size: .82rem; line-height: 1.18; }
 .home-jelajah-panah { display: grid; place-items: center; width: 2rem; height: 1.5rem; margin-top: auto; padding-top: .1rem; border-radius: 999px; background: #ffd32e; color: #243c21; font-size: 1.15rem; line-height: 1; }
+.home-jelajah-ikon { position: absolute; right: .7rem; bottom: -.35rem; width: 5.2rem; height: 5.2rem; color: #4dbb25; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transform: rotate(-7deg); opacity: .95; }
 .home-jelajah-kartu:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgb(20 83 45 / .12); }
 
 @media (max-width: 800px) {
@@ -1270,4 +1273,6 @@ a { color: var(--warna-hijau); }
 
 @media (max-width: 520px) {
   .home-manfaat-grid, .home-jelajah-grid { grid-template-columns: 1fr; }
+  .home-manfaat-kartu { grid-template-columns: 4.5rem 1fr; }
+  .home-manfaat-ikon { width: 4.5rem; height: 4.5rem; }
 }
