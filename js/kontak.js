@@ -2,7 +2,7 @@
 // Tujuan : Validasi formulir kontak dan pembesar foto galeri.
 
 document.addEventListener("DOMContentLoaded", function () {
-  const contactForm = document.querySelector(".contact-form form") || document.querySelector("form");
+  const contactForm = document.getElementById("contactForm");
 
   if (contactForm) {
     const nameInput = contactForm.querySelector('input[type="text"]');
