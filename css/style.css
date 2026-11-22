@@ -754,6 +754,60 @@ a { color: var(--aksen-tua); }
 }
 .hero-isi .home-cta { margin-top: var(--sp-2); }
 
+/* Ilustrasi menjadi lapisan latar hero; teks tetap di depan. */
+.hero--beranda,
+.hero--ringkas,
+.contact-hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero-isi--ilustrasi,
+.contact-hero-isi { display: block; }
+.hero-isi--ilustrasi .hero-teks,
+.contact-hero-isi .contact-hero-teks {
+  position: relative;
+  z-index: 1;
+  width: 54%;
+  min-width: 0;
+}
+.hero-ilustrasi {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-ilustrasi picture { display: block; width: 100%; height: 100%; }
+.hero-ilustrasi img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+}
+.hero--beranda,
+.hero--ringkas,
+.contact-hero {
+  min-height: clamp(420px, 38vw, 500px);
+  padding-block: clamp(var(--sp-7), 5vw, var(--sp-8));
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  .hero-ilustrasi { top: auto; height: 320px; }
+}
+@media (max-width: 700px) {
+  .hero--beranda,
+  .hero--ringkas,
+  .contact-hero { display: block; min-height: 0; }
+  .hero--beranda,
+  .hero--ringkas,
+  .contact-hero { padding-bottom: 270px; }
+  .hero-isi--ilustrasi .hero-teks,
+  .contact-hero-isi .contact-hero-teks { width: 100%; }
+  .hero-ilustrasi { top: auto; height: 250px; }
+}
+
 /* =====================================================================
    2. HALAMAN MEMILAH (Anggota 2)
    ===================================================================== */
