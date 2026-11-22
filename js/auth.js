@@ -218,6 +218,22 @@
     if (judul) judul.textContent = (document.title || "").split(" | ")[0];
 
     var halamanIni = window.location.pathname.split("/").pop();
+    var halamanBerperan = document.body.dataset.halaman || "";
+    if (pengguna.peran === "petugas" && halamanBerperan.indexOf("akun:") === 0) {
+      var menuAkun = document.querySelectorAll(".sidebar-nav > .sidebar-item");
+      if (menuAkun.length >= 5) {
+        var ringkasan = menuAkun[0];
+        var setoran = menuAkun[1];
+        var buku = menuAkun[2];
+        ringkasan.setAttribute("href", "dashboard.html");
+        setoran.setAttribute("href", "setoran.html");
+        var ringkasanLabel = ringkasan.querySelector("span:last-child");
+        var setoranLabel = setoran.querySelector("span:last-child");
+        if (ringkasanLabel) ringkasanLabel.textContent = "Ringkasan";
+        if (setoranLabel) setoranLabel.textContent = "Input Setoran";
+        buku.remove();
+      }
+    }
     Array.prototype.forEach.call(document.querySelectorAll(".sidebar-item"), function (item) {
       item.removeAttribute("aria-current");
       if ((item.getAttribute("href") || "").split("#")[0] === halamanIni) {
@@ -278,6 +294,8 @@
         butuh("petugas", bagian[1]);
       } else if (bagian[0] === "warga" && bagian[1]) {
         butuh("warga", bagian[1]);
+      } else if (bagian[0] === "akun" && bagian[1]) {
+        butuh(null, bagian[1]);
       }
     }
     perbaruiNavigasi();

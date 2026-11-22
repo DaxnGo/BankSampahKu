@@ -1630,6 +1630,8 @@ body[data-halaman="login"] main {
   .tombol-hapus:hover { background: var(--bahaya-lembut); }
 }
 .tabel-setor { font-size: var(--teks-2); }
+.tabel-setor-bungkus { background: var(--permukaan); }
+.tabel-setor thead th { background: var(--permukaan-2); }
 
 .sapaan-warga {
   display: flex; align-items: center; gap: var(--sp-4);
