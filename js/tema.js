@@ -7,7 +7,7 @@
   "use strict";
 
   var KUNCI = "banksampahku.tema";
-  var META = { terang: "#F4F6F0", gelap: "#101c18" };
+  var META = { terang: "#FBF6EC", gelap: "#101c18" };
 
   function bacaPilihan() {
     try {

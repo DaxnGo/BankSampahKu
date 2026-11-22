@@ -38,7 +38,7 @@ Demo GitHub Pages: belum tersedia. Tautan akan ditambahkan setelah file website 
 - HTML untuk struktur halaman.
 - CSS untuk tampilan dan tata letak responsif.
 - JavaScript untuk fitur bonus.
-- Animasi memakai **GSAP 3.15.1** dan plugin **ScrollTrigger**, disimpan lokal di `vendor/gsap/` dan dijalankan oleh `js/animasi.js`. Animasi dilewati bila JavaScript mati atau pengguna mengaktifkan "kurangi gerak" (`prefers-reduced-motion`), sehingga konten tetap terbaca.
+- Animasi memakai **GSAP 3.15.1** dan plugin **ScrollTrigger**, disimpan lokal di `vendor/gsap/` dan dijalankan oleh `js/animasi.js`. Elemen muncul ulang tiap kali masuk layar, baik saat digulir naik maupun turun. Animasi dilewati bila JavaScript mati atau pengguna mengaktifkan "kurangi gerak" (`prefers-reduced-motion`), sehingga konten tetap terbaca.
 - Ikon dari **Tabler Icons 3.19.0** (webfont) yang disimpan lokal di `vendor/tabler-icons/`, dipakai dengan `<i class="ti ti-nama-ikon">`. Tidak memakai CDN sehingga tetap tampil saat offline. Lisensi MIT ada di `vendor/tabler-icons/LICENSE`. Ikon yang dipakai: `leaf`, `recycle`, `users`, `home`, `tag`, `phone`, `apple`, `bottle`, `battery`, `check`, `file-text`, `package`, `bolt`, `mail`, `map-pin`, dan `arrow-right`.
 
 ## Struktur folder

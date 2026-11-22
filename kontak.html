@@ -1,18 +1,30 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
   <meta name="theme-color" id="warna-tema" content="#FBF6EC">
-  <title>BankSampahKu - Kontak</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="vendor/tabler-icons/tabler-icons.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Alamat, jam operasional, telepon, WhatsApp, dan formulir pesan BankSampahKu di Manado.">
+  <title>Kontak | BankSampahKu</title>  <link rel="preload" href="assets/fonts/public-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/public-sans-700.woff2" as="font" type="font/woff2" crossorigin>
+    <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("banksampahku.tema");
+        if (t !== "gelap" && t !== "terang") {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "gelap" : "terang";
+        }
+        document.documentElement.setAttribute("data-tema", t);
+        var m = document.getElementById("warna-tema");
+        if (m) m.setAttribute("content", t === "gelap" ? "#101c18" : "#FBF6EC");
+      } catch (e) {}
+    })();
+  </script>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  
+  <a class="lewati" href="#konten">Lewati ke konten utama</a>
+
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand-logo" aria-label="Beranda BankSampahKu">
@@ -23,59 +35,85 @@
         <span>BankSampahKu</span>
       </a>
 
-      <nav class="main-nav" aria-label="Navigasi Utama">
+      <nav class="main-nav" id="menu-utama" aria-label="Navigasi Utama">
         <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="memilah.html">Cara Memilah</a></li>
-          <li><a href="harga.html">Harga Sampah</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="kontak.html" class="active" aria-current="page">Kontak</a></li>
-          <li><a href="login.html" data-nav-auth>Masuk</a></li>
+          <li><a href="index.html" class="menu-item"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M10 20v-6h4v6"/></svg><span>Beranda</span></a></li>
+          <li><a href="memilah.html" class="menu-item"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 8 4 13l3 5h6"/><path d="m17 8 3 5-3 5h-6"/><path d="M9 5h4l2 3m-4 11h4"/></svg><span>Cara Memilah</span></a></li>
+          <li><a href="harga.html" class="menu-item"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13 13 20a2 2 0 0 1-3 0l-7-7V4h9l7 7a2 2 0 0 1 0 2Z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg><span>Harga Sampah</span></a></li>
+          <li><a href="kontak.html" class="menu-item active" aria-current="page"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6-7-11a7 7 0 1 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Kontak</span></a></li>
         </ul>
       </nav>
+
+      <div class="header-kanan">
+        <div class="pengguna-wadah">
+          <a href="login.html" data-nav-auth class="pengguna-pil" aria-haspopup="true" aria-expanded="false" aria-controls="pengguna-dropdown">
+            <svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg><span class="pengguna-nama" data-teks-pengguna>Masuk</span>
+          </a>
+          <button type="button" class="pengguna-panah" aria-label="Buka menu akun" aria-expanded="false" aria-controls="pengguna-dropdown"><svg class="ikon ikon-panah-bawah" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="pengguna-dropdown" id="pengguna-dropdown" hidden>
+            <div class="pd-profil">
+              <span class="pd-avatar" data-avatar aria-hidden="true"></span>
+              <span class="pd-detail">
+                <strong data-nama-pengguna></strong>
+                <small data-peran-pengguna></small>
+                <span data-kode-pengguna></span>
+              </span>
+            </div>
+            <a href="dasbor-saya.html" class="pd-menu" data-menu-pengguna>Dashboard Saya</a>
+            <button type="button" class="pd-keluar" data-keluar>Keluar</button>
+          </div>
+        </div>
+        <button type="button" class="tombol-tema" aria-label="Gunakan mode gelap" aria-pressed="false" title="Mode gelap">
+          <svg class="ikon-bulan ikon ikon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+          <svg class="ikon-matahari ikon ikon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button type="button" class="nav-hamburger" aria-controls="menu-utama" aria-expanded="false" aria-label="Buka menu navigasi">
+          <svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="nav-hamburger-tutup" hidden><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="konten">
     <section class="contact-hero">
-      <img 
-        src="img/Header-Kontak.jpg" 
-        alt="Hubungi BankSampahKu - Punya pertanyaan, saran, atau ingin berkolaborasi? Kami siap mendengar dan membantu Anda." 
-        class="hero-banner-img">
+      <div class="container contact-hero-teks">
+        <h1>Hubungi BankSampahKu</h1>
+        <p>Punya pertanyaan, saran, atau ingin berkolaborasi? Tim kami siap mendengar dan membantu Anda.</p>
+      </div>
     </section>
     
     <section class="contact-info-section" aria-label="Informasi Kontak dan Jam Operasional">
       <div class="container contact-info-grid">
 
         <article class="info-card">
-          <div class="info-icon">
-            <img src="img/Icon-Alamat.png" alt="Ikon pin lokasi alamat BankSampahKu" width="46" height="46">
+          <div class="info-icon" aria-hidden="true">
+            <svg class=" ikon ikon-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6-7-11a7 7 0 1 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
           </div>
           <div class="info-content">
             <h2>Alamat</h2>
             <p>Jl. Sam Ratulangi No. 45, Kec. Wenang, Kota Manado, Sulawesi Utara</p>
-            <a class="contact-link">Lihat di Peta &rarr;</a>
+            <a class="contact-link" href="#peta-lokasi">Lihat di Peta &rarr;</a>
           </div>
         </article>
         
         <article class="info-card">
           <div class="info-icon" aria-hidden="true">
-            <img src="img/Icon-Telepon.png" alt="Ikon telepon dan WhatsApp BankSampahKu" width="46" height="46">
+            <svg class=" ikon ikon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
           </div>
           <div class="info-content">
             <h2>Telepon &amp; WhatsApp</h2>
             <p>
-              Telepon: <a class="contact-link">0812-3456-7890</a>
+              Telepon: <a class="contact-link" href="tel:+6281234567890">0812-3456-7890</a>
             </p>
             <p>
-              WhatsApp: <a target="_blank" rel="noopener noreferrer" class="contact-link wa-badge">Chat via wa.me</a>
+              WhatsApp: <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="contact-link wa-badge">Chat via wa.me</a>
             </p>
           </div>
         </article>
 
         <article class="info-card info-card-hours">
           <div class="info-icon" aria-hidden="true">
-            <img src="img/Icon-Kalender-Jam.png" alt="Ikon jam operasional BankSampahKu" width="46" height="46">
+            <svg class=" ikon ikon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
           </div>
           <div class="info-content">
             <h2>Jam Operasional</h2>
@@ -88,12 +126,12 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Senin – Jumat</td>
-                  <td>08.00 – 16.00 WITA</td>
+                  <td>Senin - Jumat</td>
+                  <td>08.00 - 16.00 WITA</td>
                 </tr>
                 <tr>
                   <td>Sabtu</td>
-                  <td>08.00 – 13.00 WITA</td>
+                  <td>08.00 - 13.00 WITA</td>
                 </tr>
                 <tr>
                   <td>Minggu &amp; Libur</td>
@@ -116,7 +154,7 @@
 
           <div class="form-layout">
             <div class="bin-illustration" aria-hidden="true">
-              <img src="img/Icon-Tempat-Sampah.png" alt="Ilustrasi tempat sampah daur ulang dengan logo BankSampahKu" width="110" height="auto">
+              <img src="img/Icon-Tempat-Sampah.png" alt="Ilustrasi tempat sampah daur ulang dengan logo BankSampahKu" width="110" height="110">
             </div>
 
             <form id="contactForm" class="contact-form" novalidate>
@@ -147,7 +185,7 @@
               <div class="form-submit-wrap">
                 <button type="submit" class="btn-submit">
                   <span>Kirim Pesan</span>
-                  <img src="img/Icon-Kirim.png" alt="Ikon tombol kirim pesan" width="24" height="24">
+                  <svg class=" ikon ikon-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg>
                 </button>
               </div>
 
@@ -160,12 +198,15 @@
 
           <div class="map-card" id="peta-lokasi">
             <div class="map-illustration">
-              <img
-                src="img/Peta-Kontak.jpg"
-                alt="Peta lokasi menuju pos utama BankSampahKu">
+              <picture>
+                <source type="image/webp" srcset="img/web/Peta-Kontak-800.webp 800w, img/web/Peta-Kontak-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 45vw">
+                <img src="img/web/Peta-Kontak-1600.webp"
+                alt="Peta lokasi menuju pos utama BankSampahKu" width="1600" height="679" loading="lazy" decoding="async">
+              </picture>
               <span class="map-badge">Peta Lokasi BankSampahKu</span>
             </div>
           </div>
+      </div>
     </section>
 
     <section class="gallery-section" aria-labelledby="judul-galeri">
@@ -177,32 +218,29 @@
 
         <div class="gallery-grid">
           <figure class="gallery-item">
-            <img
-              src="img/Pemilahan-Sampah.jpg"
-              alt="Petugas dan warga sedang memilah botol plastik berdasarkan jenisnya di pos BankSampahKu"
-              width="600"
-              height="400"
-              loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="img/web/Pemilahan-Sampah-800.webp 800w, img/web/Pemilahan-Sampah-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw">
+              <img src="img/web/Pemilahan-Sampah-1600.webp"
+              alt="Petugas dan warga sedang memilah botol plastik berdasarkan jenisnya di pos BankSampahKu" width="1600" height="1195" loading="lazy" decoding="async">
+            </picture>
             <figcaption>Pemilahan sampah plastik bersih bersama nasabah</figcaption>
           </figure>
 
           <figure class="gallery-item">
-            <img
-              src= "img/Penimbangan-Rutin.jpg"
-              alt="Proses penimbangan sampah kertas dan kardus menggunakan timbangan digital"
-              width="600"
-              height="400"
-              loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="img/web/Penimbangan-Rutin-800.webp 800w, img/web/Penimbangan-Rutin-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw">
+              <img src="img/web/Penimbangan-Rutin-1600.webp"
+              alt="Proses penimbangan sampah kertas dan kardus menggunakan timbangan digital" width="1600" height="1195" loading="lazy" decoding="async">
+            </picture>
             <figcaption>Penimbangan rutin setiap hari Sabtu pagi</figcaption>
           </figure>
 
           <figure class="gallery-item">
-            <img
-              src= "img/Edukasi-Sampah.jpg"
-              alt="Sesi sosialisasi pengelolaan sampah rumah tangga kepada masyarakat sekitar"
-              width="600"
-              height="400"
-              loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="img/web/Edukasi-Sampah-800.webp 800w, img/web/Edukasi-Sampah-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw">
+              <img src="img/web/Edukasi-Sampah-1600.webp"
+              alt="Sesi sosialisasi pengelolaan sampah rumah tangga kepada masyarakat sekitar" width="1600" height="1195" loading="lazy" decoding="async">
+            </picture>
             <figcaption>Edukasi pengelolaan sampah dari rumah</figcaption>
           </figure>
         </div>
@@ -211,9 +249,9 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand-logo">
+    <div class="container footer-utama">
+      <div class="footer-kolom footer-brand">
+        <a href="index.html" class="brand-logo" aria-label="Beranda BankSampahKu">
           <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true">
             <path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/>
             <path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/>
@@ -221,9 +259,14 @@
           <span>BankSampahKu</span>
         </a>
         <p>Edukasi, pilah, dan kelola sampah bersama BankSampahKu.</p>
+        <div class="social-icons">
+          <a href="tel:+6281234567890" class="social-btn" aria-label="Telepon BankSampahKu"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></a>
+          <a href="mailto:halo@banksampahku.id" class="social-btn" aria-label="Email BankSampahKu"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a href="kontak.html#peta-lokasi" class="social-btn" aria-label="Lokasi BankSampahKu"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6-7-11a7 7 0 1 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></a>
+        </div>
       </div>
 
-      <div class="footer-links">
+      <div class="footer-kolom footer-links">
         <h3>Navigasi Cepat</h3>
         <ul>
           <li><a href="index.html">Beranda</a></li>
@@ -233,26 +276,27 @@
         </ul>
       </div>
 
-      <div class="footer-social">
-        <h3>Terhubung dengan Kami</h3>
-        <div class="social-icons">
-          <a href="tel:+6281234567890" class="social-btn" aria-label="Telepon BankSampahKu">
-            <i class="ti ti-phone" aria-hidden="true"></i>
-          </a>
-          <a href="mailto:halo@banksampahku.id" class="social-btn" aria-label="Email BankSampahKu">
-            <i class="ti ti-mail" aria-hidden="true"></i>
-          </a>
-          <a href="kontak.html#peta-lokasi" class="social-btn" aria-label="Lokasi BankSampahKu">
-            <i class="ti ti-map-pin" aria-hidden="true"></i>
-          </a>
-        </div>
+      <div class="footer-kolom footer-hubungi">
+        <h3>Hubungi Kami</h3>
+        <ul>
+          <li><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><a href="tel:+6281234567890">0812-3456-7890</a></li>
+          <li><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:halo@banksampahku.id">halo@banksampahku.id</a></li>
+          <li><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6-7-11a7 7 0 1 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><a href="kontak.html#peta-lokasi">Jl. Sam Ratulangi No. 45, Kec. Wenang, Kota Manado, Sulawesi Utara</a></li>
+        </ul>
       </div>
 
-      <div class="footer-bins" aria-hidden="true">
-        <img src="img/Icon-Dekorasi-Tempat-Sampah.png" alt="Ilustrasi 3 tempat sampah daur ulang dengan logo BankSampahKu" width="110" height="auto">
+          </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 BankSampahKu. All rights reserved.</p>
+        <div class="footer-bottom-kanan">
+          <span>Kebijakan Privasi</span>
+          <span>Syarat &amp; Ketentuan</span>
+          
+        </div>
       </div>
     </div>
-    <div class="footer-wave" aria-hidden="true"></div>
   </footer>
 
   <script src="js/tema.js"></script>
@@ -262,5 +306,54 @@
   <script src="vendor/gsap/gsap.min.js"></script>
   <script src="vendor/gsap/ScrollTrigger.min.js"></script>
   <script src="js/animasi.js"></script>
+  
+  <dialog class="logout-dialog" id="logout-dialog" aria-labelledby="logout-judul">
+    <div class="logout-isi">
+      <span class="logout-ikon" aria-hidden="true"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></span>
+      <h2 id="logout-judul">Keluar dari akun?</h2>
+      <p>Apakah Anda yakin ingin keluar dari akun?</p>
+      <div class="logout-aksi">
+        <button type="button" class="logout-batal" data-logout-batal>Batal</button>
+        <button type="button" class="logout-konfirmasi" data-logout-konfirmasi>Keluar</button>
+      </div>
+    </div>
+  </dialog>
+
+
+  <!-- Login Modal -->
+  <div class="login-modal" id="login-modal" hidden>
+    <div class="login-modal-overlay" data-tutup-login></div>
+    <div class="login-modal-panel" role="dialog" aria-modal="true" aria-labelledby="login-modal-judul">
+      <button type="button" class="login-modal-tutup" id="tutup-login" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      <a href="index.html" class="brand-logo login-modal-brand" aria-label="Beranda BankSampahKu"><svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/><path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/></svg><span>BankSampahKu</span></a>
+      <h2 id="login-modal-judul">Selamat Datang Kembali</h2>
+      <p class="login-modal-pengantar">Masuk untuk mengelola setoran, saldo, dan aktivitas bank sampah Anda.</p>
+
+      <form id="form-login-modal" class="login-form" novalidate>
+        <div class="login-baris">
+          <label for="modal-username">Username atau Email</label>
+          <input type="text" id="modal-username" name="username" autocomplete="username" placeholder="petugas atau warga" required>
+        </div>
+        <div class="login-baris">
+          <label for="modal-password">Password</label>
+          <div class="login-password">
+            <input type="password" id="modal-password" name="password" autocomplete="current-password" placeholder="Masukkan kata sandi" required>
+            <button type="button" class="login-mata" data-lihat-password aria-label="Tampilkan kata sandi" aria-pressed="false" title="Tampilkan kata sandi"><svg class="login-mata-buka" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><svg class="login-mata-tutup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M3 3l18 18M10.6 6.2A10.6 10.6 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.3 4.1M6.2 6.2C3.6 8 2 12 2 12s3.5 7 10 7a10 10 0 0 0 4-.8"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+          </div>
+        </div>
+        <div id="pesan-login-modal" class="auth-pesan" role="alert" aria-live="assertive"></div>
+        <button type="submit" class="login-submit" id="login-modal-submit">
+          <span class="login-teks">Masuk</span>
+          <span class="login-spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+      <p class="login-modal-bantuan">Butuh akun contoh? Buka <a href="login.html">halaman masuk lengkap</a>.</p>
+    </div>
+  </div>
+
+  <script src="js/login-modal.js"></script>
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas">
+    <svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V5m-6 6 6-6 6 6"/></svg>
+  </button>
 </body>
 </html>

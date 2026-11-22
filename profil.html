@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" id="warna-tema" content="#FBF6EC">
+  <meta name="description" content="Informasi akun nasabah BankSampahKu.">
+  <title>Profil Saya | BankSampahKu</title>
+  <link rel="preload" href="assets/fonts/public-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/public-sans-700.woff2" as="font" type="font/woff2" crossorigin>
+    <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("banksampahku.tema");
+        if (t !== "gelap" && t !== "terang") {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "gelap" : "terang";
+        }
+        document.documentElement.setAttribute("data-tema", t);
+        var m = document.getElementById("warna-tema");
+        if (m) m.setAttribute("content", t === "gelap" ? "#101c18" : "#FBF6EC");
+      } catch (e) {}
+    })();
+  </script>
+  <script>
+    (function () {
+      var s = null;
+      try { s = localStorage.getItem("banksampahku.sesi.v1"); } catch (e) {}
+      if (!s) {
+        window.location.replace("login.html?lanjut=" + encodeURIComponent(location.pathname.split("/").pop()));
+      }
+    })();
+  </script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-halaman="profil" data-layout="dashboard">
+  <a class="lewati" href="#konten">Lewati ke konten utama</a>
+  <div class="app-shell">
+    <aside class="app-sidebar" id="sidebar-app" aria-label="Navigasi Dashboard">
+      <a href="index.html" class="brand-logo sidebar-brand" aria-label="Beranda BankSampahKu"><svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/>
+          <path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/>
+        </svg><span>BankSampahKu</span></a>
+      <nav class="sidebar-nav" aria-label="Menu Dashboard"><p class="sidebar-label">MENU UTAMA</p><a href="dasbor-saya.html" class="sidebar-item"><svg class="ikon ikon-layout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Ringkasan</span></a><a href="riwayat-setoran.html" class="sidebar-item"><svg class="ikon ikon-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg><span>Riwayat Setoran</span></a><a href="buku-tabungan.html" class="sidebar-item"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2Z"/><path d="M8 7h7m-7 4h7M8 15h5"/></svg><span>Buku Tabungan</span></a><a href="harga-sampah.html" class="sidebar-item"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13 13 20a2 2 0 0 1-3 0l-7-7V4h9l7 7a2 2 0 0 1 0 2Z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg><span>Harga Sampah</span></a><p class="sidebar-label">AKUN</p><a href="profil.html" class="sidebar-item" aria-current="page"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg><span>Profil Saya</span></a><a href="pengaturan.html" class="sidebar-item"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.1 2.1-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21h-3v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1L6.6 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H5v-3h.5a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9L6.6 7 8.7 5l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V4h3v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H22v3h-.5a1.7 1.7 0 0 0-1.5 1Z"/></svg><span>Pengaturan</span></a></nav>
+      <div class="sidebar-bawah">
+        <button type="button" class="sidebar-logout" data-keluar><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg><span>Keluar</span></button>
+      </div>
+    </aside>
+    <div class="app-utama">
+      <header class="app-header">
+        <button type="button" class="app-toggle" aria-controls="sidebar-app" aria-expanded="false" aria-label="Buka menu navigasi"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <div class="app-header-judul">
+          <p class="dash-eyebrow" data-header-sapaan>Ruang Nasabah</p>
+          <p class="app-judul" data-header-judul>Profil Saya</p>
+        </div>
+        <div class="app-header-kanan">
+          <div class="pengguna-wadah">
+            <button type="button" class="pengguna-pil" data-profil-trigger aria-expanded="false" aria-controls="pengguna-dropdown">
+            <svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg><span class="pengguna-nama" data-teks-pengguna>Masuk</span><svg class="ikon ikon-panah-bawah" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+            
+            <div class="pengguna-dropdown" id="pengguna-dropdown" hidden>
+              <div class="pd-profil">
+                <span class="pd-avatar" data-avatar aria-hidden="true"></span>
+                <span class="pd-detail">
+                  <strong data-nama-pengguna></strong>
+                  <small data-peran-pengguna></small>
+                  <span data-kode-pengguna></span>
+                </span>
+              </div>
+              <a href="dasbor-saya.html" class="pd-menu" data-menu-pengguna>Dashboard Saya</a>
+              <button type="button" class="pd-keluar" data-keluar>Keluar</button>
+            </div>
+          </div>
+          <button type="button" class="tombol-tema" aria-label="Gunakan mode gelap" aria-pressed="false" title="Mode gelap"><svg class="ikon-bulan ikon ikon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg><svg class="ikon-matahari ikon ikon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+        </div>
+      </header>
+  <main id="konten">
+<section class="wadah bagian" aria-labelledby="judul-profil-halaman">
+  <div class="hal-kepala"><div><h1 id="judul-profil-halaman">Profil Saya</h1><p class="bagian-pengantar">Informasi akun diambil dari data sesi Anda.</p></div></div>
+  <div class="profil-kartu">
+    <div class="profil-avatar" id="profil-avatar" aria-hidden="true"></div>
+    <div class="profil-detail">
+      <h2 id="profil-nama">Nama penabung</h2>
+      <p class="profil-peran" id="profil-peran"></p>
+      <dl class="profil-data" id="profil-data"></dl>
+      <p class="catatan-data">Profil bersifat tampilan saja belum tersedia fitur pengubahan data.</p>
+    </div>
+  </div>
+</section>
+  </main>
+  </div>
+</div>
+
+  <script src="js/tema.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/profil.js"></script>
+  <script src="vendor/gsap/gsap.min.js"></script>
+  <script src="vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="js/animasi.js"></script>
+  <dialog class="logout-dialog" id="logout-dialog" aria-labelledby="logout-judul"><div class="logout-isi"><span class="logout-ikon" aria-hidden="true"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></span><h2 id="logout-judul">Keluar dari akun?</h2><p>Apakah Anda yakin ingin keluar dari akun?</p><div class="logout-aksi"><button type="button" class="logout-batal" data-logout-batal>Batal</button><button type="button" class="logout-konfirmasi" data-logout-konfirmasi>Keluar</button></div></div></dialog>
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Kembali ke atas"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 20V5m-6 6 6-6 6 6"/></svg></button>
+</body>
+</html>
