@@ -92,7 +92,7 @@
           <div class="info-content">
             <h2>Alamat</h2>
             <p>Jl. Sam Ratulangi No. 45, Kec. Wenang, Kota Manado, Sulawesi Utara</p>
-            <a class="contact-link" href="https://www.google.com/maps/search/?api=1&amp;query=Jl.+Sam+Ratulangi+No.+45+Kec.+Wenang+Kota+Manado" target="_blank" rel="noopener noreferrer">Lihat di Peta &rarr;</a>
+            <a class="contact-link" href="#peta-lokasi">Lihat di Peta &rarr;</a>
           </div>
         </article>
         
@@ -142,6 +142,70 @@
           </div>
         </article>
 
+      </div>
+    </section>
+
+    <section class="contact-main-section">
+      <div class="container contact-main-grid">
+
+        <div class="form-card">
+          <h2>Kirim Pesan kepada Kami</h2>
+          <p class="form-subtitle">Sampaikan pertanyaan, masukan, atau kerja sama melalui formulir berikut.</p>
+
+          <div class="form-layout">
+            <div class="bin-illustration" aria-hidden="true">
+              <img src="img/Icon-Tempat-Sampah.png" alt="Ilustrasi tempat sampah daur ulang dengan logo BankSampahKu" width="110" height="110">
+            </div>
+
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-group">
+                <div class="form-row">
+                  <label for="nama">Nama <span class="required-mark">*</span></label>
+                  <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <span class="error-message" id="error-nama" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <div class="form-row">
+                  <label for="email">Email <span class="required-mark">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+                </div>
+                <span class="error-message" id="error-email" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <div class="form-row form-row-top">
+                  <label for="pesan">Pesan <span class="required-mark">*</span></label>
+                  <textarea id="pesan" name="pesan" rows="4" placeholder="Tulis pertanyaan atau pesan Anda di sini..." required></textarea>
+                </div>
+                <span class="error-message" id="error-pesan" role="alert"></span>
+              </div>
+
+              <div class="form-submit-wrap">
+                <button type="submit" class="btn-submit">
+                  <span>Kirim Pesan</span>
+                  <svg class=" ikon ikon-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg>
+                </button>
+              </div>
+
+              <div id="formSuccess" class="form-success" role="status" hidden>
+                Terima kasih! Pesan Anda berhasil dikirim dan akan segera kami balas.
+              </div>
+            </form>
+          </div>
+        </div>
+
+          <div class="map-card" id="peta-lokasi">
+            <div class="map-illustration">
+              <picture>
+                <source type="image/webp" srcset="img/web/Peta-Kontak-800.webp 800w, img/web/Peta-Kontak-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 45vw">
+                <img src="img/web/Peta-Kontak-1600.webp"
+                alt="Peta lokasi menuju pos utama BankSampahKu" width="1600" height="679" loading="lazy" decoding="async">
+              </picture>
+              <span class="map-badge">Peta Lokasi BankSampahKu</span>
+            </div>
+          </div>
       </div>
     </section>
 
@@ -198,7 +262,7 @@
         <div class="social-icons">
           <a href="tel:+6281234567890" class="social-btn" aria-label="Telepon BankSampahKu"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></a>
           <a href="mailto:halo@banksampahku.id" class="social-btn" aria-label="Email BankSampahKu"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=Jl.+Sam+Ratulangi+No.+45+Kec.+Wenang+Kota+Manado" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Lokasi BankSampahKu"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6-7-11a7 7 0 1 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></a>
+          <a href="kontak.html#peta-lokasi" class="social-btn" aria-label="Lokasi BankSampahKu"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6-7-11a7 7 0 1 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></a>
         </div>
       </div>
 
