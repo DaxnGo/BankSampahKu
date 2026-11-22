@@ -2004,7 +2004,11 @@ input, textarea, select { font-size: var(--teks-3); }
   transition: transform .2s ease;
 }
 .menu-item .ikon { display: none; }
-.menu-item.active { background: var(--forest); color: var(--di-atas-aksen); }
+.menu-item.active {
+  background: var(--forest);
+  color: var(--di-atas-aksen);
+  border-radius: var(--radius-pill);
+}
 .menu-item.active::after { display: none; }
 @media (hover: hover) and (pointer: fine) {
   .menu-item:not(.active):hover { color: var(--aksen-tua); }
@@ -2167,7 +2171,7 @@ html[data-tema="gelap"] .tombol-tema .ikon-matahari { display: block; }
   .main-nav { order: 3; display: none; width: 100%; margin: 0; }
   body.menu-terbuka .main-nav { display: block; }
   .main-nav ul { flex-direction: column; align-items: stretch; gap: var(--sp-1); padding-block: var(--sp-2); border-top: 1px solid var(--garis); }
-  .menu-item { border-radius: var(--radius-1); }
+  .menu-item:not(.active) { border-radius: var(--radius-1); }
   .nav-hamburger { display: inline-flex; }
   .pengguna-nama { display: none; }
   .pengguna-pil { padding: var(--sp-2); }
