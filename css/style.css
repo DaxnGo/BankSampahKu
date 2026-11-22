@@ -3315,8 +3315,9 @@ html[data-tema="gelap"] {
 .tabel-modern caption { padding-bottom: var(--sp-2); color: var(--teks-lembut); text-align: left; }
 .tabel-modern thead th {
   padding: 8px 12px;
+  background: var(--permukaan-2);
   border-bottom: 1px solid var(--garis);
-  color: var(--teks-lembut);
+  color: var(--aksen-tua);
   font-size: 10.5px;
   font-weight: 700;
   letter-spacing: .05em;
