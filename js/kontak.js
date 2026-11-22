@@ -2,7 +2,7 @@
 // Tujuan : Validasi formulir kontak dan pembesar foto galeri.
 
 document.addEventListener("DOMContentLoaded", function () {
-  const contactForm = document.querySelector(".contact-form form") || document.querySelector("form");
+  const contactForm = document.getElementById("contactForm");
 
   if (contactForm) {
     const nameInput = contactForm.querySelector('input[type="text"]');
@@ -19,23 +19,24 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
 
       const nama = nameInput ? nameInput.value.trim() : "";
-      const kontak = emailInput ? emailInput.value.trim() : "";
       const pesan = messageInput ? messageInput.value.trim() : "";
+      if (emailInput) emailInput.value = emailInput.value.trim();
 
       tulis(errorNama, nama ? "" : "Nama wajib diisi.");
-      tulis(errorEmail, kontak ? "" : "Email atau kontak wajib diisi.");
+      const emailValid = emailInput && emailInput.checkValidity();
+      tulis(errorEmail, emailValid ? "" : "Masukkan alamat email yang valid.");
       tulis(errorPesan, pesan ? "" : "Pesan wajib diisi.");
 
-      if (!nama || !kontak || !pesan) {
+      if (!nama || !emailValid || !pesan) {
         if (sukses) sukses.hidden = true;
         if (!nama && nameInput) nameInput.focus();
-        else if (!kontak && emailInput) emailInput.focus();
+        else if (!emailValid && emailInput) emailInput.focus();
         else if (messageInput) messageInput.focus();
         return;
       }
 
       if (sukses) {
-        sukses.textContent = "Terima kasih, " + nama + "! Pesan Anda telah terkirim ke Pos Utama BankSampahKu. Tim kami akan segera menghubungi Anda.";
+        sukses.textContent = "Simulasi berhasil: isian valid, tetapi pesan tidak dikirim karena belum ada layanan pengirim.";
         sukses.hidden = false;
       }
       contactForm.reset();

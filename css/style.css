@@ -295,12 +295,14 @@ button, input, select, textarea { font: inherit; }
 
 .info-card {
   min-width: 0;
-  background-color: var(--permukaan-2);
+  background-color: var(--permukaan);
+  border: 1px solid var(--garis);
   border-radius: var(--radius-kartu);
   padding: var(--sp-5);
   display: flex;
   align-items: flex-start;
   gap: var(--sp-4);
+  box-shadow: var(--bayangan-1);
 }
 
 .info-icon {
@@ -400,9 +402,11 @@ button, input, select, textarea { font: inherit; }
 }
 
 .form-card {
-  background-color: var(--permukaan-2);
+  background-color: var(--permukaan);
+  border: 1px solid var(--garis);
   border-radius: var(--radius-kartu);
   padding: var(--sp-6);
+  box-shadow: var(--bayangan-1);
 }
 
 .form-card h2 {
@@ -551,11 +555,13 @@ button, input, select, textarea { font: inherit; }
 }
 
 .map-card {
-  background-color: var(--permukaan-2);
+  background-color: var(--permukaan);
+  border: 1px solid var(--garis);
   border-radius: var(--radius-kartu);
   padding: 0;
   overflow: hidden;
   display: flex;
+  box-shadow: var(--bayangan-1);
 }
 
 .map-illustration {
@@ -822,7 +828,7 @@ a { color: var(--aksen-tua); }
 .langkah-daftar { list-style: none; padding: 0; display: grid; gap: var(--sp-4); grid-template-columns: 1fr; }
 .langkah {
   display: flex; gap: var(--sp-3); align-items: flex-start;
-  background: var(--permukaan-2); border-radius: var(--radius-kartu); padding: var(--sp-4) var(--sp-5);
+  background: var(--permukaan); border: 1px solid var(--garis); border-radius: var(--radius-kartu); padding: var(--sp-4) var(--sp-5); box-shadow: var(--bayangan-1);
 }
 .langkah h3 { margin-bottom: var(--sp-1); }
 .langkah p { margin: 0; }
@@ -835,10 +841,12 @@ a { color: var(--aksen-tua); }
 .kartu-kategori {
   --warna-kategori: var(--aksen);
   --warna-kategori-muda: var(--aksen-lembut);
-  background: var(--permukaan-2);
+  background: var(--permukaan);
   border-radius: var(--radius-kartu);
+  border: 1px solid var(--garis);
   border-top: 6px solid var(--warna-kategori);
   padding: var(--sp-5);
+  box-shadow: var(--bayangan-1);
 }
 .kartu-kategori h3 { color: var(--warna-kategori); }
 .kartu-kategori h4 {
@@ -1436,27 +1444,26 @@ a { color: var(--aksen-tua); }
   .home-cta { width: 100%; }
 }
 
-.home-manfaat { padding-block: var(--sp-5) var(--sp-7); }
-.home-judul-bagian { margin-bottom: var(--sp-5); text-align: center; }
-.home-judul-bagian h2, .home-jelajah-heading h2 { margin-bottom: var(--sp-1); font-size: var(--teks-5); font-weight: 700; letter-spacing: -.01em; }
+.home-manfaat { padding-block: var(--sp-8); }
+.home-judul-bagian, .home-jelajah-heading { max-width: 44rem; margin: 0 auto var(--sp-7); text-align: center; }
+.home-judul-bagian h2, .home-jelajah-heading h2 { margin-bottom: var(--sp-2); font-size: var(--teks-5); font-weight: 700; letter-spacing: -.02em; text-wrap: balance; }
 .home-judul-bagian p, .home-jelajah-heading p { margin: 0; color: var(--teks-lembut); font-size: var(--teks-3); }
-.home-manfaat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); }
-.home-manfaat-kartu { display: grid; grid-template-columns: 5.25rem 1fr; gap: var(--sp-3); align-items: center; padding: var(--sp-4) var(--sp-4); border-radius: var(--radius-kartu); background: var(--permukaan-2); }
-.home-manfaat-ikon { display: grid; place-items: center; width: 5.1rem; height: 5.1rem; color: var(--aksen);  }
-.home-manfaat-ikon .ikon { font-size: var(--ikon-stat); line-height: var(--lh-rapat); }
-.home-manfaat-kartu h3 { margin: 0 0 var(--sp-1); font-size: var(--teks-3); font-weight: 700; line-height: var(--lh-rapat); }
-.home-manfaat-kartu p { margin: 0; color: var(--teks-lembut); font-size: var(--teks-2); line-height: var(--lh-judul); }
+.home-manfaat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-4); }
+.home-manfaat-kartu { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-5); min-height: 215px; padding: var(--sp-6); border: 1px solid var(--garis); border-radius: var(--radius-kartu); background: var(--permukaan); box-shadow: var(--bayangan-1); }
+.home-manfaat-ikon { display: grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: var(--radius-3); background: var(--aksen-lembut); color: var(--aksen-tua); }
+.home-manfaat-ikon .ikon { font-size: 1.875rem; }
+.home-manfaat-kartu h3 { margin: 0 0 var(--sp-2); font-size: var(--teks-4); font-weight: 700; line-height: var(--lh-judul); }
+.home-manfaat-kartu p { margin: 0; color: var(--teks-lembut); font-size: var(--teks-2); line-height: var(--lh-teks); }
 
 .home-jelajah { padding-bottom: var(--sp-8); }
-.home-jelajah-heading { margin-bottom: var(--sp-4); text-align: center; }
-.home-jelajah-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); }
-.home-jelajah-kartu { transition: transform var(--motion-kartu) var(--ease-motion), box-shadow var(--motion-kartu) var(--ease-motion); position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-1); min-height: 148px; overflow: hidden; padding: var(--sp-4) var(--sp-4); border-radius: var(--radius-kartu); background: var(--permukaan-2); color: var(--aksen-tua); text-decoration: none; }
-.home-jelajah-kartu strong { max-width: 62%; font-size: var(--teks-4); font-weight: 700; line-height: var(--lh-rapat); }
-.home-jelajah-kartu small { max-width: 62%; color: var(--teks-lembut); font-size: var(--teks-1); line-height: var(--lh-rapat); }
-.home-jelajah-panah { display: grid; place-items: center; width: 2rem; height: 1.5rem; margin-top: auto; border-radius: var(--radius-pill); background: var(--sorot); color: var(--sorot-teks); font-size: var(--teks-3); line-height: var(--lh-rapat); }
-.home-jelajah-ikon { position: absolute; right: .7rem; bottom: -.35rem; color: var(--aksen); font-size: var(--ikon-stat); line-height: var(--lh-rapat); transform: rotate(-7deg); opacity: .95; }
+.home-jelajah-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-4); }
+.home-jelajah-kartu { transition: box-shadow var(--motion-kartu) var(--ease-motion), border-color var(--motion-kartu); position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-2); min-height: 216px; padding: var(--sp-6); border: 1px solid var(--garis); border-radius: var(--radius-kartu); background: var(--permukaan); color: var(--aksen-tua); box-shadow: var(--bayangan-1); text-decoration: none; }
+.home-jelajah-kartu strong { max-width: 100%; padding-right: 3.25rem; font-size: var(--teks-4); font-weight: 700; line-height: var(--lh-judul); }
+.home-jelajah-kartu small { max-width: 100%; color: var(--teks-lembut); font-size: var(--teks-2); line-height: var(--lh-teks); }
+.home-jelajah-kartu .home-jelajah-panah { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; margin-top: auto; padding: var(--sp-2); border-radius: var(--radius-pill); background: var(--sorot); color: var(--sorot-teks); }
+.home-jelajah-kartu .home-jelajah-ikon { position: absolute; top: var(--sp-5); right: var(--sp-5); padding: var(--sp-2); width: 2.75rem; height: 2.75rem; border-radius: var(--radius-3); background: var(--aksen-lembut); color: var(--aksen-tua); }
 @media (hover: hover) and (pointer: fine) {
-  .home-jelajah-kartu:hover { transform: translateY(-3px); box-shadow: var(--bayangan-2); }
+  .home-jelajah-kartu:hover { border-color: var(--aksen); box-shadow: var(--bayangan-2); }
 }
 
 @media (max-width: 900px) {
@@ -1465,8 +1472,10 @@ a { color: var(--aksen-tua); }
 
 @media (max-width: 600px) {
   .home-manfaat-grid, .home-jelajah-grid { grid-template-columns: 1fr; }
-  .home-manfaat-kartu { grid-template-columns: 4.5rem 1fr; }
-  .home-manfaat-ikon { width: 4.5rem; height: 4.5rem; }
+  .home-judul-bagian, .home-jelajah-heading { margin-bottom: var(--sp-6); }
+  .home-manfaat-kartu { min-height: 0; flex-direction: row; align-items: flex-start; gap: var(--sp-4); padding: var(--sp-5); }
+  .home-manfaat-ikon { flex: none; }
+  .home-jelajah-kartu { min-height: 168px; }
 }
 
 /* =====================================================================
@@ -1673,106 +1682,13 @@ input, textarea, select { font-size: var(--teks-3); }
 }
 
 /* =====================================================================
-   BERANDA: buku tabungan dan stempel status (prototipe Gerbang 2)
+   BERANDA: pengantar buku tabungan demo
    ===================================================================== */
-.buku-bagian { padding-block: var(--sp-5) var(--sp-8); }
-.buku-kepala { margin-bottom: var(--sp-5); }
+.buku-bagian { padding-block: var(--sp-5) var(--sp-7); }
+.buku-kepala { margin-bottom: var(--sp-3); }
 .buku-kepala h2 { margin-bottom: var(--sp-1); }
-.buku-kolom {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr);
-  gap: var(--sp-5);
-  align-items: start;
-}
-.buku-kartu {
-  display: grid;
-  grid-template-columns: 3.5rem minmax(0, 1fr);
-  overflow: hidden;
-  border: 1px solid var(--garis);
-  border-radius: var(--radius-kartu);
-  background: var(--permukaan);
-  box-shadow: var(--bayangan-1);
-}
-.buku-punggung {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-4);
-  padding: var(--sp-4) var(--sp-2);
-  background: var(--aksen-tua);
-  color: var(--di-atas-aksen);
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: var(--teks-1);
-  font-weight: 700;
-  letter-spacing: .08em;
-}
-.buku-isi { min-width: 0; padding: var(--sp-5); }
-.buku-ringkasan {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-4);
-  margin: 0 0 var(--sp-5);
-}
-.buku-ringkasan dt { color: var(--teks-lembut); font-size: var(--teks-1); }
-.buku-ringkasan dd {
-  margin: var(--sp-1) 0 0;
-  color: var(--aksen-tua);
-  font-size: var(--teks-4);
-  font-weight: 700;
-}
-.buku-tabel { width: 100%; border-collapse: collapse; font-size: var(--teks-2); }
-.buku-tabel caption { padding-bottom: var(--sp-2); text-align: left; font-weight: 700; }
-.buku-tabel th, .buku-tabel td {
-  padding: var(--sp-2) var(--sp-1);
-  text-align: left;
-  border-bottom: 1px solid var(--garis);
-}
-.buku-tabel th { color: var(--teks-lembut); font-weight: 700; }
-.buku-status {
-  padding: var(--sp-5);
-  border: 1px solid var(--garis);
-  border-radius: var(--radius-kartu);
-  background: var(--permukaan-2);
-}
-.stempel-status {
-  width: 8.5rem;
-  height: 8.5rem;
-  margin: 0 auto var(--sp-3);
-  color: var(--aksen);
-  transform: rotate(-8deg);
-}
-.stempel-status svg { display: block; width: 100%; height: 100%; }
-.stempel-status text { fill: currentColor; }
-.buku-status h3 { text-align: center; font-size: var(--teks-4); }
-.buku-status > p { color: var(--teks-lembut); font-size: var(--teks-2); }
-.buku-status-daftar {
-  display: grid;
-  gap: var(--sp-2);
-  margin: 0 0 var(--sp-4);
-  padding: 0;
-  list-style: none;
-  font-size: var(--teks-2);
-}
-.buku-status-daftar li { display: flex; align-items: flex-start; gap: var(--sp-2); }
-.buku-status-daftar .ikon { margin-top: var(--sp-1); color: var(--aksen); }
-.buku-tautan {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-@media (max-width: 900px) {
-  .buku-kolom { grid-template-columns: 1fr; }
-}
-@media (max-width: 600px) {
-  .buku-kartu { grid-template-columns: 2.5rem minmax(0, 1fr); }
-  .buku-isi { padding: var(--sp-4); }
-  .buku-ringkasan { grid-template-columns: 1fr; gap: var(--sp-3); }
-  .buku-ringkasan dd { font-size: var(--teks-3); }
-}
+.buku-kepala .bagian-pengantar { max-width: 70ch; }
+.buku-tautan { display: inline-flex; align-items: center; gap: var(--sp-2); font-weight: 700; text-decoration: none; }
 
 /* =====================================================================
    GRAFIK SVG buatan sendiri (Gerbang 4)
@@ -2299,6 +2215,7 @@ html[data-tema="gelap"] .tombol-tema .ikon-matahari { display: block; }
 .footer-links a:hover, .footer-hubungi a:hover { color: var(--footer-teks); text-decoration: underline; }
 .footer-links a.active-link { color: var(--sage); font-weight: 700; }
 .footer-hubungi li { display: flex; align-items: flex-start; gap: var(--sp-2); }
+.footer-hubungi p { margin: 0; color: var(--footer-lembut); font-size: var(--teks-2); }
 .footer-hubungi .ikon { flex: none; margin-top: 2px; color: var(--sage); font-size: var(--teks-2); }
 .footer-bottom { border-top: 1px solid rgb(255 255 255 / .14); padding-block: var(--sp-4); }
 .footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); flex-wrap: wrap; }
