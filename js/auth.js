@@ -229,8 +229,12 @@
         setoran.setAttribute("href", "setoran.html");
         var ringkasanLabel = ringkasan.querySelector("span:last-child");
         var setoranLabel = setoran.querySelector("span:last-child");
+        var setoranIkon = setoran.querySelector("svg");
         if (ringkasanLabel) ringkasanLabel.textContent = "Ringkasan";
         if (setoranLabel) setoranLabel.textContent = "Input Setoran";
+        if (setoranIkon) {
+          setoranIkon.innerHTML = '<path d="m12 3 9 5v8l-9 5-9-5V8l9-5Z"/><path d="m3 8 9 5 9-5m-9 5v8"/>';
+        }
         buku.remove();
       }
     }
@@ -304,6 +308,7 @@
     initKeAtas();
     initDashboard();
     initLogoutDialog();
+    if (document.body) document.body.setAttribute("data-auth-siap", "true");
   }
 
   window.BankAuth = {

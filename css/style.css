@@ -2265,6 +2265,7 @@ html[data-tema="gelap"] .tombol-tema .ikon-matahari { display: block; }
    PUBLIC / PRIVATE LAYOUT — dashboard shell, login, logout dialog
    ===================================================================== */
 .app-shell { display: grid; grid-template-columns: 256px minmax(0, 1fr); min-height: 100vh; }
+body[data-layout="dashboard"]:not([data-auth-siap]) .app-sidebar { visibility: hidden; }
 .app-sidebar {
   position: fixed;
   left: 0;
