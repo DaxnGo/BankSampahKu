@@ -1,11 +1,13 @@
 // File   : js/tema.js
 // Tujuan : Tombol mode gelap/terang yang tersimpan di browser.
-// Catatan: Mengikuti preferensi sistem bila belum ada pilihan tersimpan.
+// Catatan: Tombol ditulis statis di HTML; skrip ini hanya mengikat perilakunya.
+//          Tanpa JS tombol tetap tampil, tetapi tidak berfungsi.
 
 (function () {
   "use strict";
 
   var KUNCI = "banksampahku.tema";
+  var META = { terang: "#F4F6F0", gelap: "#101c18" };
 
   function bacaPilihan() {
     try {
@@ -23,39 +25,54 @@
     }
   }
 
-  function terapkan(tema) {
-    var gelap = tema === "gelap";
-    document.documentElement.setAttribute("data-tema", gelap ? "gelap" : "terang");
-    var metaWarna = document.getElementById("warna-tema");
-    if (metaWarna) metaWarna.setAttribute("content", gelap ? "#111A12" : "#FBF6EC");
-    var tombol = document.querySelector(".tombol-tema");
-    if (!tombol) return;
-    tombol.innerHTML = '<i class="ti ' + (gelap ? "ti-sun" : "ti-moon") + '" aria-hidden="true"></i>';
-    tombol.setAttribute("aria-label", gelap ? "Gunakan mode terang" : "Gunakan mode gelap");
-    tombol.setAttribute("aria-pressed", gelap ? "true" : "false");
-    tombol.title = gelap ? "Mode terang" : "Mode gelap";
+  function tombolTema() {
+    return document.querySelectorAll(".tombol-tema");
   }
 
-  var sistemGelap = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  terapkan(bacaPilihan() || (sistemGelap ? "gelap" : "terang"));
+  function terapkan(tema) {
+    var gelap = tema === "gelap";
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var nav = document.querySelector(".main-nav ul");
-    if (!nav) return;
+    document.documentElement.setAttribute("data-tema", gelap ? "gelap" : "terang");
 
-    var item = document.createElement("li");
-    var tombol = document.createElement("button");
-    tombol.type = "button";
-    tombol.className = "tombol-tema";
-    item.appendChild(tombol);
-    nav.appendChild(item);
+    var metaWarna = document.getElementById("warna-tema");
+    if (metaWarna) metaWarna.setAttribute("content", gelap ? META.gelap : META.terang);
 
-    tombol.addEventListener("click", function () {
-      var berikut = document.documentElement.getAttribute("data-tema") === "gelap" ? "terang" : "gelap";
-      terapkan(berikut);
-      simpanPilihan(berikut);
+    Array.prototype.forEach.call(tombolTema(), function (tombol) {
+      // Ikon bulan/matahari di dalam tombol diatur oleh CSS dari data-tema.
+      tombol.setAttribute("aria-label", gelap ? "Gunakan mode terang" : "Gunakan mode gelap");
+      tombol.setAttribute("aria-pressed", gelap ? "true" : "false");
+      tombol.title = gelap ? "Mode terang" : "Mode gelap";
     });
+  }
 
+  function temaAwal() {
+    var tersimpan = bacaPilihan();
+    if (tersimpan === "gelap" || tersimpan === "terang") return tersimpan;
+    var sistemGelap =
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return sistemGelap ? "gelap" : "terang";
+  }
+
+  function ganti() {
+    var berikut =
+      document.documentElement.getAttribute("data-tema") === "gelap" ? "terang" : "gelap";
+    terapkan(berikut);
+    simpanPilihan(berikut);
+  }
+
+  terapkan(temaAwal());
+
+  function init() {
+    Array.prototype.forEach.call(tombolTema(), function (tombol) {
+      tombol.addEventListener("click", ganti);
+    });
+    // Sinkronkan label/ikon dengan tema yang sedang aktif.
     terapkan(document.documentElement.getAttribute("data-tema") || "terang");
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();

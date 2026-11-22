@@ -1,286 +1,389 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
-  <meta name="theme-color" id="warna-tema" content="#FBF6EC">
+  <meta name="theme-color" id="warna-tema" content="#F4F6F2">
   <meta name="description" content="Ringkasan kinerja bank sampah: total sampah, jumlah penabung, saldo dibayarkan, target bulan ini, dan peringkat per RT. Seluruh angka masih data contoh.">
   <title>Dashboard Bank Sampah | BankSampahKu</title>
-  <link rel="stylesheet" href="vendor/tabler-icons/tabler-icons.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="assets/fonts/public-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/public-sans-700.woff2" as="font" type="font/woff2" crossorigin>
+    <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("banksampahku.tema");
+        if (t !== "gelap" && t !== "terang") {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "gelap" : "terang";
+        }
+        document.documentElement.setAttribute("data-tema", t);
+        var m = document.getElementById("warna-tema");
+        if (m) m.setAttribute("content", t === "gelap" ? "#101c18" : "#F4F6F0");
+      } catch (e) {}
+    })();
+  </script>
+  <script>
+    (function () {
+      var s = null;
+      try { s = localStorage.getItem("banksampahku.sesi.v1"); } catch (e) {}
+      if (!s) {
+        window.location.replace("login.html?lanjut=" + encodeURIComponent(location.pathname.split("/").pop()));
+      }
+    })();
+  </script>
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-halaman="petugas:dashboard.html" data-layout="dashboard">
   <a class="lewati" href="#konten">Lewati ke konten utama</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand-logo" aria-label="Beranda BankSampahKu">
-        <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+  <div class="app-shell">
+    <aside class="app-sidebar" id="sidebar-app" aria-label="Navigasi Dashboard">
+      <a href="index.html" class="brand-logo sidebar-brand" aria-label="Beranda BankSampahKu"><svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true">
           <path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/>
           <path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/>
-        </svg>
-        <span>BankSampahKu</span>
-      </a>
+        </svg><span>BankSampahKu</span></a>
+      <nav class="sidebar-nav" aria-label="Menu Dashboard"><p class="sidebar-label">MENU UTAMA</p><a href="dashboard.html" class="sidebar-item" aria-current="page"><svg class="ikon ikon-layout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Ringkasan</span></a><a href="setoran.html" class="sidebar-item"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Z"/><path d="m3 8 9 5 9-5m-9 5v8"/></svg><span>Input Setoran</span></a><a href="harga-sampah.html" class="sidebar-item"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13 13 20a2 2 0 0 1-3 0l-7-7V4h9l7 7a2 2 0 0 1 0 2Z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg><span>Harga Sampah</span></a><p class="sidebar-label">AKUN</p><a href="profil.html" class="sidebar-item"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg><span>Profil Saya</span></a><a href="pengaturan.html" class="sidebar-item"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.1 2.1-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21h-3v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1L6.6 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H5v-3h.5a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9L6.6 7 8.7 5l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V4h3v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H22v3h-.5a1.7 1.7 0 0 0-1.5 1Z"/></svg><span>Pengaturan</span></a></nav>
+      <div class="sidebar-bawah">
+        <button type="button" class="sidebar-logout" data-keluar><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg><span>Keluar</span></button>
+      </div>
+    </aside>
+    <div class="app-utama">
+      <header class="app-header">
+        <button type="button" class="app-toggle" aria-controls="sidebar-app" aria-expanded="false" aria-label="Buka menu navigasi"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <div class="app-header-judul">
+          <p class="dash-eyebrow" data-header-sapaan>Ruang Petugas</p>
+          <p class="app-judul" data-header-judul>Dashboard Bank Sampah</p>
+        </div>
+        <div class="app-header-kanan">
+          <div class="pengguna-wadah">
+            <button type="button" class="pengguna-pil" data-profil-trigger aria-expanded="false" aria-controls="pengguna-dropdown">
+            <svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg><span class="pengguna-nama" data-teks-pengguna>Masuk</span><svg class="ikon ikon-panah-bawah" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+            
+            <div class="pengguna-dropdown" id="pengguna-dropdown" hidden>
+              <div class="pd-profil">
+                <span class="pd-avatar" data-avatar aria-hidden="true"></span>
+                <span class="pd-detail">
+                  <strong data-nama-pengguna></strong>
+                  <small data-peran-pengguna></small>
+                  <span data-kode-pengguna></span>
+                </span>
+              </div>
+              <a href="dasbor-saya.html" class="pd-menu" data-menu-pengguna>Dashboard Saya</a>
+              <button type="button" class="pd-keluar" data-keluar>Keluar</button>
+            </div>
+          </div>
+          <button type="button" class="tombol-tema" aria-label="Gunakan mode gelap" aria-pressed="false" title="Mode gelap"><svg class="ikon-bulan ikon ikon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg><svg class="ikon-matahari ikon ikon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+        </div>
+      </header>
 
-      <nav class="main-nav" aria-label="Navigasi Utama">
-        <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="memilah.html">Cara Memilah</a></li>
-          <li><a href="harga.html">Harga Sampah</a></li>
-          <li><a href="dashboard.html" class="active" aria-current="page">Dashboard</a></li>
-          <li><a href="kontak.html">Kontak</a></li>
-          <li><a href="login.html" data-nav-auth>Masuk</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
   <!--
-    CATATAN INTEGRASI DATA
-    Halaman ini statis (HTML + CSS saja, tanpa JavaScript). Seluruh angka di
-    bawah adalah DATA CONTOH untuk Oktober 2026 dan belum terhubung ke data
-    setoran nyata. Nanti, saat data nyata tersedia, isi tiap penanda
-    data-metric berikut dari sumber data (misalnya hasil ekspor pencatatan
-    setoran), tanpa mengubah struktur halaman.
-
-    Daftar seluruh nilai data-metric yang dipakai:
-    Ringkasan  : total-kg, jumlah-penabung, total-saldo, setoran-bulan-ini
-    Per jenis  : baris-plastik, kg-plastik, baris-kardus, kg-kardus,
-                 baris-kaleng, kg-kaleng, baris-kaca, kg-kaca
-    Target     : target-capaian, target-kg, persen-target
-    Per RT     : rt-03, rt-03-kg, rt-01, rt-01-kg, rt-05, rt-05-kg,
-                 rt-02, rt-02-kg, total-rt-kg
-    Setoran    : setoran-1, setoran-1-berat, setoran-2, setoran-2-berat,
-                 setoran-3, setoran-3-berat, setoran-4, setoran-4-berat,
-                 setoran-5, setoran-5-berat
+    CATATAN DATA
+    Angka di halaman ini diisi js/dashboard.js dari BankData.getAggregates()
+    (localStorage). Nilai di HTML hanya cadangan bila JavaScript mati. Grafik
+    digambar js/grafik.js tanpa pustaka tambahan. Semua data adalah contoh.
   -->
-  <main id="konten">
-    <section class="wadah bagian dash-kepala" aria-labelledby="judul-halaman">
-      <p class="dash-eyebrow">Ringkasan kinerja bank sampah</p>
-      <h1 id="judul-halaman">Dashboard Bank Sampah</h1>
-      <p class="dash-periode">Periode <time datetime="2026-10">Oktober 2026</time></p>
-      <p class="dash-contoh" role="note">
-        <span aria-hidden="true">!</span> Data contoh
-      </p>
+  <main id="konten" class="dash-isi">
+    <section class="dash-sambutan" aria-labelledby="judul-halaman">
+      <div class="dash-sambutan-teks">
+        <p class="dash-sambutan-label">Ringkasan operasional</p>
+        <h1 id="judul-halaman" class="dash-sambutan-judul">Halo, <span data-header-nama>Petugas</span></h1>
+        <p class="dash-sambutan-desk">Pantau setoran masuk, komposisi sampah, dan capaian target bank sampah bulan ini.</p>
+      </div>
+      <div class="dash-sambutan-meta">
+        <span class="dash-periode"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4m8-4v4M3 10h18"/></svg><time datetime="2026-10">Oktober 2026</time></span>
+        <span class="dash-demo" role="note"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>Data demo</span>
+      </div>
     </section>
 
-    <section class="wadah bagian" aria-labelledby="judul-ringkasan">
-      <h2 id="judul-ringkasan">Ringkasan</h2>
-      <p class="bagian-pengantar">Angka gabungan seluruh pos, bukan perorangan.</p>
+    <section aria-labelledby="judul-ringkasan">
+      <div class="bagian-kepala">
+        <div>
+          <h2 id="judul-ringkasan">Ringkasan bulan ini</h2>
+          <p class="bagian-pengantar">Angka gabungan seluruh pos, bukan perorangan.</p>
+        </div>
+      </div>
 
-      <ul class="langkah-daftar dash-kartu-grid">
-        <li class="langkah dash-kartu">
-          <p class="dash-label">Total sampah</p>
-          <p class="dash-angka"><span data-metric="total-kg">1.250</span> <span class="dash-satuan">kg</span></p>
-          <p class="dash-ket">Gabungan semua jenis sampah pada Oktober 2026.</p>
+      <ul class="kpi-grid">
+        <li class="kpi">
+          <div class="kpi-atas">
+            <span class="kpi-label">Total sampah</span>
+            <span class="kpi-ikon" aria-hidden="true"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Z"/><path d="m3 8 9 5 9-5m-9 5v8"/></svg></span>
+          </div>
+          <p class="kpi-nilai"><span data-metric="total-kg">231,5</span><span class="kpi-satuan">kg</span></p>
+          <p class="kpi-ket">Gabungan semua jenis sampah pada Oktober 2026.</p>
         </li>
-        <li class="langkah dash-kartu">
-          <p class="dash-label">Jumlah penabung</p>
-          <p class="dash-angka"><span data-metric="jumlah-penabung">86</span> <span class="dash-satuan">penabung</span></p>
-          <p class="dash-ket">Penabung aktif yang tercatat bulan ini.</p>
+        <li class="kpi">
+          <div class="kpi-atas">
+            <span class="kpi-label">Penabung aktif</span>
+            <span class="kpi-ikon" aria-hidden="true"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          </div>
+          <p class="kpi-nilai"><span data-metric="jumlah-penabung">4</span><span class="kpi-satuan">orang</span></p>
+          <p class="kpi-ket">Warga yang mencatatkan setoran bulan ini.</p>
         </li>
-        <li class="langkah dash-kartu">
-          <p class="dash-label">Total saldo dibayarkan</p>
-          <p class="dash-angka"><span data-metric="total-saldo">Rp 2.710.000</span></p>
-          <p class="dash-ket">Hasil kali berat tiap jenis dengan harga contoh di halaman Harga Sampah.</p>
+        <li class="kpi">
+          <div class="kpi-atas">
+            <span class="kpi-label">Nilai setoran</span>
+            <span class="kpi-ikon" aria-hidden="true"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M3 5v14a2 2 0 0 0 2 2h15V7H5"/><path d="M16 13h2"/></svg></span>
+          </div>
+          <p class="kpi-nilai"><span data-metric="total-saldo">Rp 506.750</span></p>
+          <p class="kpi-ket">Perkiraan nilai dari berat dikali harga contoh.</p>
         </li>
-        <li class="langkah dash-kartu">
-          <p class="dash-label">Setoran bulan ini</p>
-          <p class="dash-angka"><span data-metric="setoran-bulan-ini">310</span> <span class="dash-satuan">kg</span></p>
-          <p class="dash-ket">Sampah yang masuk sejak awal Oktober 2026.</p>
+        <li class="kpi">
+          <div class="kpi-atas">
+            <span class="kpi-label">Transaksi</span>
+            <span class="kpi-ikon" aria-hidden="true"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h16v20l-3-2-3 2-3-2-3 2V2Z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span>
+          </div>
+          <p class="kpi-nilai"><span data-jumlah-transaksi>24</span><span class="kpi-satuan">setoran</span></p>
+          <p class="kpi-ket">Setoran yang tercatat sejak awal bulan.</p>
         </li>
       </ul>
     </section>
 
-    <section class="wadah bagian" aria-labelledby="judul-jenis">
-      <h2 id="judul-jenis">Sampah per Jenis</h2>
-      <p class="bagian-pengantar">Panjang batang menunjukkan berat, angkanya juga ditulis agar mudah dibaca tanpa melihat warna.</p>
+    <section class="grafik-grid" aria-label="Visualisasi data bulan ini">
+      <figure class="panel panel-grafik" aria-labelledby="judul-harian">
+        <figcaption class="panel-kepala">
+          <div>
+            <h2 id="judul-harian">Setoran harian</h2>
+            <p>Berat sampah yang masuk setiap hari pada Oktober 2026.</p>
+          </div>
+          <p class="panel-stat"><span data-metric="setoran-bulan-ini">231,5</span> kg masuk</p>
+        </figcaption>
+        <div class="grafik-bingkai">
+          <svg class="grafik-garis" id="grafik-harian" viewBox="0 0 640 220" role="img" aria-labelledby="judul-harian ringkasan-harian">
+            <desc id="ringkasan-harian">Grafik berat setoran harian pada Oktober 2026.</desc>
+          </svg>
+          <div class="grafik-tooltip" hidden></div>
+        </div>
+        <details class="grafik-detail">
+          <summary>Lihat data harian</summary>
+          <div class="tabel-gulir tabel-gulir-pendek">
+            <table class="tabel-ringkas">
+              <caption class="sr-only">Berat dan nilai setoran per hari, Oktober 2026</caption>
+              <thead><tr><th scope="col">Tanggal</th><th scope="col">Berat</th><th scope="col">Nilai</th></tr></thead>
+              <tbody id="tabel-harian"></tbody>
+            </table>
+          </div>
+        </details>
+      </figure>
 
-      <ul class="dash-batang-daftar">
-        <li class="dash-batang" data-metric="baris-plastik">
-          <p class="dash-batang-label">Plastik</p>
-          <p class="dash-batang-nilai"><span data-metric="kg-plastik">420</span> kg</p>
-          <meter class="dash-meter" value="420" max="500">420 kg dari 500 kg</meter>
-        </li>
-        <li class="dash-batang" data-metric="baris-kardus">
-          <p class="dash-batang-label">Kardus</p>
-          <p class="dash-batang-nilai"><span data-metric="kg-kardus">380</span> kg</p>
-          <meter class="dash-meter" value="380" max="500">380 kg dari 500 kg</meter>
-        </li>
-        <li class="dash-batang" data-metric="baris-kaleng">
-          <p class="dash-batang-label">Kaleng</p>
-          <p class="dash-batang-nilai"><span data-metric="kg-kaleng">150</span> kg</p>
-          <meter class="dash-meter" value="150" max="500">150 kg dari 500 kg</meter>
-        </li>
-        <li class="dash-batang" data-metric="baris-kaca">
-          <p class="dash-batang-label">Kaca</p>
-          <p class="dash-batang-nilai"><span data-metric="kg-kaca">300</span> kg</p>
-          <meter class="dash-meter" value="300" max="500">300 kg dari 500 kg</meter>
-        </li>
-      </ul>
-      <p class="dash-skala">Skala batang: 0 sampai 500 kg. Total keempat jenis: 1.250 kg.</p>
+      <figure class="panel panel-grafik" aria-labelledby="judul-komposisi">
+        <figcaption class="panel-kepala">
+          <div>
+            <h2 id="judul-komposisi">Komposisi jenis</h2>
+            <p>Bagian tiap jenis dari total berat.</p>
+          </div>
+        </figcaption>
+        <div class="donat-bingkai">
+          <svg class="grafik-donat" id="grafik-komposisi" viewBox="0 0 200 200" role="img" aria-labelledby="judul-komposisi ringkasan-komposisi">
+            <desc id="ringkasan-komposisi">Plastik 85,5 kg, Kertas 32,5 kg, Kardus 56 kg, Logam 23 kg, dan Kaca 34,5 kg dari total 231,5 kg.</desc>
+            <circle class="donat-latar" cx="100" cy="100" r="70"></circle>
+            <g data-donat-bagian transform="rotate(-90 100 100)"></g>
+            <text x="100" y="96" text-anchor="middle" class="donat-angka" data-donat-angka>231,5</text>
+            <text x="100" y="116" text-anchor="middle" class="donat-satuan" data-donat-satuan>kg total</text>
+          </svg>
+          <ul class="donat-legenda">
+            <li class="legenda-item" data-jenis="Plastik" data-warna="1" data-metric="baris-plastik">
+              <span class="legenda-titik" aria-hidden="true"></span>
+              <span class="legenda-nama">Plastik</span>
+              <span class="legenda-nilai"><span data-metric="kg-plastik">85,5</span> kg</span>
+              <span class="legenda-persen">36,9%</span>
+            </li>
+            <li class="legenda-item" data-jenis="Kertas" data-warna="2">
+              <span class="legenda-titik" aria-hidden="true"></span>
+              <span class="legenda-nama">Kertas</span>
+              <span class="legenda-nilai"><span data-jenis-angka>32,5</span> kg</span>
+              <span class="legenda-persen">14,0%</span>
+            </li>
+            <li class="legenda-item" data-jenis="Kardus" data-warna="3" data-metric="baris-kardus">
+              <span class="legenda-titik" aria-hidden="true"></span>
+              <span class="legenda-nama">Kardus</span>
+              <span class="legenda-nilai"><span data-metric="kg-kardus">56</span> kg</span>
+              <span class="legenda-persen">24,2%</span>
+            </li>
+            <li class="legenda-item" data-jenis="Logam" data-warna="4" data-metric="baris-logam">
+              <span class="legenda-titik" aria-hidden="true"></span>
+              <span class="legenda-nama">Logam</span>
+              <span class="legenda-nilai"><span data-metric="kg-logam">23</span> kg</span>
+              <span class="legenda-persen">9,9%</span>
+            </li>
+            <li class="legenda-item" data-jenis="Kaca" data-warna="5" data-metric="baris-kaca">
+              <span class="legenda-titik" aria-hidden="true"></span>
+              <span class="legenda-nama">Kaca</span>
+              <span class="legenda-nilai"><span data-metric="kg-kaca">34,5</span> kg</span>
+              <span class="legenda-persen">14,9%</span>
+            </li>
+          </ul>
+        </div>
+        <details class="grafik-detail">
+          <summary>Lihat tabel komposisi</summary>
+          <table class="tabel-ringkas">
+            <caption class="sr-only">Komposisi sampah per jenis, Oktober 2026</caption>
+            <thead><tr><th scope="col">Jenis</th><th scope="col">Berat</th><th scope="col">Bagian</th></tr></thead>
+            <tbody id="tabel-komposisi">
+              <tr><td>Plastik</td><td>85,5 kg</td><td>36,9%</td></tr>
+              <tr><td>Kertas</td><td>32,5 kg</td><td>14,0%</td></tr>
+              <tr><td>Kardus</td><td>56 kg</td><td>24,2%</td></tr>
+              <tr><td>Logam</td><td>23 kg</td><td>9,9%</td></tr>
+              <tr><td>Kaca</td><td>34,5 kg</td><td>14,9%</td></tr>
+            </tbody>
+          </table>
+        </details>
+      </figure>
     </section>
 
-    <section class="wadah bagian" aria-labelledby="judul-target">
-      <h2 id="judul-target">Target Bulan Ini</h2>
-      <div class="dash-target">
-        <h3>Oktober 2026</h3>
-        <p class="dash-target-angka">
-          <span data-metric="target-capaian">310</span> kg dari
-          <span data-metric="target-kg">400</span> kg
-        </p>
-        <progress class="dash-progress" value="310" max="400">77,5% dari target</progress>
-        <p class="dash-persen"><span data-metric="persen-target">77,5%</span> dari target</p>
+    <section class="grid-dua" aria-label="Capaian target dan wilayah">
+      <div class="panel panel-target" aria-labelledby="judul-target">
+        <div class="panel-kepala">
+          <div>
+            <h2 id="judul-target">Target bulan ini</h2>
+            <p>Capaian berat dibanding target Oktober 2026.</p>
+          </div>
+          <p class="target-persen"><span data-metric="persen-target">57,9%</span></p>
+        </div>
+        <p class="target-angka"><span data-metric="target-capaian">231,5</span> kg <span class="target-dari">dari <span data-metric="target-kg">400</span> kg</span></p>
+        <progress class="progres-target" value="231.5" max="400">57,9% dari target</progress>
+        <p class="target-catatan">Sisa <strong data-sisa-target>168,5 kg</strong> untuk mencapai target bulan ini.</p>
+      </div>
+
+      <div class="panel" aria-labelledby="judul-rt">
+        <div class="panel-kepala">
+          <div>
+            <h2 id="judul-rt">Setoran per RT</h2>
+            <p>Kontribusi tiap RT pada bulan ini.</p>
+          </div>
+          <p class="panel-stat"><span data-metric="total-rt-kg">231,5</span> kg</p>
+        </div>
+        <div class="tabel-gulir">
+          <table class="tabel-modern tabel-rt">
+            <caption class="sr-only">Total setoran tiap RT, Oktober 2026, diurutkan dari terbanyak.</caption>
+            <thead>
+              <tr>
+                <th scope="col">RT</th>
+                <th scope="col">Berat</th>
+                <th scope="col">Kontribusi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-metric="rt-05">
+                <th scope="row">RT 05</th>
+                <td class="angka"><span data-metric="rt-05-kg">71,5</span> kg</td>
+                <td><span class="bar-rt"><span class="bar-rt-isi" style="width:100%"></span></span><span class="bar-rt-persen">30,9%</span></td>
+              </tr>
+              <tr data-metric="rt-03">
+                <th scope="row">RT 03</th>
+                <td class="angka"><span data-metric="rt-03-kg">67,5</span> kg</td>
+                <td><span class="bar-rt"><span class="bar-rt-isi" style="width:94.4%"></span></span><span class="bar-rt-persen">29,2%</span></td>
+              </tr>
+              <tr data-metric="rt-01">
+                <th scope="row">RT 01</th>
+                <td class="angka"><span data-metric="rt-01-kg">62,5</span> kg</td>
+                <td><span class="bar-rt"><span class="bar-rt-isi" style="width:87.4%"></span></span><span class="bar-rt-persen">27,0%</span></td>
+              </tr>
+              <tr data-metric="rt-02">
+                <th scope="row">RT 02</th>
+                <td class="angka"><span data-metric="rt-02-kg">30</span> kg</td>
+                <td><span class="bar-rt"><span class="bar-rt-isi" style="width:42%"></span></span><span class="bar-rt-persen">13,0%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <section class="wadah bagian" aria-labelledby="judul-rt">
-      <h2 id="judul-rt">Peringkat per RT</h2>
-      <div class="dash-tabel-bungkus" role="region" aria-labelledby="judul-rt" tabindex="0">
-        <table class="dash-tabel">
-          <caption>Total setoran tiap RT, Oktober 2026, diurutkan dari terbanyak.</caption>
-          <thead>
-            <tr>
-              <th scope="col">RT</th>
-              <th scope="col">Total (kg)</th>
-              <th scope="col">Batang</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-metric="rt-03">
-              <th scope="row">RT 03</th>
-              <td data-metric="rt-03-kg">410</td>
-              <td><meter class="dash-meter" value="410" max="500">410 kg dari 500 kg</meter></td>
-            </tr>
-            <tr data-metric="rt-01">
-              <th scope="row">RT 01</th>
-              <td data-metric="rt-01-kg">350</td>
-              <td><meter class="dash-meter" value="350" max="500">350 kg dari 500 kg</meter></td>
-            </tr>
-            <tr data-metric="rt-05">
-              <th scope="row">RT 05</th>
-              <td data-metric="rt-05-kg">290</td>
-              <td><meter class="dash-meter" value="290" max="500">290 kg dari 500 kg</meter></td>
-            </tr>
-            <tr data-metric="rt-02">
-              <th scope="row">RT 02</th>
-              <td data-metric="rt-02-kg">200</td>
-              <td><meter class="dash-meter" value="200" max="500">200 kg dari 500 kg</meter></td>
-            </tr>
-          </tbody>
-        </table>
+    <section class="panel" aria-labelledby="judul-setoran">
+      <div class="panel-kepala">
+        <div>
+          <h2 id="judul-setoran">Setoran terbaru</h2>
+          <p>Lima transaksi terakhir yang tercatat.</p>
+        </div>
+        <a class="tautan-halus" href="setoran.html">Input setoran <svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       </div>
-      <p class="dash-skala">Total seluruh RT: <span data-metric="total-rt-kg">1.250</span> kg. Skala batang sama, 0 sampai 500 kg.</p>
-    </section>
-
-    <section class="wadah bagian" aria-labelledby="judul-setoran">
-      <h2 id="judul-setoran">Setoran Terbaru</h2>
-      <div class="dash-tabel-bungkus" role="region" aria-labelledby="judul-setoran" tabindex="0">
-        <table class="dash-tabel">
-          <caption>Lima setoran terakhir. Penabung hanya ditulis dengan inisial.</caption>
+      <div class="tabel-gulir">
+        <table class="tabel-modern tabel-setoran">
+          <caption class="sr-only">Lima setoran terakhir. Penabung ditulis dengan inisial.</caption>
           <thead>
             <tr>
               <th scope="col">Tanggal</th>
               <th scope="col">Penabung</th>
               <th scope="col">Jenis</th>
-              <th scope="col">Berat</th>
+              <th scope="col" class="rata-kanan">Berat</th>
+              <th scope="col" class="rata-kanan">Nilai</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="badan-setoran">
             <tr data-metric="setoran-1">
-              <td><time datetime="2026-10-12">12 Oktober 2026</time></td>
-              <td>S.A.</td>
-              <td>Plastik</td>
-              <td data-metric="setoran-1-berat">12,5 kg</td>
+              <td><time datetime="2026-10-24">24 Oktober 2026</time></td>
+              <td>A.P.</td>
+              <td><span class="badge-jenis" data-jenis="Kardus">Kardus</span></td>
+              <td class="angka rata-kanan" data-metric="setoran-1-berat">10 kg</td>
+              <td class="angka rata-kanan">Rp 20.000</td>
             </tr>
             <tr data-metric="setoran-2">
-              <td><time datetime="2026-10-11">11 Oktober 2026</time></td>
-              <td>R.M.</td>
-              <td>Kardus</td>
-              <td data-metric="setoran-2-berat">8 kg</td>
+              <td><time datetime="2026-10-23">23 Oktober 2026</time></td>
+              <td>A.P.</td>
+              <td><span class="badge-jenis" data-jenis="Plastik">Plastik</span></td>
+              <td class="angka rata-kanan" data-metric="setoran-2-berat">11 kg</td>
+              <td class="angka rata-kanan">Rp 27.500</td>
             </tr>
             <tr data-metric="setoran-3">
-              <td><time datetime="2026-10-10">10 Oktober 2026</time></td>
-              <td>N.P.</td>
-              <td>Kaleng</td>
-              <td data-metric="setoran-3-berat">4,5 kg</td>
+              <td><time datetime="2026-10-22">22 Oktober 2026</time></td>
+              <td>A.P.</td>
+              <td><span class="badge-jenis" data-jenis="Kertas">Kertas</span></td>
+              <td class="angka rata-kanan" data-metric="setoran-3-berat">9 kg</td>
+              <td class="angka rata-kanan">Rp 13.500</td>
             </tr>
             <tr data-metric="setoran-4">
-              <td><time datetime="2026-10-09">9 Oktober 2026</time></td>
-              <td>D.K.</td>
-              <td>Kaca</td>
-              <td data-metric="setoran-4-berat">6 kg</td>
+              <td><time datetime="2026-10-21">21 Oktober 2026</time></td>
+              <td>R.D.</td>
+              <td><span class="badge-jenis" data-jenis="Plastik">Plastik</span></td>
+              <td class="angka rata-kanan" data-metric="setoran-4-berat">16 kg</td>
+              <td class="angka rata-kanan">Rp 40.000</td>
             </tr>
             <tr data-metric="setoran-5">
-              <td><time datetime="2026-10-08">8 Oktober 2026</time></td>
-              <td>L.T.</td>
-              <td>Plastik</td>
-              <td data-metric="setoran-5-berat">9 kg</td>
+              <td><time datetime="2026-10-20">20 Oktober 2026</time></td>
+              <td>B.S.</td>
+              <td><span class="badge-jenis" data-jenis="Kaca">Kaca</span></td>
+              <td class="angka rata-kanan" data-metric="setoran-5-berat">11 kg</td>
+              <td class="angka rata-kanan">Rp 5.500</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section class="wadah bagian" aria-labelledby="judul-catatan">
-      <div class="tips dash-catatan" role="note">
-        <h2 id="judul-catatan" class="tips-judul">Catatan data</h2>
-        <p><strong>Data contoh, belum terhubung ke data setoran nyata.</strong> Semua angka di halaman ini dipakai untuk memperlihatkan susunan dashboard dan akan diganti dengan data pencatatan asli bank sampah pada tahap integrasi.</p>
-      </div>
-    </section>
+    <p class="dash-catatan-kaki" role="note">
+      <svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>
+      <span>Seluruh angka dihitung dari data demo yang tersimpan di browser, bukan transaksi nyata. <a href="pengaturan.html">Kelola data demo</a>.</span>
+    </p>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand-logo">
-          <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-            <path d="M6 27C6 15 15 7 29 7C29 21 21 29 9 29C7.5 29 6 28.2 6 27Z" fill="#82CE4A"/>
-            <path d="M12 31C12 22 19 16 31 16C31 27 24 32 14 32C12.8 32 12 31.6 12 31Z" fill="#2B6B2B"/>
-          </svg>
-          <span>BankSampahKu</span>
-        </a>
-        <p>Edukasi, pilah, dan kelola sampah bersama BankSampahKu.</p>
-      </div>
-
-      <div class="footer-links">
-        <h3>Navigasi Cepat</h3>
-        <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="memilah.html">Cara Memilah</a></li>
-          <li><a href="harga.html">Harga Sampah</a></li>
-          <li><a href="kontak.html">Kontak</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-social">
-        <h3>Terhubung dengan Kami</h3>
-        <div class="social-icons">
-          <a href="tel:+6281234567890" class="social-btn" aria-label="Telepon BankSampahKu">
-            <i class="ti ti-phone" aria-hidden="true"></i>
-          </a>
-          <a href="mailto:halo@banksampahku.id" class="social-btn" aria-label="Email BankSampahKu">
-            <i class="ti ti-mail" aria-hidden="true"></i>
-          </a>
-          <a href="kontak.html#peta-lokasi" class="social-btn" aria-label="Lokasi BankSampahKu">
-            <i class="ti ti-map-pin" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="footer-bins" aria-hidden="true">
-        <img src="img/Icon-Dekorasi-Tempat-Sampah.png" alt="Ilustrasi 3 tempat sampah daur ulang dengan logo BankSampahKu" width="110" height="auto">
-      </div>
-    </div>
-    <div class="footer-wave" aria-hidden="true"></div>
-  </footer>
+  
+  </div>
+</div>
 
   <script src="js/tema.js"></script>
   <script src="js/data.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/grafik.js"></script>
   <script src="js/dashboard.js"></script>
   <script src="vendor/gsap/gsap.min.js"></script>
   <script src="vendor/gsap/ScrollTrigger.min.js"></script>
   <script src="js/animasi.js"></script>
+  
+  <dialog class="logout-dialog" id="logout-dialog" aria-labelledby="logout-judul">
+    <div class="logout-isi">
+      <span class="logout-ikon" aria-hidden="true"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></span>
+      <h2 id="logout-judul">Keluar dari akun?</h2>
+      <p>Apakah Anda yakin ingin keluar dari akun?</p>
+      <div class="logout-aksi">
+        <button type="button" class="logout-batal" data-logout-batal>Batal</button>
+        <button type="button" class="logout-konfirmasi" data-logout-konfirmasi>Keluar</button>
+      </div>
+    </div>
+  </dialog>
+
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas">
+    <svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V5m-6 6 6-6 6 6"/></svg>
+  </button>
 </body>
 </html>

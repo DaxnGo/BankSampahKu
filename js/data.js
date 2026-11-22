@@ -345,6 +345,184 @@
     };
   }
 
+  // Fungsi BARU: satu sumber agregat untuk dashboard dan dashboard warga.
+  // API lama (ringkasan, ringkasanWarga) sengaja tetap dipertahankan.
+  function getAggregates(periode) {
+    var bulanan = ringkasan(periode);
+    var data = ambilData();
+    var perWarga = {};
+
+    data.pengguna.forEach(function (user) {
+      if (user.peran === "warga") {
+        perWarga[user.id] = ringkasanWarga(user.id, periode);
+      }
+    });
+
+    return {
+      periode: bulanan.periode,
+      namaPeriode: bulanan.namaPeriode,
+      totalKg: bulanan.totalKg,
+      jumlahPenabung: bulanan.jumlahPenabung,
+      totalSaldo: bulanan.totalSaldo,
+      setoranBulanIni: bulanan.setoranBulanIni,
+      perJenis: bulanan.perJenis,
+      daftarJenis: bulanan.daftarJenis,
+      daftarRt: bulanan.daftarRt,
+      targetKg: bulanan.targetKg,
+      persenTarget: bulanan.persenTarget,
+      setoranTerbaru: bulanan.setoranTerbaru,
+      jumlahTransaksi: bulanan.jumlahTransaksi,
+      perWarga: perWarga,
+      dariPenyimpanan: true
+    };
+  }
+
+
+  // ===== Fungsi BARU untuk halaman Dashboard (API lama tetap dipertahankan) =====
+
+  // Riwayat lengkap milik satu warga, sudah urut terbaru.
+  function riwayatLengkapWarga(userId) {
+    var data = ambilData();
+    var semua = data.setoran.filter(function (item) { return item.userId === userId; });
+    return semua.slice().sort(function (a, b) {
+      return String(b.tanggal).localeCompare(String(a.tanggal)) || String(b.id).localeCompare(String(a.id));
+    }).map(function (item) {
+      return {
+        id: item.id,
+        tanggal: item.tanggal,
+        jenis: item.jenis,
+        berat: Number(item.berat) || 0,
+        hargaPerKg: Number(HARGA[item.jenis]) || 0,
+        nilai: nilaiSetoran(item),
+        rt: item.rt || "-"
+      };
+    });
+  }
+
+  // Buku tabungan: kredit per setoran, saldo berjalan dihitung dari urutan transaksi.
+  function bukuTabungan(userId, periode) {
+    var semua = riwayatLengkapWarga(userId).slice().reverse();
+    var bulan = periode || PERIODE;
+    var dipakai = semua.filter(function (item) {
+      return !bulan || bulan === "semua" || String(item.tanggal).indexOf(bulan) === 0;
+    });
+    var saldo = 0;
+    var totalKredit = 0;
+    var totalDebit = 0;
+    var baris = dipakai.map(function (item) {
+      saldo += item.nilai;
+      totalKredit += item.nilai;
+      return {
+        id: item.id,
+        tanggal: item.tanggal,
+        keterangan: "Setoran " + item.jenis,
+        jenis: "Setoran",
+        kredit: item.nilai,
+        debit: 0,
+        saldo: saldo,
+        berat: item.berat
+      };
+    });
+    return {
+      periode: bulan,
+      namaPeriode: bulan === "semua" ? "Semua periode" : namaBulan(bulan),
+      baris: baris.slice().reverse(),
+      saldoAkhir: saldo,
+      totalKredit: totalKredit,
+      totalDebit: totalDebit,
+      adaPenarikan: false
+    };
+  }
+
+  // Deret setoran harian dari data yang sudah ada (tanpa angka karangan).
+  // userId kosong berarti agregat seluruh pos. Hari tanpa setoran tidak dibuat.
+  function seriHarian(userId, periode) {
+    var bulan = periode || PERIODE;
+    var data = ambilData();
+    var peta = {};
+
+    data.setoran.forEach(function (item) {
+      if (String(item.tanggal).indexOf(bulan) !== 0) return;
+      if (userId && item.userId !== userId) return;
+      var tanggal = String(item.tanggal);
+      if (!peta[tanggal]) {
+        peta[tanggal] = { tanggal: tanggal, kg: 0, nilai: 0, jumlah: 0 };
+      }
+      peta[tanggal].kg += Number(item.berat) || 0;
+      peta[tanggal].nilai += nilaiSetoran(item);
+      peta[tanggal].jumlah += 1;
+    });
+
+    var hari = Object.keys(peta).sort().map(function (tanggal) {
+      return peta[tanggal];
+    });
+    var total = hari.reduce(function (jumlah, item) {
+      return jumlah + item.kg;
+    }, 0);
+
+    return {
+      periode: bulan,
+      namaPeriode: namaBulan(bulan),
+      hari: hari,
+      totalKg: total,
+      dari: hari.length ? hari[0].tanggal : null,
+      sampai: hari.length ? hari[hari.length - 1].tanggal : null
+    };
+  }
+
+  // Daftar harga contoh yang dipakai sistem (sumber sama dengan perhitungan setoran).
+  function daftarHarga() {
+    return JENIS.map(function (jenis) {
+      return {
+        jenis: jenis,
+        kategori: "Anorganik",
+        harga: Number(HARGA[jenis]) || 0,
+        satuan: "kg",
+        keterangan: "Harga contoh yang digunakan untuk menghitung nilai setoran."
+      };
+    });
+  }
+
+
+  // Fungsi BARU: klasifikasi tiga kategori sampah untuk dashboard.
+  // Harga hanya tersedia untuk Anorganik; kategori lain bersifat edukasi.
+  function daftarKategori() {
+    return [
+      {
+        id: "organik",
+        nama: "Organik",
+        deskripsi: "Sampah yang berasal dari makhluk hidup dan mudah terurai.",
+        contoh: ["Sisa makanan", "Kulit buah dan sayur", "Daun dan ranting"],
+        penanganan: "Kumpulkan terpisah dalam wadah tertutup, lalu olah menjadi kompos.",
+        ikon: "leaf",
+        memilikiHarga: false
+      },
+      {
+        id: "anorganik",
+        nama: "Anorganik",
+        deskripsi: "Sampah yang sulit terurai tetapi banyak yang bisa didaur ulang.",
+        contoh: [
+          "Plastik: botol minuman, kemasan, kantong plastik",
+          "Kertas: kertas bekas, koran, kardus",
+          "Logam: kaleng makanan dan minuman",
+          "Kaca: botol dan pecahan kaca"
+        ],
+        penanganan: "Kosongkan, bilas, dan keringkan. Pisahkan per jenis lalu setorkan ke bank sampah.",
+        ikon: "recycle",
+        memilikiHarga: true
+      },
+      {
+        id: "b3",
+        nama: "B3",
+        deskripsi: "Sampah yang mengandung zat berbahaya bagi manusia dan lingkungan.",
+        contoh: ["Baterai bekas", "Lampu neon", "Kemasan pestisida dan cat"],
+        penanganan: "Jangan dicampur dengan sampah lain. Simpan dalam wadah tertutup dan tanyakan tempat penyetoran khusus ke bank sampah terdekat.",
+        ikon: "alert",
+        memilikiHarga: false
+      }
+    ];
+  }
+
   window.BankData = {
     KUNCI_DATA: KUNCI_DATA,
     KUNCI_SESI: KUNCI_SESI,
@@ -369,6 +547,12 @@
     namaBulan: namaBulan,
     nilaiSetoran: nilaiSetoran,
     ringkasan: ringkasan,
-    ringkasanWarga: ringkasanWarga
+    ringkasanWarga: ringkasanWarga,
+    getAggregates: getAggregates,
+    riwayatLengkapWarga: riwayatLengkapWarga,
+    seriHarian: seriHarian,
+    bukuTabungan: bukuTabungan,
+    daftarHarga: daftarHarga,
+    daftarKategori: daftarKategori
   };
 })();
