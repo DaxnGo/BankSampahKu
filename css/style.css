@@ -1346,6 +1346,7 @@ a { color: var(--aksen-tua); }
   transition: background-color .2s, transform .2s, box-shadow .2s;
 }
 .home-cta .ikon { font-size: var(--teks-3); line-height: 1; }
+.home-cta--utama .ikon-daur { display: none; }
 .home-cta--utama {
   background: var(--hijau-cta);
   color: var(--di-atas-aksen);
