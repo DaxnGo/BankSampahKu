@@ -15,9 +15,24 @@
     Kertas: 1500,
     Kardus: 2000,
     Logam: 5000,
-    Kaca: 500
+    Kaca: 500,
+    "Sisa Makanan": 300,
+    "Kulit Buah dan Sayur": 300,
+    "Daun dan Ranting": 200,
+    "Baterai Bekas": 1000,
+    "Lampu Neon": 1500,
+    "Kemasan Pestisida dan Cat": 1200
   };
-  var JENIS = Object.keys(HARGA);
+  // Jenis untuk grafik dan formulir setoran tetap lima jenis Anorganik.
+  var KATEGORI_JENIS = {
+    Plastik: "Anorganik", Kertas: "Anorganik", Kardus: "Anorganik",
+    Logam: "Anorganik", Kaca: "Anorganik",
+    "Sisa Makanan": "Organik", "Kulit Buah dan Sayur": "Organik", "Daun dan Ranting": "Organik",
+    "Baterai Bekas": "B3", "Lampu Neon": "B3", "Kemasan Pestisida dan Cat": "B3"
+  };
+  var JENIS = Object.keys(HARGA).filter(function (jenis) {
+    return KATEGORI_JENIS[jenis] === "Anorganik";
+  });
 
   var penggunaAwal = [
     { id: "p1", username: "petugas", password: "petugas123", nama: "Petugas Bank Sampah", peran: "petugas", rt: "-" },
@@ -472,20 +487,21 @@
 
   // Daftar harga contoh yang dipakai sistem (sumber sama dengan perhitungan setoran).
   function daftarHarga() {
-    return JENIS.map(function (jenis) {
+    return Object.keys(HARGA).map(function (jenis) {
       return {
         jenis: jenis,
-        kategori: "Anorganik",
+        kategori: KATEGORI_JENIS[jenis] || "Anorganik",
         harga: Number(HARGA[jenis]) || 0,
         satuan: "kg",
-        keterangan: "Harga contoh yang digunakan untuk menghitung nilai setoran."
+        keterangan: KATEGORI_JENIS[jenis] === "Anorganik"
+          ? "Harga contoh yang digunakan untuk menghitung nilai setoran."
+          : "Harga contoh untuk kategori ini."
       };
     });
   }
 
 
-  // Fungsi BARU: klasifikasi tiga kategori sampah untuk dashboard.
-  // Harga hanya tersedia untuk Anorganik; kategori lain bersifat edukasi.
+  // Klasifikasi tiga kategori sampah; seluruh kategori kini memiliki harga contoh.
   function daftarKategori() {
     return [
       {
@@ -495,7 +511,7 @@
         contoh: ["Sisa makanan", "Kulit buah dan sayur", "Daun dan ranting"],
         penanganan: "Kumpulkan terpisah dalam wadah tertutup, lalu olah menjadi kompos.",
         ikon: "leaf",
-        memilikiHarga: false
+        memilikiHarga: true
       },
       {
         id: "anorganik",
@@ -518,7 +534,7 @@
         contoh: ["Baterai bekas", "Lampu neon", "Kemasan pestisida dan cat"],
         penanganan: "Jangan dicampur dengan sampah lain. Simpan dalam wadah tertutup dan tanyakan tempat penyetoran khusus ke bank sampah terdekat.",
         ikon: "alert",
-        memilikiHarga: false
+        memilikiHarga: true
       }
     ];
   }
