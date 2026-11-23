@@ -1,60 +1,27 @@
-# Fitur demo: login dan dashboard dinamis
+# Login dan dashboard demo
 
-Dokumen ini menjelaskan fitur yang ditambahkan pada cabang `fitur/login-dashboard`.
+BankSampahKu menggunakan login simulasi berbasis JavaScript untuk membagi tampilan petugas dan warga. Gunakan akun demo dari menu **Gunakan Akun Demo** pada [halaman Masuk](../login.html).
 
-## Tujuan
+| Peran | Username demo | Kata sandi demo | Halaman setelah masuk |
+| --- | --- | --- | --- |
+| Petugas | `petugas` | `petugas123` | [Dashboard petugas](../dashboard.html) |
+| Warga (Siti Aminah) | `warga` | `warga123` | [Dashboard warga](../dasbor-saya.html) |
 
-Website BankSampahKu sebelumnya berupa web edukasi statis. `dashboard.html` sudah ada, tetapi seluruh angkanya masih data contoh yang ditulis langsung di HTML. Fitur ini menambahkan:
+## Alur demo
 
-1. Halaman masuk dengan dua peran: petugas dan warga.
-2. Form pencatatan setoran oleh petugas.
-3. Dashboard yang dihitung ulang dari data setoran.
-4. Dashboard pribadi untuk warga.
+1. Masuk sebagai petugas dan buka **Input Setoran**.
+2. Pilih Siti Aminah, tanggal pada Oktober 2026, jenis **Plastik**, dan berat **2 kg**. Simpan setoran.
+3. Buka **Ringkasan** untuk melihat tambahan 2 kg dan perkiraan nilai Rp5.000 di periode demo.
+4. Keluar, kemudian masuk sebagai warga di browser dan alamat situs yang sama. Lihat tambahan saldo dan setoran di **Ringkasan**, **Riwayat Setoran**, dan **Buku Tabungan**.
 
-## Akun contoh
+Ringkasan menghitung setoran pada Oktober 2026. Setoran di luar periode tersebut tetap tercatat di riwayat warga. Buku Tabungan menyediakan filter periode dan menampilkan perkiraan saldo dari setoran. Penarikan saldo belum tersedia.
 
-| Peran | Username | Kata sandi | Halaman setelah masuk |
-|---|---|---|---|
-| Petugas | `petugas` | `petugas123` | `dashboard.html` |
-| Warga | `warga` | `warga123` | `dasbor-saya.html` |
-| Warga | `budi`, `rina`, `andi` | `warga123` | `dasbor-saya.html` |
+## Bagaimana data diproses
 
-Tombol akun contoh di halaman `login.html` dapat mengisi formulir otomatis.
+- [Form masuk](../js/login.js) membaca isian pengguna. [Autentikasi demo](../js/auth.js) mencocokkan akun, menyimpan sesi, dan memilih dashboard berdasarkan peran.
+- [Input setoran](../js/setoran.js) memeriksa isian dan menyimpan tanggal, penabung, jenis, dan berat. [BankData](../js/data.js) menghitung perkiraan nilai dari berat dan harga contoh per kilogram.
+- [Dashboard petugas](../js/dashboard.js) menampilkan ringkasan gabungan. [Dashboard warga](../js/dasbor-saya.js) menampilkan ringkasan berdasarkan ID penabung yang sedang masuk.
 
-## Alur singkat
+## Penyimpanan dan batasan
 
-1. Buka `login.html` dan masuk sebagai petugas.
-2. Buka `Input Setoran` di navigasi, lalu catat transaksi.
-3. Buka `dashboard.html` — angka ringkasan, per jenis, peringkat RT, dan setoran terbaru berubah.
-4. Masuk sebagai warga untuk melihat saldo dan riwayat milik sendiri.
-5. Tombol `Keluar` di navigasi mengakhiri sesi. Halaman petugas dan warga menolak akses tanpa sesi yang sesuai.
-
-Periode data contoh adalah **Oktober 2026**, mengikuti konten dashboard yang sudah ada.
-
-## File yang ditambahkan
-
-| File | Fungsi |
-|---|---|
-| `js/data.js` | Data awal, penyimpanan `localStorage`, dan fungsi perhitungan ringkasan |
-| `js/auth.js` | Sesi login, pengaman halaman, penyesuaian navigasi |
-| `js/login.js` | Logika formulir masuk dan tombol akun contoh |
-| `js/setoran.js` | Form input setoran dan daftar transaksi |
-| `js/dashboard.js` | Mengisi penanda `data-metric` di dashboard lama |
-| `js/dasbor-saya.js` | Menampilkan dashboard pribadi warga |
-| `login.html`, `setoran.html`, `dasbor-saya.html` | Halaman baru |
-
-`css/style.css` mendapat bagian ke-9 untuk gaya halaman tersebut. Halaman lama hanya ditambah tautan `Masuk` dan dua skrip (`data.js`, `auth.js`).
-
-## Mengulang data
-
-Tombol **Kembalikan data contoh awal** di `login.html` mengembalikan seluruh akun dan setoran ke kondisi awal, sekaligus mengakhiri sesi.
-
-## Catatan penting
-
-Ini adalah **simulasi untuk tugas**, bukan autentikasi yang aman:
-
-- Kata sandi disimpan apa adanya di `localStorage`.
-- Data hanya tersimpan di browser perangkat yang dipakai, tidak tersinkron antarperangkat.
-- Siapa pun yang membuka browser yang sama dapat membaca atau mengubah data.
-
-Untuk penggunaan sungguhan, diperlukan backend dengan layanan autentikasi yang sesuai, misalnya Supabase atau Firebase, dengan kata sandi yang di-hash dan aturan akses di server.
+Akun, setoran, dan sesi demo tersimpan di `localStorage` pada profil browser dan alamat situs yang digunakan. Data lokal dapat dibaca atau diubah dari browser, sehingga login ini hanya cocok untuk simulasi. Gunakan profil browser terpisah untuk memulai dari data awal. Menghapus data situs juga mengembalikan data awal sekaligus menghapus setoran demo yang telah ditambahkan.

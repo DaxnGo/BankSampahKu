@@ -1,118 +1,44 @@
 # BankSampahKu
 
-BankSampahKu adalah website edukasi bank sampah untuk membantu warga mengenal cara memilah sampah dan layanan bank sampah. Proyek ini dibuat untuk tugas kuliah Desain Web.
+Website edukasi pemilahan sampah dan simulasi layanan bank sampah untuk tugas kuliah Desain Web. Pengembangan proyek telah selesai. Demo dan kode tersedia sebagai dokumentasi hasil akhir.
 
-## Tujuan
+**[Buka demo BankSampahKu](https://daxngo.github.io/BankSampahKu/)**
 
-Website ini menyajikan informasi dasar tentang pemilahan sampah, harga sampah, dan cara menghubungi bank sampah dalam satu tempat yang mudah dibuka melalui komputer maupun ponsel.
+## Fitur
 
-## Demo
+- **Beranda dan Cara Memilah** menampilkan panduan, manfaat, serta video edukasi yang diputar dalam modal Beranda.
+- **Harga Sampah** menyediakan harga contoh dan kalkulator perkiraan nilai setoran.
+- **Petugas** dapat mencatat setoran demo dan melihat ringkasan, grafik, serta setoran terbaru.
+- **Warga** dapat melihat ringkasan pribadi, riwayat setoran, dan buku tabungan.
+- **Kontak** berisi informasi contoh, galeri, dan formulir simulasi yang tidak mengirim pesan.
+- Pengguna dapat memilih tema terang atau gelap.
 
-[Demo GitHub Pages](https://daxngo.github.io/BankSampahKu/). Untuk meninjau perubahan lokal sebelum publikasi, gunakan langkah di bawah.
+## Jalankan dan coba demo
 
-## Halaman dan fitur
+1. Dari folder proyek jalankan `python -m http.server 8002 --bind 127.0.0.1`, lalu buka [Beranda lokal](http://127.0.0.1:8002/). Demo GitHub Pages juga dapat langsung digunakan.
+2. Pilih **Masuk → Gunakan Akun Demo → Petugas**, lalu klik **Masuk**. Pada **Input Setoran**, pilih **Siti Aminah**, tanggal di **Oktober 2026**, dan misalnya **2 kg Plastik**.
+3. Lihat perubahan pada **Ringkasan**, lalu keluar dan masuk sebagai **Warga** dari browser dan alamat yang sama. Cek saldo dan riwayat Siti. Contoh 2 kg plastik menambah perkiraan saldo Rp5.000.
 
-### Fitur wajib (HTML dan CSS)
+| Peran | Username demo | Kata sandi demo |
+| --- | --- | --- |
+| Petugas | `petugas` | `petugas123` |
+| Warga (Siti Aminah) | `warga` | `warga123` |
 
-- **Beranda** (`index.html`): pengenalan singkat BankSampahKu.
-- **Cara Memilah** (`memilah.html`): panduan pemilahan sampah.
-- **Harga Sampah** (`harga.html`): informasi harga sampah.
-- **Dashboard petugas** (`dashboard.html`) dan **Input Setoran** (`setoran.html`): ringkasan bank sampah, grafik, dan pencatatan setoran demo.
-- **Dashboard warga** (`dasbor-saya.html`): perkiraan saldo, statistik pribadi, riwayat setoran, dan buku tabungan.
-- **Kontak** (`kontak.html`): informasi kontak contoh, galeri, dan formulir simulasi. Pesan tidak dikirim.
-- Navigasi antarhalaman dan konten utama tetap tersedia tanpa JavaScript.
+Ringkasan menggunakan periode demo **Oktober 2026**. Setoran di luar periode tetap tercatat di riwayat. Data setoran, sesi, dan tema tersimpan di `localStorage` untuk alamat situs dan profil browser yang digunakan. Penghapusan data situs akan mengembalikan demo ke data awal. Login berjalan di sisi browser dan hanya untuk simulasi. Harga, saldo, dan informasi kontak merupakan contoh. Pemutaran video YouTube membutuhkan internet.
 
-### Fitur bonus (JavaScript)
+## Kode dan dokumentasi
 
-- Kalkulator perkiraan saldo dari sampah yang disetorkan.
-- Mode gelap.
-- Validasi formulir kontak.
-- Animasi masuk dan animasi gulir dengan GSAP + ScrollTrigger.
-- Fitur bonus tidak menjadi syarat agar informasi utama website dapat dibaca.
-
-## Teknologi
-
-- HTML untuk struktur halaman.
-- CSS custom untuk tampilan dan tata letak responsif, dengan Grid dan Flexbox.
-- JavaScript vanilla untuk kalkulator, login demo, pencatatan setoran, serta statistik dan grafik SVG.
-- Animasi memakai **GSAP 3.15.1** dan plugin **ScrollTrigger**, disimpan lokal di `vendor/gsap/` dan dijalankan oleh `js/animasi.js`. Elemen muncul ulang tiap kali masuk layar, baik saat digulir naik maupun turun. Animasi dilewati bila JavaScript mati atau pengguna mengaktifkan "kurangi gerak" (`prefers-reduced-motion`), sehingga konten tetap terbaca.
-- Ikon antarmuka memakai SVG. Favicon ada di `assets/favicon.svg`.
-
-## Struktur folder
-
-```text
-/
-├── index.html
-├── memilah.html
-├── harga.html
-├── dashboard.html
-├── kontak.html
-├── css/
-│   └── style.css
-├── js/
-│   ├── script.js
-│   ├── kontak.js
-│   └── animasi.js
-├── img/
-│   └── .gitkeep
-├── vendor/
-│   ├── tabler-icons/
-│   │   ├── tabler-icons.min.css
-│   │   ├── LICENSE
-│   │   └── fonts/
-│   └── gsap/
-│       ├── gsap.min.js
-│       ├── ScrollTrigger.min.js
-│       └── LISENSI.md
-├── docs/
-│   ├── catatan-hasil-uji.md
-│   ├── rancangan-laporan.md
-│   └── rencana-github.md
-└── .github/
-    ├── ISSUE_TEMPLATE/
-    │   ├── bug.yml
-    │   ├── dokumentasi.yml
-    │   └── fitur.yml
-    └── PULL_REQUEST_TEMPLATE.md
-```
-
-Folder `docs/` dimiliki Anggota 3. Tiga berkas awal di dalamnya adalah draf yang disiapkan Anggota 1.
-
-## Menjalankan di komputer
-
-1. Buka terminal di folder proyek, lalu jalankan `python -m http.server 8002` jika Python tersedia.
-2. Buka [Beranda lokal](http://127.0.0.1:8002/), lalu pilih **Masuk → Akun Demo** untuk melihat akun petugas dan warga.
-3. Untuk demo setoran yang mengubah ringkasan kedua dashboard, pilih akun warga **Siti Aminah** dan tanggal pada **Oktober 2026**. Setoran di luar periode tetap tersedia dalam riwayat.
-
-Sesi, transaksi, dan tema tersimpan di `localStorage` browser pada alamat yang sama. Login demo berjalan di sisi browser dan hanya cocok untuk simulasi proyek. Video YouTube membutuhkan internet.
+- Halaman publik dan dashboard berada di HTML pada direktori utama. [CSS](css/style.css) menggunakan CSS Grid, Flexbox, dan token tema untuk tata letak responsif.
+- [JavaScript](js/) menangani login, data, formulir, kalkulator, serta grafik SVG. [GSAP dan ScrollTrigger](vendor/gsap/) disimpan lokal untuk animasi.
+- [Aset](assets/) memuat font dan favicon. [Gambar](img/) memuat ilustrasi dan galeri.
+- Baca [panduan login dan dashboard](docs/fitur-login-dashboard.md), [kredit dan lisensi aset pihak ketiga](docs/THIRD-PARTY.md), serta [panduan kontribusi](CONTRIBUTING.md) jika perlu melakukan pemeliharaan. Laporan dan rencana lain di [folder dokumentasi](docs/) merekam tahapan pengembangan.
 
 ## Tim
 
-Nama anggota belum diberikan, jadi placeholder nama dipertahankan.
+| GitHub | Tanggung jawab |
+| --- | --- |
+| [DaxnGo](https://github.com/DaxnGo) | Teknis dan repositori |
+| [RexFury4K](https://github.com/RexFury4K) | Konten dan fitur |
+| [ZixxyProject](https://github.com/ZixxyProject) | Kontak, visual, dan dokumentasi |
 
-| Anggota | Nama | GitHub | Tanggung jawab |
-|---|---|---|---|
-| Anggota 1 | [Nama] | [DaxnGo](https://github.com/DaxnGo) | Teknis dan repo |
-| Anggota 2 | [Nama] | [RexFury4K](https://github.com/RexFury4K) | Konten dan fitur |
-| Anggota 3 | [Nama] | [ZixxyProject](https://github.com/ZixxyProject) | Kontak, visual, dan dokumentasi |
-
-## Kepemilikan file
-
-| File atau bagian | Pemilik |
-|---|---|
-| `index.html`, `README.md`, `CONTRIBUTING.md`, `.github/`, `.gitignore`, `.editorconfig` | Anggota 1 |
-| Bagian 1 (BASE) di `css/style.css` | Anggota 1 |
-| `memilah.html`, `harga.html`, `js/script.js` | Anggota 2 |
-| Bagian 2 (Memilah), 3 (Harga), dan 5 (Mode Gelap) di `css/style.css` | Anggota 2 |
-| `kontak.html`, `js/kontak.js`, `img/`, `docs/` | Anggota 3 |
-| Bagian 4 (Kontak) dan 6 (Galeri) di `css/style.css` | Anggota 3 |
-
-Harga, alamat, nomor telepon, dan jam buka adalah data contoh. Angka di dashboard dihitung dari setoran demo, termasuk setoran yang ditambahkan di browser. Cantumkan sumber dan izin penggunaan aset di folder `docs/`.
-
-## Kontribusi
-
-Pilih isu, buat branch, kerjakan perubahan, lalu ajukan pull request untuk ditinjau anggota lain.
-
-## Lisensi
-
-Lisensi proyek belum ditentukan. Berkas lisensi akan ditambahkan setelah tim memilih lisensi yang sesuai.
+Lisensi proyek secara keseluruhan belum ditetapkan. Pustaka dan aset pihak ketiga mengikuti lisensinya masing-masing.

@@ -1,5 +1,7 @@
 # Panduan Kontribusi
 
+Pengembangan tugas kuliah BankSampahKu telah selesai. Panduan ini menjadi acuan jika tim perlu melakukan pemeliharaan.
+
 ## Branch
 
 - `main` berisi hasil stabil yang sudah ditinjau.

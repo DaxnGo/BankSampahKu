@@ -1,8 +1,9 @@
 # Pihak Ketiga dan Lisensi
 
-Dokumen ini mencatat semua aset pihak ketiga yang dipakai BankSampahKu beserta
-versi yang dipin dan teks lisensinya. Semua aset disimpan secara lokal; tidak
-ada permintaan jaringan saat halaman dibuka.
+Dokumen ini mencatat pustaka dan aset pihak ketiga yang digunakan BankSampahKu.
+Font dan pustaka disimpan lokal. Pemutar Beranda memuat video dari YouTube saat
+pengguna membukanya. Video [Sampahku Tanggung Jawabku](https://www.youtube.com/watch?v=CGd3lgxReFE)
+ditayangkan oleh kanal APix Media.
 
 ---
 
