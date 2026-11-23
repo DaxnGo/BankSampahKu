@@ -2,9 +2,10 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
   <meta name="theme-color" id="warna-tema" content="#FBF6EC">
-  <meta name="description" content="Ringkasan kinerja bank sampah: total sampah, jumlah penabung, saldo dibayarkan, target bulan ini, dan peringkat per RT. Seluruh angka masih data contoh.">
+  <meta name="description" content="Ringkasan demo petugas: berat sampah, penabung aktif, perkiraan nilai setoran, dan kontribusi per RT.">
   <title>Dashboard Bank Sampah | BankSampahKu</title>
   <link rel="preload" href="assets/fonts/public-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/public-sans-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -87,7 +88,7 @@
       <div class="dash-sambutan-teks">
         <p class="dash-sambutan-label">Ringkasan operasional</p>
         <h1 id="judul-halaman" class="dash-sambutan-judul">Halo, <span data-header-nama>Petugas</span></h1>
-        <p class="dash-sambutan-desk">Pantau setoran masuk, komposisi sampah, dan capaian target bank sampah bulan ini.</p>
+        <p class="dash-sambutan-desk">Pantau setoran masuk, komposisi sampah, dan capaian target pada periode demo.</p>
       </div>
       <div class="dash-sambutan-meta">
         <span class="dash-periode"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4m8-4v4M3 10h18"/></svg><time datetime="2026-10">Oktober 2026</time></span>
@@ -98,7 +99,7 @@
     <section aria-labelledby="judul-ringkasan">
       <div class="bagian-kepala">
         <div>
-          <h2 id="judul-ringkasan">Ringkasan bulan ini</h2>
+          <h2 id="judul-ringkasan">Ringkasan periode demo</h2>
           <p class="bagian-pengantar">Angka gabungan seluruh pos, bukan perorangan.</p>
         </div>
       </div>
@@ -118,7 +119,7 @@
             <span class="kpi-ikon" aria-hidden="true"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
           </div>
           <p class="kpi-nilai"><span data-metric="jumlah-penabung">4</span><span class="kpi-satuan">orang</span></p>
-          <p class="kpi-ket">Warga yang mencatatkan setoran bulan ini.</p>
+          <p class="kpi-ket">Warga yang mencatatkan setoran pada periode ini.</p>
         </li>
         <li class="kpi">
           <div class="kpi-atas">
@@ -139,7 +140,7 @@
       </ul>
     </section>
 
-    <section class="grafik-grid" aria-label="Visualisasi data bulan ini">
+    <section class="grafik-grid" aria-label="Visualisasi data periode demo">
       <figure class="panel panel-grafik" aria-labelledby="judul-harian">
         <figcaption class="panel-kepala">
           <div>
@@ -235,21 +236,21 @@
       <div class="panel panel-target" aria-labelledby="judul-target">
         <div class="panel-kepala">
           <div>
-            <h2 id="judul-target">Target bulan ini</h2>
+            <h2 id="judul-target">Target periode demo</h2>
             <p>Capaian berat dibanding target Oktober 2026.</p>
           </div>
           <p class="target-persen"><span data-metric="persen-target">57,9%</span></p>
         </div>
         <p class="target-angka"><span data-metric="target-capaian">231,5</span> kg <span class="target-dari">dari <span data-metric="target-kg">400</span> kg</span></p>
         <progress class="progres-target" value="231.5" max="400">57,9% dari target</progress>
-        <p class="target-catatan">Sisa <strong data-sisa-target>168,5 kg</strong> untuk mencapai target bulan ini.</p>
+        <p class="target-catatan">Sisa target: <strong data-sisa-target>168,5 kg</strong></p>
       </div>
 
       <div class="panel" aria-labelledby="judul-rt">
         <div class="panel-kepala">
           <div>
             <h2 id="judul-rt">Setoran per RT</h2>
-            <p>Kontribusi tiap RT pada bulan ini.</p>
+            <p>Kontribusi tiap RT pada periode demo.</p>
           </div>
           <p class="panel-stat"><span data-metric="total-rt-kg">231,5</span> kg</p>
         </div>
@@ -353,7 +354,7 @@
 
     <p class="dash-catatan-kaki" role="note">
       <svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>
-      <span>Seluruh angka dihitung dari data demo yang tersimpan di browser, bukan transaksi nyata. <a href="pengaturan.html">Kelola data demo</a>.</span>
+      <span>Seluruh angka dihitung dari setoran simulasi yang tersimpan di browser ini.</span>
     </p>
   </main>
 

@@ -12,8 +12,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const errorEmail = document.getElementById("error-email");
     const errorPesan = document.getElementById("error-pesan");
     const sukses = document.getElementById("formSuccess");
+    contactForm.querySelector('[type="submit"]').disabled = false;
 
-    function tulis(el, pesan) { if (el) el.textContent = pesan; }
+    function tampilkanError(kolom, elemen, teks) {
+      elemen.textContent = teks;
+      if (teks) kolom.setAttribute("aria-invalid", "true");
+      else kolom.removeAttribute("aria-invalid");
+    }
+
+    [[nameInput, errorNama], [emailInput, errorEmail], [messageInput, errorPesan]].forEach(function ([kolom, error]) {
+      kolom.addEventListener("input", function () {
+        tampilkanError(kolom, error, "");
+        sukses.hidden = true;
+      });
+    });
 
     contactForm.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -22,10 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const pesan = messageInput ? messageInput.value.trim() : "";
       if (emailInput) emailInput.value = emailInput.value.trim();
 
-      tulis(errorNama, nama ? "" : "Nama wajib diisi.");
+      tampilkanError(nameInput, errorNama, nama ? "" : "Nama wajib diisi.");
       const emailValid = emailInput && emailInput.checkValidity();
-      tulis(errorEmail, emailValid ? "" : "Masukkan alamat email yang valid.");
-      tulis(errorPesan, pesan ? "" : "Pesan wajib diisi.");
+      tampilkanError(emailInput, errorEmail, emailValid ? "" : "Masukkan alamat email yang valid.");
+      tampilkanError(messageInput, errorPesan, pesan ? "" : "Pesan wajib diisi.");
 
       if (!nama || !emailValid || !pesan) {
         if (sukses) sukses.hidden = true;
@@ -43,77 +55,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Pembesar foto galeri (lightbox)
-  const galleryImages = document.querySelectorAll(".gallery-item img");
+  const lightbox = document.getElementById("gallery-lightbox");
+  if (!lightbox) return;
+  const lightboxImg = lightbox.querySelector("img");
+  const caption = lightbox.querySelector("p");
+  let pemicuTerakhir;
 
-  if (galleryImages.length > 0) {
-    const lightbox = document.createElement("div");
-    lightbox.id = "gallery-lightbox";
-    lightbox.setAttribute("role", "dialog");
-    lightbox.setAttribute("aria-modal", "true");
-    lightbox.setAttribute("aria-label", "Foto galeri");
-    lightbox.tabIndex = -1;
-    lightbox.style.cssText = `
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 20px;
-      cursor: zoom-out;
-    `;
-
-    const lightboxImg = document.createElement("img");
-    lightboxImg.alt = "";
-    lightboxImg.style.cssText = `
-      max-width: 90%;
-      max-height: 80vh;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      object-fit: contain;
-    `;
-
-    const lightboxCaption = document.createElement("p");
-    lightboxCaption.style.cssText = `
-      color: var(--video-teks);
-      margin-top: 12px;
-      font-size: 1rem;
-      text-align: center;
-    `;
-
-    lightbox.appendChild(lightboxImg);
-    lightbox.appendChild(lightboxCaption);
-    document.body.appendChild(lightbox);
-
-    let pemicuTerakhir = null;
-
-    function tutup() {
-      lightbox.style.display = "none";
-      lightboxImg.removeAttribute("src");
-      if (pemicuTerakhir && typeof pemicuTerakhir.focus === "function") pemicuTerakhir.focus();
-    }
-
-    galleryImages.forEach(function (img) {
-      img.style.cursor = "zoom-in";
-      img.addEventListener("click", function () {
-        pemicuTerakhir = img;
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightboxCaption.textContent = img.alt;
-        lightbox.style.display = "flex";
-        lightbox.focus();
-      });
+  document.querySelectorAll(".gallery-item button").forEach(function (tombol) {
+    tombol.addEventListener("click", function () {
+      const foto = tombol.querySelector("img");
+      const teks = tombol.closest("figure").querySelector("figcaption").textContent;
+      pemicuTerakhir = tombol;
+      lightboxImg.src = foto.src;
+      lightboxImg.alt = foto.alt;
+      caption.textContent = teks;
+      lightbox.showModal();
     });
+  });
 
-    lightbox.addEventListener("click", tutup);
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && lightbox.style.display === "flex") {
-        e.preventDefault();
-        tutup();
-      }
-    });
-  }
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) lightbox.close();
+  });
+  lightbox.addEventListener("close", function () {
+    lightboxImg.removeAttribute("src");
+    if (pemicuTerakhir) pemicuTerakhir.focus();
+  });
 });

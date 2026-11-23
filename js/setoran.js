@@ -50,9 +50,8 @@
     }
 
     function hitungEstimasi() {
-      var harga = Data.HARGA[pilihJenis.value] || 0;
-      var berat = Number(kolomBerat.value);
-      estimasi.textContent = Data.formatRupiah(harga * (berat > 0 ? berat : 0));
+      var nilai = Data.HARGA[pilihJenis.value] * Number(kolomBerat.value);
+      estimasi.textContent = Data.formatRupiah(kolomBerat.validity.valid && Number.isFinite(nilai) ? nilai : 0);
     }
 
     function buatBaris(item) {
@@ -119,7 +118,7 @@
       kolom.addEventListener("change", hitungEstimasi);
     });
 
-    [kolomTanggal, pilihPenabung, kolomBerat].forEach(function (kolom) {
+    [kolomTanggal, pilihPenabung, pilihJenis, kolomBerat].forEach(function (kolom) {
       kolom.addEventListener("input", bersihkanPesan);
     });
 
@@ -143,8 +142,8 @@
         return;
       }
       var berat = Number(kolomBerat.value);
-      if (!kolomBerat.value.trim() || !Number.isFinite(berat) || berat <= 0) {
-        pesan("Masukkan berat lebih dari 0 kg.");
+      if (!kolomBerat.validity.valid || !Number.isFinite(Data.HARGA[pilihJenis.value] * berat)) {
+        pesan("Masukkan berat minimal 0,1 kg dalam kelipatan 0,1 kg.");
         kolomBerat.focus();
         return;
       }
@@ -157,7 +156,10 @@
         rt: opsi.dataset.rt || "-"
       });
 
-      pesan("Setoran tersimpan. Dashboard sudah diperbarui.", "ok");
+      var periodeDemo = Data.namaBulan(Data.PERIODE);
+      pesan(kolomTanggal.value.slice(0, 7) === Data.PERIODE
+        ? "Setoran demo tersimpan dan masuk ringkasan " + periodeDemo + "."
+        : "Setoran demo tersimpan di riwayat. Ringkasan hanya menghitung setoran " + periodeDemo + ".", "ok");
       kolomBerat.value = "";
       hitungEstimasi();
       tampilkanTabel();

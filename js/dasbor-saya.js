@@ -158,9 +158,9 @@
       teks("status-target-warga", tercapai ? "Target tercapai" : "Sedang berjalan");
       var sisa = target - ringkasan.totalKg;
       teks("sisa-target-warga", tercapai
-        ? (sisa <= 0
-          ? Data.formatAngka(Math.abs(sisa)) + " kg di atas target bulan ini."
-          : "Tepat sesuai target bulan ini.")
+        ? (sisa < 0
+          ? Data.formatAngka(Math.abs(sisa)) + " kg di atas target periode ini."
+          : "Tepat sesuai target periode ini.")
         : Data.formatAngka(Math.max(0, sisa)) + " kg lagi menuju target.");
 
       isiLegenda(ringkasan);

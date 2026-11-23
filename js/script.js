@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         kolom.removeAttribute("aria-invalid");
       }
     });
+    kolomBermasalah.focus();
   }
 
   function tampilkanHasil(total, berat, namaJenis, hargaPerKg) {
@@ -83,8 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!kolomBerat.value.trim() || !Number.isFinite(berat) || berat <= 0) {
-      tampilkanPesan("Masukkan berat lebih dari 0 kg, contoh: 2.5", kolomBerat);
+    if (!kolomBerat.validity.valid || !Number.isFinite(hargaPerKg * berat)) {
+      tampilkanPesan("Masukkan berat minimal 0,1 kg dalam kelipatan 0,1 kg (misalnya 2,5 kg).", kolomBerat);
       return;
     }
 
@@ -93,16 +94,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   form.addEventListener("reset", function () {
-    // Nilai form baru dikosongkan setelah event reset selesai.
-    window.setTimeout(bersihkanHasil, 0);
+    bersihkanHasil();
+    pilihanJenis.removeAttribute("aria-invalid");
+    kolomBerat.removeAttribute("aria-invalid");
   });
 
   [pilihanJenis, kolomBerat].forEach(function (kolom) {
     kolom.addEventListener("input", function () {
       kolom.removeAttribute("aria-invalid");
-      if (kotakHasil.dataset.keadaan === "salah") {
-        bersihkanHasil();
-      }
+      bersihkanHasil();
     });
   });
 });

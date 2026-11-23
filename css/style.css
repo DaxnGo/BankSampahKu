@@ -633,6 +633,16 @@ button, input, select, textarea { font: inherit; }
   border: 1px solid var(--garis);
 }
 
+.gallery-item button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+.gallery-item button:focus-visible { outline-offset: calc(-1 * var(--fokus-lebar)); }
+
 .gallery-item img {
   width: 100%;
   height: 200px;
@@ -646,6 +656,25 @@ button, input, select, textarea { font: inherit; }
   font-weight: 600;
   color: var(--teks);
 }
+
+.gallery-dialog {
+  position: fixed;
+  inset: 0;
+  max-width: min(960px, calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  margin: auto;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--sp-4);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius-kartu);
+  color: var(--teks);
+  background: var(--permukaan);
+}
+.gallery-dialog::backdrop { background: var(--overlay-1); }
+.gallery-dialog form { display: flex; justify-content: flex-end; margin-bottom: var(--sp-2); }
+.gallery-dialog img { display: block; max-width: 100%; max-height: 66vh; margin-inline: auto; object-fit: contain; }
+.gallery-dialog p { margin: var(--sp-2) 0 0; text-align: center; }
 
 @media (max-width: 900px) {
   .contact-info-grid {
@@ -1831,6 +1860,7 @@ input, textarea, select { font-size: var(--teks-3); }
 .video-penampung {
   position: relative;
   width: 100%;
+  min-height: 200px;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: var(--video-radius);
@@ -2167,14 +2197,19 @@ html[data-tema="gelap"] .tombol-tema .ikon-matahari { display: block; }
 
 @media (max-width: 900px) {
   .header-inner { flex-wrap: wrap; row-gap: var(--sp-2); }
+  .site-header:not(.login-header) .header-inner { padding-inline: var(--sp-4); column-gap: var(--sp-2); }
   .brand-logo { font-size: var(--teks-2); }
   .main-nav { order: 3; display: none; width: 100%; margin: 0; }
   body.menu-terbuka .main-nav { display: block; }
   .main-nav ul { flex-direction: column; align-items: stretch; gap: var(--sp-1); padding-block: var(--sp-2); border-top: 1px solid var(--garis); }
   .menu-item:not(.active) { border-radius: var(--radius-1); }
   .nav-hamburger { display: inline-flex; }
-  .pengguna-nama { display: none; }
   .pengguna-pil { padding: var(--sp-2); }
+  .header-kanan .pengguna-pil {
+    width: var(--ukuran-sentuh);
+    padding-inline: 0;
+    justify-content: center;
+  }
   .pengguna-panah { display: none !important; }
   body.menu-terbuka .nav-hamburger .nav-hamburger-tutup { display: block; }
   body.menu-terbuka .nav-hamburger > svg { display: none; }
@@ -2385,11 +2420,10 @@ body[data-layout="dashboard"] main > .wadah {
     left: 0;
     top: 0;
     width: min(280px, 86vw);
-    transform: translateX(-100%);
-    transition: transform var(--motion-modal) var(--ease-motion);
+    display: none;
     box-shadow: var(--bayangan-2);
   }
-  body.sidebar-buka .app-sidebar { transform: none; }
+  body.sidebar-buka .app-sidebar { display: flex; }
   .app-toggle { display: grid; }
   .app-identitas { display: none; }
   .app-header { padding-inline: var(--sp-4); }
@@ -2698,7 +2732,9 @@ body[data-layout="dashboard"] main > .wadah {
 .pengaturan-baris { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); padding-block: var(--sp-3); border-bottom: 1px solid var(--garis); }
 .pengaturan-baris p { margin: var(--sp-1) 0 0; color: var(--teks-lembut); font-size: var(--teks-1); }
 .pengaturan-tema-tombol { display: grid; place-items: center; flex: none; width: var(--ukuran-sentuh); height: var(--ukuran-sentuh); border: 1px solid var(--garis-kuat); border-radius: var(--radius-pill); background: var(--permukaan-2); color: var(--aksen-tua); cursor: pointer; }
-.pengaturan-tema-tombol .ikon[hidden] { display: none; }
+.pengaturan-tema-tombol .ikon-matahari,
+html[data-tema="gelap"] .pengaturan-tema-tombol .ikon-bulan { display: none; }
+html[data-tema="gelap"] .pengaturan-tema-tombol .ikon-matahari { display: block; }
 @media (max-width: 600px) {
   .ringkasan-grid { grid-template-columns: 1fr; }
   .profil-kartu { flex-direction: column; }
@@ -3382,7 +3418,7 @@ html[data-tema="gelap"] {
   .app-sidebar { width: 232px; }
   .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1360px) {
   .donat-bingkai { grid-template-columns: minmax(0, 1fr); }
   .grafik-donat { max-width: 160px; }
 }

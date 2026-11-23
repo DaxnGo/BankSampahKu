@@ -26,7 +26,7 @@
   }
 
   function tombolTema() {
-    return document.querySelectorAll(".tombol-tema");
+    return document.querySelectorAll(".tombol-tema, #pengaturan-tema");
   }
 
   function terapkan(tema) {

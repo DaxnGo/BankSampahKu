@@ -15,9 +15,9 @@
   // ===== KONFIGURASI SUMBER =====
   // Contoh: "video/panduan-memilah.mp4" atau "video/panduan-memilah.webm"
   // Boleh juga ditaruh di atribut data-sumber-video pada tombol #buka-video.
-  var SUMBER_VIDEO = "https://youtu.be/CGd3lgxReFE?si=xAssguklxTyoOtXJ";
+  var SUMBER_VIDEO = "";
   var JENIS_VIDEO = "video/mp4";
-  var JUDUL = "Video BankSampahKu";
+  var JUDUL = "Video Edukasi BankSampahKu";
   // ==============================
 
   var tombolBuka = document.getElementById("buka-video");
@@ -49,7 +49,7 @@
   var kecepatan = document.getElementById("vk-kecepatan");
   var tombolLayarPenuh = document.getElementById("vk-fullscreen");
 
-  var sumber = SUMBER_VIDEO || tombolBuka.getAttribute("data-sumber-video") || "";
+  var sumber = tombolBuka.getAttribute("data-sumber-video") || SUMBER_VIDEO;
   var cocokYoutube = sumber.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=))([\w-]{11})/);
   var idYoutube = cocokYoutube ? cocokYoutube[1] : "";
   var embed = null;
@@ -144,15 +144,16 @@
       embed.className = "video-embed";
       embed.id = "video-youtube";
       embed.src = "https://www.youtube-nocookie.com/embed/" + idYoutube +
-        "?controls=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1&origin=" +
+        "?autoplay=1&controls=1&playsinline=1&rel=0&enablejsapi=1&origin=" +
         encodeURIComponent(location.origin);
       embed.title = JUDUL;
-      embed.setAttribute("allow", "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      embed.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
       embed.setAttribute("allowfullscreen", "");
       embed.referrerPolicy = "strict-origin-when-cross-origin";
       penampung.appendChild(embed);
+      var iframeAktif = embed;
       muatApiYouTube(function () {
-        if (!embed || !window.YT || !window.YT.Player) return;
+        if (embed !== iframeAktif || !window.YT || !window.YT.Player) return;
         pemutarYT = new window.YT.Player(embed, {
           events: {
             onReady: function () {
@@ -181,6 +182,7 @@
   }
 
   function buka() {
+    if (embed) return;
     if (penutupTimer) { clearTimeout(penutupTimer); penutupTimer = null; }
     fokusSebelumnya = tombolBuka;
     siapkanSumber();

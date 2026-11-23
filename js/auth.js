@@ -10,7 +10,6 @@
     else el.removeAttribute("hidden");
   }
 
-
   var Data = window.BankData;
   var identitasAktif = null;
 
@@ -47,7 +46,9 @@
     var aktif = sesi();
     var halaman = halamanIni || window.location.pathname.split("/").pop();
     if (!aktif) {
-      window.location.replace("login.html?lanjut=" + encodeURIComponent(halaman));
+      window.location.replace(
+        "login.html?lanjut=" + encodeURIComponent(halaman),
+      );
       return false;
     }
     if (peran && aktif.user.peran !== peran) {
@@ -79,7 +80,9 @@
   function pasangDropdown(wadah) {
     if (!wadah || wadah.dataset.dropdownSiap) return;
     var dropdown = wadah.querySelector(".pengguna-dropdown");
-    var trigger = wadah.querySelector("[data-profil-trigger]") || wadah.querySelector(".pengguna-pil");
+    var trigger =
+      wadah.querySelector("[data-profil-trigger]") ||
+      wadah.querySelector(".pengguna-pil");
     var panah = wadah.querySelector(".pengguna-panah");
     if (!dropdown || !trigger) return;
     wadah.dataset.dropdownSiap = "1";
@@ -87,11 +90,15 @@
     function atur(buka) {
       dropdown.hidden = !buka;
       trigger.setAttribute("aria-expanded", buka ? "true" : "false");
-      if (panah && panah !== trigger) panah.setAttribute("aria-expanded", buka ? "true" : "false");
+      if (panah && panah !== trigger)
+        panah.setAttribute("aria-expanded", buka ? "true" : "false");
     }
 
     function balik(e) {
-      if (e) { e.preventDefault(); e.stopPropagation(); }
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       atur(dropdown.hidden);
     }
 
@@ -111,7 +118,9 @@
   }
 
   function perbaruiNavigasi() {
-    var tautan = document.querySelectorAll("[data-nav-auth], [data-buka-login], [data-profil-trigger]");
+    var tautan = document.querySelectorAll(
+      "[data-nav-auth], [data-buka-login], [data-profil-trigger]",
+    );
     var pengguna = identitas();
     if (!tautan.length || !pengguna) return;
     var halamanIni = window.location.pathname.split("/").pop();
@@ -121,24 +130,37 @@
       var nama = link.querySelector("[data-teks-pengguna]") || link;
 
       nama.textContent = "Halo, " + pengguna.nama.split(" ")[0];
-      if (link.hasAttribute("href")) link.setAttribute("href", tujuanAwal(pengguna.peran));
+      if (link.hasAttribute("href"))
+        link.setAttribute("href", tujuanAwal(pengguna.peran));
       link.classList.remove("active");
       if (halamanIni !== "login.html") link.removeAttribute("aria-current");
       link.setAttribute("data-aktif", "true");
 
       isiTeks(wadah, "[data-avatar]", Data.inisialNama(pengguna.nama));
       isiTeks(wadah, "[data-nama-pengguna]", pengguna.nama);
-      isiTeks(wadah, "[data-peran-pengguna]",
-        pengguna.peran === "petugas" ? "Petugas bank sampah" : "Warga / RT " + (pengguna.rt || "-"));
-      isiTeks(wadah, "[data-kode-pengguna]",
-        pengguna.peran === "petugas" ? "Akses seluruh pos" :
-          (pengguna.kode ? "Kode penabung " + pengguna.kode : "RT " + (pengguna.rt || "-")));
+      isiTeks(
+        wadah,
+        "[data-peran-pengguna]",
+        pengguna.peran === "petugas"
+          ? "Petugas bank sampah"
+          : "Warga / RT " + (pengguna.rt || "-"),
+      );
+      isiTeks(
+        wadah,
+        "[data-kode-pengguna]",
+        pengguna.peran === "petugas"
+          ? "Akses seluruh pos"
+          : pengguna.kode
+            ? "Kode penabung " + pengguna.kode
+            : "RT " + (pengguna.rt || "-"),
+      );
 
       var menu = wadah.querySelector("[data-menu-pengguna]");
       if (menu) {
-        var tujuan = pengguna.peran === "petugas"
-          ? ["Input Setoran", "setoran.html"]
-          : ["Dashboard Saya", "dasbor-saya.html"];
+        var tujuan =
+          pengguna.peran === "petugas"
+            ? ["Input Setoran", "setoran.html"]
+            : ["Dashboard Saya", "dasbor-saya.html"];
         menu.textContent = tujuan[0];
         menu.setAttribute("href", tujuan[1]);
         // Penanda halaman aktif sudah ada di sidebar; jangan duplikat di dropdown.
@@ -175,7 +197,10 @@
     });
 
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && document.body.classList.contains("menu-terbuka")) {
+      if (
+        e.key === "Escape" &&
+        document.body.classList.contains("menu-terbuka")
+      ) {
         tutup();
         tombol.focus();
       }
@@ -200,7 +225,9 @@
     perbarui();
 
     tombol.addEventListener("click", function () {
-      var kurangi = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var kurangi =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       window.scrollTo({ top: 0, behavior: kurangi ? "auto" : "smooth" });
     });
   }
@@ -211,15 +238,23 @@
     var pengguna = identitas();
     if (!pengguna) return;
     isiTeks(document, "[data-header-nama]", pengguna.nama);
-    isiTeks(document, "[data-header-peran]",
-      pengguna.peran === "petugas" ? "Petugas bank sampah" : "Warga / RT " + (pengguna.rt || "-"));
+    isiTeks(
+      document,
+      "[data-header-peran]",
+      pengguna.peran === "petugas"
+        ? "Petugas bank sampah"
+        : "Warga / RT " + (pengguna.rt || "-"),
+    );
 
     var judul = document.querySelector("[data-header-judul]");
     if (judul) judul.textContent = (document.title || "").split(" | ")[0];
 
     var halamanIni = window.location.pathname.split("/").pop();
     var halamanBerperan = document.body.dataset.halaman || "";
-    if (pengguna.peran === "petugas" && halamanBerperan.indexOf("akun:") === 0) {
+    if (
+      pengguna.peran === "petugas" &&
+      halamanBerperan.indexOf("akun:") === 0
+    ) {
       var menuAkun = document.querySelectorAll(".sidebar-nav > .sidebar-item");
       if (menuAkun.length >= 5) {
         var ringkasan = menuAkun[0];
@@ -233,21 +268,27 @@
         if (ringkasanLabel) ringkasanLabel.textContent = "Ringkasan";
         if (setoranLabel) setoranLabel.textContent = "Input Setoran";
         if (setoranIkon) {
-          setoranIkon.innerHTML = '<path d="m12 3 9 5v8l-9 5-9-5V8l9-5Z"/><path d="m3 8 9 5 9-5m-9 5v8"/>';
+          setoranIkon.innerHTML =
+            '<path d="m12 3 9 5v8l-9 5-9-5V8l9-5Z"/><path d="m3 8 9 5 9-5m-9 5v8"/>';
         }
         buku.remove();
       }
     }
-    Array.prototype.forEach.call(document.querySelectorAll(".sidebar-item"), function (item) {
-      item.removeAttribute("aria-current");
-      if ((item.getAttribute("href") || "").split("#")[0] === halamanIni) {
-        item.setAttribute("aria-current", "page");
-      }
-    });
+    Array.prototype.forEach.call(
+      document.querySelectorAll(".sidebar-item"),
+      function (item) {
+        item.removeAttribute("aria-current");
+        if ((item.getAttribute("href") || "").split("#")[0] === halamanIni) {
+          item.setAttribute("aria-current", "page");
+        }
+      },
+    );
 
     var tombol = document.querySelector(".app-toggle");
     if (tombol) {
-      var sidebar = document.getElementById("sidebar-app") || document.querySelector(".app-sidebar");
+      var sidebar =
+        document.getElementById("sidebar-app") ||
+        document.querySelector(".app-sidebar");
       function tutupSidebar() {
         document.body.classList.remove("sidebar-buka");
         tombol.setAttribute("aria-expanded", "false");
@@ -257,9 +298,15 @@
         var buka = !document.body.classList.contains("sidebar-buka");
         document.body.classList.toggle("sidebar-buka", buka);
         tombol.setAttribute("aria-expanded", buka ? "true" : "false");
+        if (buka) {
+          document.querySelector(".sidebar-nav .sidebar-item")?.focus({ preventScroll: true });
+        }
       });
       document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && document.body.classList.contains("sidebar-buka")) {
+        if (
+          e.key === "Escape" &&
+          document.body.classList.contains("sidebar-buka")
+        ) {
           tutupSidebar();
           tombol.focus();
         }
@@ -279,7 +326,10 @@
     if (!dialog) return;
     var batal = dialog.querySelector("[data-logout-batal]");
     var konfirmasi = dialog.querySelector("[data-logout-konfirmasi]");
-    if (batal) batal.addEventListener("click", function () { dialog.close(); });
+    if (batal)
+      batal.addEventListener("click", function () {
+        dialog.close();
+      });
     if (konfirmasi) {
       konfirmasi.addEventListener("click", function () {
         keluar();
@@ -292,7 +342,11 @@
   }
 
   function init() {
-    if (document.body && document.body.dataset && document.body.dataset.halaman) {
+    if (
+      document.body &&
+      document.body.dataset &&
+      document.body.dataset.halaman
+    ) {
       var bagian = document.body.dataset.halaman.split(":");
       if (bagian[0] === "petugas" && bagian[1]) {
         butuh("petugas", bagian[1]);
@@ -303,7 +357,10 @@
       }
     }
     perbaruiNavigasi();
-    Array.prototype.forEach.call(document.querySelectorAll("[data-keluar]"), pasangTombolKeluar);
+    Array.prototype.forEach.call(
+      document.querySelectorAll("[data-keluar]"),
+      pasangTombolKeluar,
+    );
     initHamburger();
     initKeAtas();
     initDashboard();
@@ -316,14 +373,19 @@
     masuk: masuk,
     keluar: keluar,
     butuh: butuh,
-    perbaruiNavigasi: perbaruiNavigasi
+    perbaruiNavigasi: perbaruiNavigasi,
   };
 
   window.addEventListener("pageshow", function (e) {
-    var privat = document.body && document.body.dataset && document.body.dataset.layout === "dashboard";
+    var privat =
+      document.body &&
+      document.body.dataset &&
+      document.body.dataset.layout === "dashboard";
     if (privat && e.persisted && !sesi()) {
-      window.location.replace("login.html?lanjut=" +
-        encodeURIComponent(window.location.pathname.split("/").pop()));
+      window.location.replace(
+        "login.html?lanjut=" +
+          encodeURIComponent(window.location.pathname.split("/").pop()),
+      );
     }
   });
 
